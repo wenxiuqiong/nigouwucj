@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/beijing"
+    tools:context=".Fragment.Fragment_Me">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        style="@style/linearLayout"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.example.thingfinding.MyImageView
+            android:id="@+id/imageView2"
+            style="@style/image_one"
+            android:layout_width="83dp"
+            android:layout_height="83dp"
+            android:src="@drawable/chushi" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/main_text"
+            android:layout_height="90dp"
+            android:text="登 录"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="36dp" />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/lv_main"
+        android:layout_width="wrap_content"
+        android:layout_height="348dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.761"
+        tools:layout_editor_absoluteX="0dp">
+
+    </ListView>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.229"
+        tools:layout_editor_absoluteX="0dp" />
+
+</android.support.constraint.ConstraintLayout>

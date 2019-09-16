@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".tenderview.tenderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <!--<Spinner-->
+        <!--android:id="@+id/spin_one"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:entries="@array/datasore"-->
+        <!--android:spinnerMode="dialog"-->
+        <!--android:layout_weight="5"-->
+        <!--/>-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/typespin"-->
+            <!--android:layout_width="150dp"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_weight="5"-->
+            <!--android:entries="@array/datasore2"-->
+            <!--android:spinnerMode="dialog" />-->
+    </LinearLayout>
+
+    <!-- 添加一个ListView控件 -->
+    <ListView
+        android:id="@+id/lvpartytype"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:divider="#d9d9d9"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

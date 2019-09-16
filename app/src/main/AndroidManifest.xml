@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.thingfinding">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".firstLauncher.LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".firstLauncher.FirstLauncherActivity" />
+        <activity android:name=".news.NewsActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".user.RegisterActivity" />
+        <activity android:name=".user.ChangePasswordActivity" />
+        <activity android:name=".user.FindPasswordActivity" />
+        <activity android:name=".user.loginActivity" />
+        <activity android:name=".user.My_InformationActivity" />
+        <activity android:name=".user.My_TransactionActivity" />
+        <activity android:name=".user.My_DemandActivity" />
+        <activity android:name=".seting.UpdateActivity" />
+        <activity android:name=".seting.HelpActivity" />
+        <activity android:name=".seting.SuggestionActivity" />
+        <activity android:name=".seting.PrivateActivity" />
+        <activity android:name=".news.CommunicationActivity" />
+        <activity android:name=".user.My_SetupActivity" />
+        <activity android:name=".user.My_DetailsActivity" />
+        <activity
+            android:name=".tenderview.tenderActivity"
+            android:label="tenderview.tenderActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".tenderview.partytypeActivity" />
+        <activity android:name=".tenderview.partyActivity" />
+        <activity android:name=".tenderview.pettypeActivity" />
+        <activity android:name=".tenderview.petActivity" />
+        <activity android:name=".tenderview.carweixiutypeActivity" />
+        <activity android:name=".tenderview.carweixiuActivity" />
+        <activity android:name=".tenderview.furniturestypeActivity" />
+        <activity android:name=".tenderview.furnituresActivity"></activity>
+    </application>
+
+</manifest>

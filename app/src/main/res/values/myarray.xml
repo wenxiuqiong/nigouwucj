@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="datasore">
+        <item>综合排序</item>
+        <item>销售排序</item>
+        <item>价格由低到高排序</item>
+        <item>价格由高到低排序</item>
+    </string-array>
+
+    <string-array name="datasore2">
+        <item>宠物</item>
+        <item>汽车维修</item>
+        <item>场地预定</item>
+        <item>家艺工具</item>
+    </string-array>
+</resources>
