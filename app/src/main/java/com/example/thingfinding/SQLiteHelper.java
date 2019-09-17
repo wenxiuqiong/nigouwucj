@@ -21,6 +21,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private final String createTb1="CREATE TABLE Users (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "username VARCHAR2,password VARCHAR2,avatar BLOB," +
             "name VARCHAR2,phone VARCHAR2,id VARCHAR2,email VARCHAR2,address VARCHAR2)";
+    private final String createTb="CREATE TABLE AddressBook (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "name VARCHAR2,phone VARCHAR2,address VARCHAR2 )";
+
 
     public SQLiteHelper(Context context, String information, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, information, factory, version);
@@ -42,6 +45,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // 创建一个数据库表 User ，字段：_id、information、avatar。
+        db.execSQL(createTb);
         db.execSQL(createTb1);
     }
 

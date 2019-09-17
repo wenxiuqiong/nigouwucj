@@ -33,7 +33,7 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addressbook);
         initView();
-     //   initEvent();
+        initEvent();
     }
     private void initView() {
         addbtn = (Button) findViewById(R.id.releasebtn);
@@ -52,7 +52,7 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listdateils=dataList.get(position);
-                nofiy();
+                notfy();
             }
         });
     }
@@ -108,7 +108,7 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
         return dataList;
     }
 
-    public void nofiy(){
+    public void notfy(){
         Intent intent = new Intent();
         intent.putExtra("name",listdateils.getName());
         intent.putExtra("phone",listdateils.getPhone());
