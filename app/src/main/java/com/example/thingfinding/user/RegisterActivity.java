@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thingfinding.R;
@@ -22,15 +23,16 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText et_nameuser;
     private EditText et_namepass;
     private EditText et_passwordagin;
     private ImageView image;
     private Button btn;
-    private  int REQUEST_GET_IMAGE = 1;
-    private  int MAX_SIZE = 769;
+    private TextView exitText;
+    private int REQUEST_GET_IMAGE = 1;
+    private int MAX_SIZE = 769;
     private Bitmap bitmap = null;
     private SQLiteHelper dbhelper;
 
@@ -38,20 +40,35 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        et_nameuser=(EditText)findViewById(R.id.editText) ;
-        et_namepass=(EditText)findViewById(R.id.editText2) ;
-        et_passwordagin=(EditText)findViewById(R.id.passwordagin_e);
-        image=(ImageView)findViewById(R.id.imageView2) ;
-        btn=(Button)findViewById(R.id.button3);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                passData();
-            }
-        });
+        initView();
+        initEvent();
     }
 
-    public void Return(View view){
+    private void initView() {
+        et_nameuser = (EditText) findViewById(R.id.editText);
+        et_namepass = (EditText) findViewById(R.id.editText2);
+        et_passwordagin = (EditText) findViewById(R.id.passwordagin_e);
+        image = (ImageView) findViewById(R.id.imageView2);
+        btn = (Button) findViewById(R.id.zhuce);
+        exitText = (TextView) findViewById(R.id.exitText);
+    }
+
+    private void initEvent() {
+        exitText.setOnClickListener(this);
+        btn.setOnClickListener(this);
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.exitText:
+                Return();
+                break;
+            case R.id.zhuce:
+                passData();
+                break;
+        }
+    }
+    public void Return(){
         finish();
     }
 
@@ -94,11 +111,11 @@ public class RegisterActivity extends AppCompatActivity {
             setResult(RESULT_OK, data);
             RegisterActivity.this.finish();
         }
-            //Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
-            //finish();
+        //Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
+        //finish();
         //}else{
-            //Toast.makeText(this,"注册失败",Toast.LENGTH_SHORT).show();
-       // }
+        //Toast.makeText(this,"注册失败",Toast.LENGTH_SHORT).show();
+        // }
     }
 
     @Override
@@ -159,4 +176,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return new byte[0];
     }
+
+
 }

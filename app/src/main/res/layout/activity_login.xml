@@ -10,10 +10,9 @@
     tools:context=".user.loginActivity">
 
     <TextView
-        android:id="@+id/text_one"
+        android:id="@+id/exitText"
         style="@style/text_one"
         android:text="  ^←^"
-        android:onClick="exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -97,10 +96,9 @@
         app:layout_constraintVertical_bias="0.675" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/findpasswordText"
         style="@style/login_text_two"
         android:text="忘记密码?"
-        android:onClick="findpassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.819"
@@ -109,7 +107,7 @@
         app:layout_constraintVertical_bias="0.678" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/login"
         style="@style/login_button"
         android:text="登    录"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,12 +118,11 @@
         app:layout_constraintVertical_bias="0.763" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/registerText"
         style="@style/login_text_three"
         android:layout_width="47dp"
         android:layout_height="19dp"
         android:text="注册 >"
-        android:onClick="register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.952"

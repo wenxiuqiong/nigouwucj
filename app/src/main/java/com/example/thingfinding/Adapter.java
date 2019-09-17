@@ -5,11 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.EditText;
-import android.widget.ImageView;
+
+import com.example.thingfinding.Bean.addressItem;
 
 import java.util.List;
 
@@ -19,10 +17,9 @@ import java.util.List;
 public class Adapter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private List<ItemInfo> list;
-    private OnShowItemClickListener onShowItemClickListener;
+    private List<addressItem> list;
 
-    public Adapter(List<ItemInfo> list, Context context) {
+    public Adapter(List<addressItem> list, Context context) {
         this.list = list;
         inflater = LayoutInflater.from(context);
     }
@@ -46,58 +43,27 @@ public class Adapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
+            convertView = inflater.inflate(R.layout.addbook_list, null);
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.mark_item, null);
-            holder.text = (TextView) convertView.findViewById(R.id.text);
-            holder.timeText = (TextView) convertView.findViewById(R.id.time_text);
-            holder.imageView = (ImageView) convertView.findViewById(R.id.iamge_item);
-            holder.cb = (CheckBox) convertView.findViewById(R.id.listview_select_cb);
+            holder.nameText = (TextView) convertView.findViewById(R.id.nameText);
+            holder.phoneText = (TextView) convertView.findViewById(R.id.phoneText);
+            holder.addressText = (TextView) convertView.findViewById(R.id.addText);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-       final ItemInfo bean = list.get(position);
-        // 是否是多选状态
-         if (bean.isShow()) {
-            holder.cb.setVisibility(View.VISIBLE);
-        } else {
-            holder.cb.setVisibility(View.GONE);
-        }
-
-        holder.text.setText(bean.getInformation());
-        holder.imageView.setImageBitmap(bean.getBitmap());
-        holder.timeText.setText(bean.getTime());
-        holder.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    bean.setChecked(true);
-                } else {
-                    bean.setChecked(false);
-                }
-                // 回调方法，将Item加入已选
-                onShowItemClickListener.onShowItemClick(bean,position);
-            }
-        });
-        // 必须放在监听后面
-        holder.cb.setChecked(bean.isChecked());
+        final addressItem bean = list.get(position);
+        holder.nameText.setText(bean.getName());
+        holder.phoneText.setText(bean.getPhone());
+        holder.addressText.setText(bean.getAddress());
         return convertView;
     }
 
-    static class ViewHolder {
-        TextView text;
-        TextView timeText;
-        ImageView imageView;
-        CheckBox cb;
-    }
+}
 
-    public interface OnShowItemClickListener {
-        public void onShowItemClick(ItemInfo bean, int position);
-    }
-
-    public void setOnShowItemClickListener(OnShowItemClickListener onShowItemClickListener) {
-        this.onShowItemClickListener = onShowItemClickListener;
-    }
+class ViewHolder {
+    TextView nameText;
+    TextView phoneText;
+    TextView addressText;
 }
 

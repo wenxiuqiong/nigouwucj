@@ -7,10 +7,9 @@
     android:background="@drawable/beijing"
     tools:context=".user.RegisterActivity">
     <TextView
-        android:id="@+id/text_one"
+        android:id="@+id/exitText"
         style="@style/text_one"
         android:text="  ^←^"
-        android:onClick="Return"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -99,7 +98,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.584" />
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/zhuce"
         style="@style/login_button"
         android:text="注    册"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -7,22 +7,110 @@
     tools:context="com.example.thingfinding.user.My_TransactionActivity">
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="389dp"
-        android:layout_height="51dp"
-        android:gravity="left"
-        android:text="^←^               发布需求"
-        android:onClick="exit"
-        android:textSize="30dp"
-        android:background="#d6eddd"/>
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#82ffb4"
+        android:gravity="center"
+        android:text="我的交易"
+        android:textColor="#000"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/exitText"
+        android:layout_width="45dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text=" ^←^"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="7dp" />
+
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#e7e6e6"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.075"
+        tools:layout_editor_absoluteX="16dp">
+
+        <RadioButton
+            android:id="@+id/radioButton_whole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部"
+            android:textSize="20dp"
+            android:textColor="@drawable/bottom_icon_text_selector" />
+
+        <RadioButton
+            android:id="@+id/radioButton_pending_payment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待付款"
+            android:textSize="20dp"
+            android:textColor="@drawable/bottom_icon_text_selector" />
+
+
+        <RadioButton
+            android:id="@+id/radioButton_tobe_shipped"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待发货"
+            android:textSize="20dp"
+            android:textColor="@drawable/bottom_icon_text_selector" />
+
+        <RadioButton
+            android:id="@+id/radioButton_goods_received"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待收货"
+            android:textSize="20dp"
+            android:textColor="@drawable/bottom_icon_text_selector" />
+
+        <RadioButton
+            android:id="@+id/radioButton_evaluated"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="待评价"
+            android:textSize="20dp"
+            android:textColor="@drawable/bottom_icon_text_selector" />
+    </RadioGroup>
+
+
     <ListView
-        android:id="@+id/lv_main"
+        android:id="@+id/transactionLv"
         android:layout_width="wrap_content"
-        android:layout_height="460dp"
+        android:layout_height="412dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.942"
         tools:layout_editor_absoluteX="0dp">
 
     </ListView>

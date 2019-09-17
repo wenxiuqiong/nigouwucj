@@ -46,7 +46,7 @@ public class Fragment_Me extends Fragment {
     private String FILE = "saveUserNamePwd";//用于保存SharedPreferences的文件
     private SharedPreferences sp = null;//声明一个SharedPreferences
     //private String[] heading={"姓名","手机号","身份证","电子邮箱","收货地址"};
-    private String[] heading = {"个人信息", "发布需求", "我的交易", "设置"};
+    private String[] heading = {"个人信息", "发布服务", "我的交易", "设置"};
     private String[] ending = {">", ">", ">", ">"};
     private ArrayList<String> list = new ArrayList<String>();
     private String select;
@@ -74,7 +74,7 @@ public class Fragment_Me extends Fragment {
                     //select = list.get(arg2);
                     my_information();
                 }
-                if (list.get(arg2).equals("发布需求")) {
+                if (list.get(arg2).equals("发布服务")) {
                     // select = list.get(arg2);
                     my_demand();
                 }

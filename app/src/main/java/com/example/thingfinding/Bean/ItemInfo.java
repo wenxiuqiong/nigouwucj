@@ -1,4 +1,4 @@
-package com.example.thingfinding;
+package com.example.thingfinding.Bean;
 
 import android.graphics.Bitmap;
 

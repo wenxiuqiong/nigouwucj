@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class filesave {
 
-    public static boolean saveUserInfo(Context context,String name,String password){
+    public static boolean saveUserInfo(Context context, String name, String password){
         try{
             FileOutputStream fos=context.openFileOutput("data.txt",Context.MODE_PRIVATE);
             fos.write((name+":"+password).getBytes());

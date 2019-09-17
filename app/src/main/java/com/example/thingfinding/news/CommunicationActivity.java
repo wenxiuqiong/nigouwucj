@@ -64,7 +64,7 @@ public class CommunicationActivity extends AppCompatActivity {
 
     //评论
     private void initViews() {
-        mListData = (ListView) findViewById(R.id.list_data);
+        mListData = (ListView) findViewById(R.id.listview);
         mLytCommentVG = (LinearLayout) findViewById(R.id.comment_vg_lyt);
         mLytEdittextVG = (NoTouchLinearLayout) findViewById(R.id.edit_vg_lyt);
         mCommentEdittext = (EditText) findViewById(R.id.edit_comment);

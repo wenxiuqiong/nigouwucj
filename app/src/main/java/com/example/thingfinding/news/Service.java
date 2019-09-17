@@ -1,17 +1,11 @@
 package com.example.thingfinding.news;
 
-import android.util.Xml;
-
-import com.example.thingfinding.ItemInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.xmlpull.v1.XmlPullParser;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Service {

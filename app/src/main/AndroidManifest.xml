@@ -33,6 +33,8 @@
         <activity android:name=".news.CommunicationActivity" />
         <activity android:name=".user.My_SetupActivity" />
         <activity android:name=".user.My_DetailsActivity" />
+        <activity android:name=".user.addaddressActivity" />
+        <activity android:name=".user.addressbookActivity" />
         <activity
             android:name=".tenderview.tenderActivity"
             android:label="tenderview.tenderActivity"

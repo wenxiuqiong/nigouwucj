@@ -56,7 +56,7 @@ public class CodeUtils {
          for (int i = 0; i < DEFAULT_LINE_NUMBER; i++) {
              drawLine(canvas, paint);
          }
-         canvas.save(Canvas.ALL_SAVE_FLAG);//保存
+        // canvas.save(Canvas.ALL_SAVE_FLAG);//保存
          canvas.restore();
          return bitmap;
          }

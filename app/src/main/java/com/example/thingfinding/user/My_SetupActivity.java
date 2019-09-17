@@ -30,35 +30,46 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
 
     private Button btn;
     private ListView listView;
+    private TextView exitText;
     private String[] heading = {"修改密码", "意见反馈", "黑名单管理", "帮助中心", "隐私协议", "版本更新"};
     private String[] ending = {">", ">", ">", ">", ">", ">"};
     private ArrayList<String> list = new ArrayList<String>();
     private String username;
+    private Intent intent;
     private String FILE = "saveUserNamePwd";//用于保存SharedPreferences的文件
+    private String Mark = "mark";//用于保存SharedPreferences的文件
     private SharedPreferences sp = null;//声明一个SharedPreferences
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__setup);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup);
-        Intent intent=getIntent();
-        username=intent.getStringExtra("username");
-       btn = (Button) findViewById(R.id.exit);
-        listView = (ListView) findViewById(R.id.set_lv);
-        btn.setOnClickListener(this);
+        initView();
+
         MyBaseAdapter myBaseAdapter = new MyBaseAdapter();
         listView.setAdapter(myBaseAdapter);
         for (int i = 0; i < heading.length; i++) {
             list.add(heading[i]);
         }
+        initEvent();
+    }
+    private void initView() {
+        intent=getIntent();
+        username=intent.getStringExtra("username");
+        btn = (Button) findViewById(R.id.exit);
+        listView = (ListView) findViewById(R.id.set_lv);
+        exitText=(TextView) findViewById(R.id.exitText);
+
+    }
+    private void initEvent() {
+        btn.setOnClickListener(this);
+        exitText.setOnClickListener(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (list.get(position).equals("修改密码")) {
-                    changepassword(username);
+                    changepassword();
                 }
                 if (list.get(position).equals("意见反馈")) {
                     suggesttion();
@@ -78,18 +89,19 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
             }
         });
     }
-
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.exit:
                 showNormalDialog();
                 break;
+            case R.id.exitText:
+                exit();
+                break;
         }
     }
-
-    public void changepassword(String name) {
+    public void changepassword() {
         Intent intent = new Intent(this, ChangePasswordActivity.class);
-        intent.putExtra("username",name);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
     public void update(){
@@ -111,8 +123,15 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
         Intent intent=new Intent(this,PrivateActivity.class);
         startActivity(intent);
     }
-    public void exit(View v) {
+    public void exit() {
         finish();
+    }
+
+    public void isLogin() {
+        SharedPreferences sp1 = getSharedPreferences(Mark, MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp1.edit();
+        edit.putBoolean("isLogin", false);//存入boolean类型的登录状态
+        edit.commit();
     }
 
     private void showNormalDialog() {
@@ -123,6 +142,7 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(My_SetupActivity.this, "退出登录成功", Toast.LENGTH_SHORT).show();
+                isLogin();
                 clearLoginStatus();//清除登录状态和登录时的用户名
                 Intent intent = new Intent();
                 intent.putExtra("result", "登 录");
