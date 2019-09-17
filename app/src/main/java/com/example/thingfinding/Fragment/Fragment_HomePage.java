@@ -47,8 +47,8 @@ public class Fragment_HomePage extends Fragment {
     private SimpleAdapter homeadapter;
     private ListView listView;
     private Fragment_HomePage context;
-    private String[] typenames=new String[]{"场地租借","宠物","汽车","家具","饮食","衣着","数码产品","学习","其他"};
-    private  int[] imageIds=new int[]{R.drawable.venuerentals,R.drawable.pet,R.drawable.car,R.drawable.furnitures,R.drawable.diet,R.drawable.clothes,R.drawable.digitalproduct,R.drawable.study,R.drawable.weixin};
+    private String[] typenames=new String[]{"场地预定","宠物需求","维修服务","购物订制","饮食","衣着","数码产品","学习","其他"};
+    private  int[] imageIds=new int[]{R.drawable.venuerentals,R.drawable.pet,R.drawable.car,R.drawable.clothes,R.drawable.diet,R.drawable.clothes,R.drawable.digitalproduct,R.drawable.study,R.drawable.weixin};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,36 +69,40 @@ public class Fragment_HomePage extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String name=typenames[position];
                 Log.i("test++",typenames[position]);
-                if (name.equals("场地租借")){
-                    party();
+                if (name.equals("场地预定")){
+                    changdixuqiu(name);
                 }
-               if(name.equals("宠物")){
-                    pet();
+               if(name.equals("宠物需求")){
+                    petxuqiu(name);
                 }
-                if(name.equals("汽车")){
-                    car();
+                if(name.equals("维修服务")){
+                    weixiuxuqiu(name);
                 }
-                if(name.equals("家具")){
-                    furnitures();
+                if(name.equals("购物订制")){
+                    gouwuyuding(name);
                 }
             }
         });
         return view;
     }
-    public void party(){
+    public void changdixuqiu(String name){
         Intent intent=new Intent(getActivity(),partytypeActivity.class);
+        intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
-    public void pet(){
+    public void petxuqiu(String name){
         Intent intent=new Intent(getActivity(),pettypeActivity.class);
+        intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
-    public void car(){
+    public void weixiuxuqiu(String name){
         Intent intent=new Intent(getActivity(),carweixiutypeActivity.class);
+        intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
-    public void furnitures(){
+    public void gouwuyuding(String name){
         Intent intent=new Intent(getActivity(),furniturestypeActivity.class);
+        intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
 }

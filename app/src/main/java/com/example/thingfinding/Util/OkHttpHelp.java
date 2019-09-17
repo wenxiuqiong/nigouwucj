@@ -24,7 +24,7 @@ public class OkHttpHelp {
     private static OkHttpClient mClientInstance;
     private Handler mHandler;
     private Gson mGson;
-
+    public static final String BASE_URL = "http://192.168.1.101:8080/business/user";
     /**
      * 单例模式，私有构造函数，构造函数里面进行一些初始化
      */

@@ -103,7 +103,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             cv.put("password", et_namepass.getText().toString());
             cv.put("avatar", bitmabToBytes());//图片转为二进制
             db.insert("Users", null, cv);
-
             Toast.makeText(this, "注册成功！", Toast.LENGTH_SHORT).show();
             db.close();
             Intent data = new Intent();
