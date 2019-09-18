@@ -10,7 +10,7 @@
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#82ffb4"
+        android:background="#d6eddd"
         android:gravity="center"
         android:text="我的交易"
         android:textColor="#000"

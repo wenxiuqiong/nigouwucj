@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_nameuser = (EditText) findViewById(R.id.editText);
         et_namepass = (EditText) findViewById(R.id.editText2);
         et_passwordagin = (EditText) findViewById(R.id.passwordagin_e);
-        image = (ImageView) findViewById(R.id.imageView2);
+        image = (ImageView) findViewById(R.id.touxiang);
         btn = (Button) findViewById(R.id.zhuce);
         exitText = (TextView) findViewById(R.id.exitText);
     }
@@ -56,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void initEvent() {
         exitText.setOnClickListener(this);
         btn.setOnClickListener(this);
+        image.setOnClickListener(this);
+
     }
 
     public void onClick(View v) {
@@ -66,13 +68,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.zhuce:
                 passData();
                 break;
+            case R.id.touxiang:
+                iamgeclik();
+                break;
         }
     }
     public void Return(){
         finish();
     }
 
-    public void iamgeclik(View view){
+    public void iamgeclik(){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);

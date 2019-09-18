@@ -18,9 +18,8 @@
         app:layout_constraintVertical_bias="0.029" />
 
     <com.example.thingfinding.MyImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/touxiang"
         style="@style/image_one"
-        android:onClick="iamgeclik"
         android:src="@drawable/chushi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

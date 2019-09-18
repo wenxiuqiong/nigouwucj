@@ -13,7 +13,7 @@
         android:text="地址簿"
         android:textColor="#000"
         android:textSize="30dp"
-        android:background="#82ffb4"
+        android:background="#d6eddd"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp" />
     <TextView

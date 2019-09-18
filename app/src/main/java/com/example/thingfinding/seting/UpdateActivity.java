@@ -1,13 +1,16 @@
 package com.example.thingfinding.seting;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thingfinding.R;
+import com.example.thingfinding.user.My_DemandActivity;
 
 public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -46,13 +49,24 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         finish();
     }
 
-    public void update(){
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("版本升级").
-                setIcon(R.mipmap.ic_launcher). // 设置提示框的图标
-                setMessage("当前已是最新版本").// 设置要显示的信息
-                setPositiveButton("确定",null) // 设置确定按钮
-                .setNegativeButton("取消", null);//设置取消按钮,null是什么都不做，并关闭对话框
-        AlertDialog alertDialog = builder.create();
+    public void update() {
+        final android.app.AlertDialog.Builder normalDialog = new android.app.AlertDialog.Builder(this);
+        normalDialog.setTitle("系统更新");
+        normalDialog.setIcon(R.mipmap.ic_launcher); // 设置提示框的图标
+        normalDialog.setMessage("是否更新本系统");
+        normalDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(UpdateActivity.this, "正在准备，请耐心等待", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        normalDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        normalDialog.show();// 显示
     }
 }

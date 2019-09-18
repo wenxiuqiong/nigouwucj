@@ -13,7 +13,7 @@
         android:gravity="center"
         android:textSize="30dp"
         android:textColor="#000"
-        android:background="#82ffb4"/>
+        android:background="#d6eddd"/>
 
     <TextView
         android:id="@+id/exitText"

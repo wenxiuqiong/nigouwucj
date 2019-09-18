@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
+import com.example.thingfinding.tenderview.OrderauditActivity;
 import com.example.thingfinding.tenderview.partytypeActivity;
 import com.example.thingfinding.tenderview.tenderActivity;
 import com.example.thingfinding.user.My_DemandActivity;
@@ -46,8 +47,8 @@ public class Fragment_Me extends Fragment {
     private String FILE = "saveUserNamePwd";//用于保存SharedPreferences的文件
     private SharedPreferences sp = null;//声明一个SharedPreferences
     //private String[] heading={"姓名","手机号","身份证","电子邮箱","收货地址"};
-    private String[] heading = {"个人信息", "发布服务", "我的交易", "设置"};
-    private String[] ending = {">", ">", ">", ">"};
+    private String[] heading = {"个人信息", "发布服务","订单审核", "我的交易", "设置"};
+    private String[] ending = {">", ">", ">", ">",">"};
     private ArrayList<String> list = new ArrayList<String>();
     private String select;
 
@@ -77,6 +78,11 @@ public class Fragment_Me extends Fragment {
                 if (list.get(arg2).equals("发布服务")) {
                     // select = list.get(arg2);
                     my_demand();
+                }
+
+                if (list.get(arg2).equals("订单审核")) {
+                    // select = list.get(arg2);
+                    my_orderaudit();
                 }
                 if (list.get(arg2).equals("我的交易")) {
                     my_transaction();
@@ -155,6 +161,16 @@ public class Fragment_Me extends Fragment {
             Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
         }else {
             Intent intent = new Intent(getActivity(),  My_DemandActivity.class);
+            startActivity(intent);
+        }
+
+    }
+
+    public void my_orderaudit(){
+        if(txname.getText().toString().trim().equals("登 录")) {
+            Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+        }else {
+            Intent intent = new Intent(getActivity(),  OrderauditActivity.class);
             startActivity(intent);
         }
 
