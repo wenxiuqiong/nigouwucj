@@ -158,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             this.dbhelper = SQLiteHelper.getInstance(this);
             SQLiteDatabase db = dbhelper.getWritableDatabase();
             ContentValues cv = new ContentValues();
-            String url=OkHttpHelp.BASE_URL+"";
+            String url=OkHttpHelp.BASE_URL+"/register?";
             Map<String,String> map=new HashMap<>();
             map.put("user",name);
             map.put("password",password);
