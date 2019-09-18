@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,16 +24,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView;
 
+import com.example.thingfinding.Bean.CommonResultBean;
+import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.Fragment.Fragment_HomePage;
 import com.example.thingfinding.Fragment.Fragment_News;
 import com.example.thingfinding.Fragment.MyFragmentPageAdapter;
 import com.example.thingfinding.R;
+import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.OkHttpHelp;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class My_DemandActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,6 +64,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
     private int MAX_SIZE = 769;
     private Bitmap bitmap = null;
     Spinner spinner;
+    private OkHttpHelp mokhttphelp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,6 +165,80 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
         startActivityForResult(Intent.createChooser(intent,"Browser Image..."),REQUEST_GET_IMAGE);
     }
 
+    public void release() {
+        String url = OkHttpHelp.BASE_URL + "";
+        Map<String, String> map = new HashMap<>();
+      /*  if(nameText.getText().toString().trim()==null||
+                phoneText.getText().toString().trim()==null||
+                addText.getText().toString().trim()==null||
+                demand .getText().toString().trim()==null||
+                originalpriceText.getText().toString().trim()==null||
+                promotionalpriceText.getText().toString().trim()==null||
+                stockText.getText().toString().trim()==null||
+                costText.getText().toString().trim()==null||
+                typeText.getText().toString().trim()==null||
+                chargeText.getText().toString().trim()==null){*/
+        //map.put("user",name);
+        // map.put("pwd",paw);
+        try {
+            mokhttphelp = OkHttpHelp.getinstance();
+            mokhttphelp.post(url, map, new BaseCallback<CommonResultBean>() {
+                @Override
+                public void onRequestBefore() {
+
+                }
+
+                @Override
+                public void onFailure(Request request, Exception e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onSuccess(CommonResultBean response) {
+                    String data = (String) response.getData();
+                    String code = response.getCode();
+                    String type = response.getType();
+                    String msg = response.getMsg();
+                    Log.i("--**-**--", "发布成功");
+                    Log.i("--**", data);
+                    Log.i("--**", code);
+                    Log.i("--**", type);
+                    Log.i("--**", msg);
+                }
+
+                @Override
+                public void onError(Response response, int errorCode, Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (Exception e) {
+            DialogUtil.showDialog(this, "服务器响应异常", false);
+            e.printStackTrace();
+        }
+    }
+
+    public void showtijiaoDialog(){
+        final android.app.AlertDialog.Builder normalDialog = new android.app.AlertDialog.Builder(this);
+        normalDialog.setTitle("发布服务");
+        normalDialog.setMessage("是否发布该服务");
+        normalDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Toast.makeText(My_DemandActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        normalDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        normalDialog.show();// 显示
+    }
+
+
+
     public byte[] bitmabToBytes(){
 
         //将图片转化为位图
@@ -224,27 +308,6 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
 
         }
     }
-
-    public void showtijiaoDialog(){
-        final android.app.AlertDialog.Builder normalDialog = new android.app.AlertDialog.Builder(this);
-        normalDialog.setTitle("发布服务");
-        normalDialog.setMessage("是否发布该服务");
-        normalDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                Toast.makeText(My_DemandActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        normalDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        normalDialog.show();// 显示
-    }
-
 
 
 }

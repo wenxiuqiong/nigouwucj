@@ -75,7 +75,7 @@
                             android:layout_width="109dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="哈哈"
+                            android:hint="姓名"
                             android:textColor="#000"
                             android:textSize="16dp" />
 
@@ -84,7 +84,7 @@
                             android:layout_width="177dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="15975875417"
+                            android:hint="电话"
                             android:textColor="#000"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -99,7 +99,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="fill|center"
-                            android:text="广东省茂名市茂南区石油化工学院"
+                            android:hint="地址"
                             android:textColor="#000"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -289,6 +289,7 @@
                 android:background="@drawable/shape"
                 android:text="发  布"
                 android:textSize="18dp"
+                android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
