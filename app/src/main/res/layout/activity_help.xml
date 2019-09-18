@@ -13,15 +13,16 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="帮助中心"
+        android:background="#d6eddd"
         android:textColor="#000"
         android:textSize="30dp" />
 
     <TextView
+        android:id="@+id/exitText"
         android:layout_width="45dp"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="exit"
         android:text=" ^←^"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"

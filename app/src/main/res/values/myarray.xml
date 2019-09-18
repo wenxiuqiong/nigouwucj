@@ -16,7 +16,6 @@
 
 
     <string-array name="category">
-        <item>请选择提供的服务的类别</item>
         <item>场地租借</item>
         <item>数码产品</item>
         <item>宠物</item>

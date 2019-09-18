@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.My_SetupActivity">
-
+    tools:context="com.example.thingfinding.tenderview.OrderauditActivity">
 
     <TextView
+        android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="设置"
+        android:background="#d6eddd"
         android:gravity="center"
-        android:textSize="30dp"
+        android:text="订单审核"
         android:textColor="#000"
-        android:background="#d6eddd"/>
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/exitText"
@@ -30,36 +30,12 @@
         tools:layout_editor_absoluteX="7dp" />
 
     <ListView
-        android:id="@+id/set_lv"
-        android:layout_width="wrap_content"
-        android:layout_height="435dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716"
-        tools:layout_editor_absoluteX="0dp">
-
-    </ListView>
-
-    <Button
-        android:id="@+id/exit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_height="471dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/shape"
-        android:text="退出当前用户"
-        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp"></ListView>
 
 </android.support.constraint.ConstraintLayout>

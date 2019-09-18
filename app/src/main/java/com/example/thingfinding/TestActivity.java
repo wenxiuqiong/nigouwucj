@@ -120,7 +120,7 @@ public class TestActivity extends FragmentActivity implements
         }
     }
 
-    //双击退出 没完成的
+    //双击退出
     // 定义一个变量，来标识是否退出
     private static boolean isExit = false;
 
