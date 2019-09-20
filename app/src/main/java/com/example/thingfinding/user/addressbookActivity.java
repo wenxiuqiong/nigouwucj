@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.thingfinding.Adapter;
+import com.example.thingfinding.Adapter.addressbookAdapter;
 import com.example.thingfinding.Bean.addressItem;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
@@ -27,7 +27,7 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
     private SQLiteHelper dbhelper;
     private List<addressItem> dataList;
     addressItem listdateils;//存储点击的启事的数据
-    private Adapter adapter;
+    private addressbookAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
         exitText=(TextView) findViewById(R.id.exitText);
         dataList = new ArrayList<addressItem>();
         listdateils=new addressItem();
-        adapter=new Adapter(readImage(),this);
+        adapter=new addressbookAdapter(readImage(),this);
         listView.setAdapter(adapter);
 
     }
@@ -86,7 +86,7 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
     public void notifyDataSetChanged() {
         if (dataList.size() > 0) {
             dataList.removeAll(dataList);
-            adapter=new Adapter(readImage(),this);
+            adapter=new addressbookAdapter(readImage(),this);
             listView.setAdapter(adapter);
         }
     }

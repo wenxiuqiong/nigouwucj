@@ -71,7 +71,9 @@
                     android:id="@+id/etIdCard"
                     style="@style/login_etext"
                     android:layout_width="115dp"
-                    android:layout_height="52dp" />
+                    android:layout_height="52dp"
+                    android:singleLine="true"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -94,7 +96,8 @@
                     style="@style/login_etext"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
-                    android:layout_marginLeft="1dp" />
+                    android:layout_marginLeft="1dp"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -128,7 +131,8 @@
                     android:layout_height="52dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="1dp"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:singleLine="true"/>
             </LinearLayout>
 
             <LinearLayout
@@ -150,7 +154,8 @@
                     android:id="@+id/etphone"
                     style="@style/login_etext"
                     android:layout_width="123dp"
-                    android:layout_height="52dp" />
+                    android:layout_height="52dp"
+                    android:singleLine="true"/>
             </LinearLayout>
 
 
@@ -179,7 +184,8 @@
                     android:id="@+id/etstoreName"
                     style="@style/login_etext"
                     android:layout_width="105dp"
-                    android:layout_height="52dp" />
+                    android:layout_height="52dp"
+                    android:singleLine="true"/>
             </LinearLayout>
 
             <LinearLayout
@@ -202,7 +208,8 @@
                     style="@style/login_etext"
                     android:layout_width="127dp"
                     android:layout_height="52dp"
-                    android:layout_marginLeft="1dp" />
+                    android:layout_marginLeft="1dp"
+                    android:singleLine="true"/>
             </LinearLayout>
 
 
@@ -229,7 +236,8 @@
                 style="@style/login_etext"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="6dp"
+                android:singleLine="true"/>
 
 
 
@@ -255,7 +263,8 @@
                 android:id="@+id/etstoreintroduction"
                 style="@style/login_etext"
                 android:layout_width="288dp"
-                android:layout_height="52dp" />
+                android:layout_height="52dp"
+                android:singleLine="true"/>
 
 
         </LinearLayout>
@@ -284,7 +293,8 @@
                 android:id="@+id/etpwd"
                 style="@style/login_etext"
                 android:layout_width="103dp"
-                android:layout_height="52dp" />
+                android:layout_height="52dp"
+                android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -308,7 +318,8 @@
                     android:id="@+id/etpawdagin"
                     style="@style/login_etext"
                     android:layout_width="103dp"
-                    android:layout_height="52dp" />
+                    android:layout_height="52dp"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 

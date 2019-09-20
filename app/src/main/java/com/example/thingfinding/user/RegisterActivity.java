@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_storeAdress=(EditText)findViewById(R.id.etstoreadress);
         et_storeName=(EditText)findViewById(R.id.etstoreName);
         et_storeIntroduce=(EditText)findViewById(R.id.etstoreintroduction);
-        image = (ImageView) findViewById(R.id.imageView2);
+        image = (ImageView) findViewById(R.id.touxiang);
         btn = (Button) findViewById(R.id.zhuce);
         exitText = (TextView) findViewById(R.id.exitText);
     }
@@ -80,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void initEvent() {
         exitText.setOnClickListener(this);
         btn.setOnClickListener(this);
+        image.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -90,13 +91,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.zhuce:
                 passData();
                 break;
+            case R.id.touxiang:
+                iamgeclik();
+                break;
         }
     }
     public void Return(){
         finish();
     }
 
-    public void iamgeclik(View view){
+    public void iamgeclik(){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -167,7 +171,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             map.put("idCard",idcard);
             map.put("eMail",email);
             map.put("storeName",storeName);
-            map.put("storeAdress",storeAdress);
+            map.put("storeAddress",storeAdress);
             map.put("storeIntroduction",storeInduction);
             try {
                 mokhttp=OkHttpHelp.getinstance();
@@ -184,20 +188,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                     @Override
                     public void onSuccess(CommonResultBean response) {
-                        DialogUtil.showDialog(RegisterActivity.this,"服务器响应成功",true);
+                       // DialogUtil.showDialog(RegisterActivity.this,"服务器响应成功",true);
                         String data=(String) response.getData();
                         Log.i("--**-**--","响应成功");
                         Log.i("--**",data);
-//  cv.put("username", et_nameuser.getText().toString());
-//                        cv.put("password", et_namepass.getText().toString());
-//                        cv.put("avatar", bitmabToBytes());//图片转为二进制
-//                        db.insert("Users", null, cv);
-//                        Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
-//                        db.close();
-//                        Intent data = new Intent();
-//                        data.putExtra("userName", name);
-//                        setResult(RESULT_OK, data);
-//                        RegisterActivity.this.finish();
+                        cv.put("username", et_nameuser.getText().toString());
+                        cv.put("password", et_namepass.getText().toString());
+                        cv.put("avatar", bitmabToBytes());//图片转为二进制
+                        db.insert("Users", null, cv);
+                        Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                        db.close();
+                        Intent intent = new Intent();
+                        intent.putExtra("userName", name);
+                        setResult(RESULT_OK, intent);
+                        RegisterActivity.this.finish();
                     }
                     @Override
                     public void onError(Response response, int errorCode, Exception e) {
