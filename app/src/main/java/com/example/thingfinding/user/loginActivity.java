@@ -58,6 +58,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     static String name, password,image1;
     private String isMemory = "";//isMemory变量用来判断SharedPreferences有没有数据，包括上面的YES和NO
     private String FILE = "saveUserNamePwd";//用于保存SharedPreferences的文件
+    private String Mark="mark";
     private SharedPreferences sp = null;//声明一个SharedPreferences
     private ItemInfo itemInfo;
     private List<Map<String,String>> list;
@@ -109,6 +110,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+
                 passData();
             }
         });
@@ -147,18 +149,18 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void passData() {
         remenber();
-       Intent intent=new Intent(this,Fragment_Me.class);
-        String name=et_username.getText().toString().trim();
-        String paw=et_password.getText().toString().trim();
-        String url="http://192.168.1.101:8080/login?";
+        Intent intent = new Intent(this, Fragment_Me.class);
+        String name = et_username.getText().toString().trim();
+        String paw = et_password.getText().toString().trim();
+        String url = OkHttpHelp.BASE_URL + "/login?";
         this.dbhelper = SQLiteHelper.getInstance(this);
         SQLiteDatabase db = dbhelper.getReadableDatabase();
-        Map<String,String> map=new HashMap<>();
-        map.put("user",name);
-        map.put("pwd",paw);
+        Map<String, String> map = new HashMap<>();
+        map.put("user", name);
+        map.put("pwd", paw);
         try {
-            mokhttphelp=OkHttpHelp.getinstance();
-            mokhttphelp.post(url, map, new BaseCallback <CommonResultBean>() {
+            mokhttphelp = OkHttpHelp.getinstance();
+            mokhttphelp.post(url, map, new BaseCallback<CommonResultBean>() {
                 @Override
                 public void onRequestBefore() {
 
@@ -171,18 +173,33 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
                 @Override
                 public void onSuccess(CommonResultBean response) {
-                    String data=(String) response.getData();
-                    String code=response.getCode();
-                    String type=response.getType();
-                    String msg=response.getMsg();
-                    Log.i("--**-**--","登录成功");
-                    Log.i("--**",data);
-                    Log.i("--**",code);
-                    Log.i("--**",type);
-                    Log.i("--**",msg);
+                    String data = (String) response.getData();
+                    String code = response.getCode();
+                    String type = response.getType();
+                    String msg = response.getMsg();
+                    Log.i("--**-**--", "响应成功");
+                    Log.i("--**", data);
+                    Log.i("--**", code);
+                    Log.i("--**", type);
+                    Log.i("--**", msg);
+                    if (code.equals("200")) {
+
+//                        intent.putExtra("login",name);
+//                        setResult(1, intent);
+//                        finish();
+                    } else {
+                        saveMark();
+                        intent.putExtra("login", name);
+                        setResult(1, intent);
+                        finish();
+                        //DialogUtil.showDialog(loginActivity.this,data,false);
+                        //Toast.makeText(loginActivity.this, data, Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
 
-//                @Override
+                //                @Override
 //                public void onSuccess(CommonResultBean<userBean> response) {
 //                    if (response.getData()!=null){
 //                        userBean userBean=response.getData();
@@ -195,67 +212,10 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                     e.printStackTrace();
                 }
             });
-        }catch (Exception e){
-            DialogUtil.showDialog(this,"服务器响应异常",false);
+        } catch (Exception e) {
+            DialogUtil.showDialog(this, "服务器响应异常", false);
             e.printStackTrace();
         }
-
-//        String username = null;
-//        String password=null;
-//        try{
-//            String result=query(name,paw);
-//            if (result!=null&&Integer.parseInt(result)>0){
-//                DialogUtil.showDialog(this,"登录成功",false);
-//                intent.putExtra("login",name);
-//                 setResult(1, intent);
-//                 finish();
-//            }
-//        }catch (Exception e){
-//            DialogUtil.showDialog(this,"服务器响应异常，请稍后再试",false);
-//            e.printStackTrace();
-//        }
-//       Cursor cur = db.query("Users",new String[]{"username","password"},
-//                "username=? and password=?", new String[]{et_username.getText().toString().trim(),
-//                       et_password.getText().toString().trim()}, null, null,
-//               null);
-//         while(cur.moveToNext()) {
-//            //将Blob数据转化为字节数组
-//            username = cur.getString(cur.getColumnIndex("username"));
-//             password = cur.getString(cur.getColumnIndex("password"));
-//             if(et_username.getText().toString().trim().equals(username)&&
-//                     et_password.getText().toString().trim().equals(password)){
-//                intent.putExtra("login",name);
-//                 setResult(1, intent);
-//                 finish();
-//             }else if(!et_username.getText().toString().trim().equals(username)){
-//                 AlertDialog diaglog;
-//                 diaglog=new AlertDialog.Builder(this).setTitle("")
-//                         .setMessage("用户名错误！")
-//                         .setIcon(R.mipmap.ic_launcher)
-//                         .setPositiveButton("确定",null)
-//                         .create();
-//                 diaglog.show();
-//             }else if(!et_password.getText().toString().trim().equals(password)){
-//                 AlertDialog diaglog;
-//                 diaglog=new AlertDialog.Builder(this).setTitle("")
-//                         .setMessage("密码错误！")
-//                         .setIcon(R.mipmap.ic_launcher)
-//                         .setPositiveButton("确定",null)
-//                         .create();
-//                 diaglog.show();
-//             }
-//        }
-//        cur.close();
-//        db.close();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private String query(String username, String password) throws Exception {
-        Map<String,String> map=new HashMap<>();
-        map.put("user",username);
-        map.put("pwd",password);
-         String url=HttpUtil.BASE_URL+ "/login";
-         return HttpUtil.postRequest(url,map);
     }
 
     public void remenber() {
@@ -268,7 +228,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             edit.putString("name", et_username.getText().toString());
             edit.putString("password", et_password.getText().toString());
             edit.putString("isMemory", YES);
-            edit.putBoolean("isLogin", true);//存入boolean类型的登录状态
             edit.commit();
         } else if (!checkBox.isChecked()) {
             if (sp == null) {
@@ -346,6 +305,13 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 queryImage();
             }
         }
+    }
+
+    public void saveMark(){
+        SharedPreferences sps=getSharedPreferences(Mark, MODE_PRIVATE);
+        SharedPreferences.Editor edit = sps.edit();
+        edit.putBoolean("isLogin", true);
+        edit.commit();
     }
 
 

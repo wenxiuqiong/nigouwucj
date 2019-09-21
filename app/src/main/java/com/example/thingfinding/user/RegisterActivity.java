@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_storeAdress=(EditText)findViewById(R.id.etstoreadress);
         et_storeName=(EditText)findViewById(R.id.etstoreName);
         et_storeIntroduce=(EditText)findViewById(R.id.etstoreintroduction);
-        image = (ImageView) findViewById(R.id.imageView2);
+        image = (ImageView) findViewById(R.id.touxiang);
         btn = (Button) findViewById(R.id.zhuce);
         exitText = (TextView) findViewById(R.id.exitText);
     }
@@ -80,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void initEvent() {
         exitText.setOnClickListener(this);
         btn.setOnClickListener(this);
+        image.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -90,13 +91,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.zhuce:
                 passData();
                 break;
+            case R.id.touxiang:
+                iamgeclik();
+                break;
         }
     }
     public void Return(){
         finish();
     }
 
-    public void iamgeclik(View view){
+    public void iamgeclik(){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -167,7 +171,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             map.put("idCard",idcard);
             map.put("eMail",email);
             map.put("storeName",storeName);
-            map.put("storeAdress",storeAdress);
+            map.put("storeAddress",storeAdress);
             map.put("storeIntroduction",storeInduction);
             try {
                 mokhttp=OkHttpHelp.getinstance();
@@ -184,7 +188,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                     @Override
                     public void onSuccess(CommonResultBean response) {
-                        DialogUtil.showDialog(RegisterActivity.this,"服务器响应成功",true);
+                       // DialogUtil.showDialog(RegisterActivity.this,"服务器响应成功",true);
                         String data=(String) response.getData();
                         Log.i("--**-**--","响应成功");
                         Log.i("--**",data);

@@ -2,19 +2,42 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/border1">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="订单号："
+            android:textSize="20dp"
+            android:textColor="#bfbfbf"/>
+
+        <TextView
+            android:id="@+id/order_number"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#bfbfbf"/>
+
+    </LinearLayout>
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:background="@drawable/border2">
 
             <TextView
-                android:id="@+id/shopnameText"
+                android:id="@+id/customerText"
                 android:layout_width="206dp"
                 android:layout_height="43dp"
-                android:text="店铺名           >"
+                android:text="顾客名"
                 android:textSize="18dp"
                 android:textColor="#000000"
                 android:layout_gravity="center"
@@ -80,20 +103,132 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:gravity="right"
+        android:background="@drawable/border3">
+
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:gravity="right"
+            android:text="共"
+            android:textColor="#000000">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/numberText"
+            android:layout_width="18dp"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:text="1"
+            android:textColor="#000000">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="97dp"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:text="件商品 合计："
+            android:textColor="#000000">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:text="？"
+            android:textColor="#000000">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right">
+
+        <Button
+            android:id="@+id/view_logisticsbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:layout_marginLeft="20dp"
+            android:text="查看物流"
+            android:textColor="#000"/>
+
+        <Button
+            android:id="@+id/statebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="8dp"
+            android:text="订单状态"
+            android:textColor="#000"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="395dp"
+        android:layout_height="104dp"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:background="@drawable/border3">
+            android:layout_width="382dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border2">
+
             <TextView
-                android:id="@+id/totalText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="right"
-                android:textColor="#000000"
-                android:text="共？件商品 合计：？元">
-            </TextView>
+                android:layout_width="120dp"
+                android:layout_height="47dp"
+                android:gravity="center"
+                android:text="快递公司:"
+                android:textSize="20dp"
+                android:textColor="#bfbfbf"/>
+
+            <TextView
+                android:id="@+id/services_companyText"
+                android:layout_width="262dp"
+                android:layout_height="47dp"
+                android:gravity="center"
+                android:textColor="#bfbfbf"
+                android:textSize="20dp" />
 
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="382dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border2">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="47dp"
+                android:gravity="center"
+                android:text="快递单号:"
+                android:textSize="20dp"
+                android:textColor="#bfbfbf"/>
+
+            <TextView
+                android:id="@+id/courier_numberText"
+                android:layout_width="264dp"
+                android:layout_height="47dp"
+                android:gravity="center"
+                android:textColor="#bfbfbf"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -15,8 +15,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.Bean.CommonResultBean;
+import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
+import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.OkHttpHelp;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FindPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +39,8 @@ public class FindPasswordActivity extends AppCompatActivity implements View.OnCl
     private SQLiteHelper dbhelper;
     private CodeUtils codeUtils;
     private String codeStr;
+
+    private OkHttpHelp mokhttphelp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +88,47 @@ public class FindPasswordActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
     }
+
+    public void resetPassword() {
+        String url = OkHttpHelp.BASE_URL + "";
+        Map<String, String> map = new HashMap<>();
+        try {
+            mokhttphelp = OkHttpHelp.getinstance();
+            mokhttphelp.post(url, map, new BaseCallback<CommonResultBean>() {
+                @Override
+                public void onRequestBefore() {
+
+                }
+
+                @Override
+                public void onFailure(Request request, Exception e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onSuccess(CommonResultBean response) {
+                    String data = (String) response.getData();
+                    String code = response.getCode();
+                    String type = response.getType();
+                    String msg = response.getMsg();
+                    Log.i("--**-**--", "已重置密码");
+                    Log.i("--**", data);
+                    Log.i("--**", code);
+                    Log.i("--**", type);
+                    Log.i("--**", msg);
+                }
+
+                @Override
+                public void onError(Response response, int errorCode, Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (Exception e) {
+            DialogUtil.showDialog(this, "服务器响应异常", false);
+            e.printStackTrace();
+        }
+    }
+
 
 
     public void resetpassword() {

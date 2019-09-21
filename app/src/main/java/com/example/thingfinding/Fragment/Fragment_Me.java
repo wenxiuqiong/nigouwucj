@@ -1,5 +1,6 @@
 package com.example.thingfinding.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -45,8 +46,9 @@ public class Fragment_Me extends Fragment {
     Bitmap bitmap = null;
     private SQLiteHelper dbhelper;
     private String FILE = "saveUserNamePwd";//用于保存SharedPreferences的文件
+    private String Mark="mark";
     private SharedPreferences sp = null;//声明一个SharedPreferences
-    //private String[] heading={"姓名","手机号","身份证","电子邮箱","收货地址"};
+    static String name;//获取sp里的用户名
     private String[] heading = {"个人信息", "发布服务","订单审核", "我的交易", "设置"};
     private String[] ending = {">", ">", ">", ">",">"};
     private ArrayList<String> list = new ArrayList<String>();
@@ -65,6 +67,14 @@ public class Fragment_Me extends Fragment {
         for (int i = 0; i < heading.length; i++) {
             list.add(heading[i]);
         }
+
+        SharedPreferences sps = getActivity().getSharedPreferences(Mark, Context.MODE_PRIVATE);
+        if (sps.getBoolean("isLogin", true) == true) {
+            remeble();
+        }else{
+            txname.setText("登 录");
+        }
+        txname.setText("哈哈");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -100,6 +110,14 @@ public class Fragment_Me extends Fragment {
             }
         });
         return view;
+    }
+
+    public void remeble(){
+        sp = getActivity().getSharedPreferences(FILE,Context.MODE_PRIVATE);
+        name = sp.getString("name", "");
+        txname.setText(name);
+        queryImage();
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -178,8 +178,16 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
                 costText.getText().toString().trim()==null||
                 typeText.getText().toString().trim()==null||
                 chargeText.getText().toString().trim()==null){*/
-        //map.put("user",name);
-        // map.put("pwd",paw);
+        map.put("user",nameText.getText().toString().trim());
+        map.put("pwd",phoneText.getText().toString().trim());
+        map.put("user",addText.getText().toString().trim());
+        map.put("pwd",demand .getText().toString().trim());
+        map.put("user",originalpriceText.getText().toString().trim());
+        map.put("pwd",promotionalpriceText.getText().toString().trim());
+        map.put("user",stockText.getText().toString().trim());
+        map.put("pwd",costText.getText().toString().trim());
+        map.put("user",typeText.getText().toString().trim());
+        map.put("pwd",chargeText.getText().toString().trim());
         try {
             mokhttphelp = OkHttpHelp.getinstance();
             mokhttphelp.post(url, map, new BaseCallback<CommonResultBean>() {

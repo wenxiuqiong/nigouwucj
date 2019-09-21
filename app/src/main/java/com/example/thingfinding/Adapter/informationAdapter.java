@@ -1,4 +1,4 @@
-package com.example.thingfinding;
+package com.example.thingfinding.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,21 +7,22 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.thingfinding.Bean.addressItem;
+import com.example.thingfinding.Bean.informationinfo;
+import com.example.thingfinding.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Created by Shang on 2016/8/3.
- */
-public class Adapter extends BaseAdapter {
+public class informationAdapter extends BaseAdapter {
 
+    private String[] heading={"姓名","电话号码","身份证号码","邮箱","店名","店地址","店铺介绍"};
     private LayoutInflater inflater;
-    private List<addressItem> list;
+    private ArrayList<String> list;
 
-    public Adapter(List<addressItem> list, Context context) {
+
+    public informationAdapter(ArrayList<String> list, Context context) {
         this.list = list;
         inflater = LayoutInflater.from(context);
+
     }
 
     @Override
@@ -43,27 +44,25 @@ public class Adapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.addbook_list, null);
+            convertView = inflater.inflate(R.layout.save_list, null);
             holder = new ViewHolder();
-            holder.nameText = (TextView) convertView.findViewById(R.id.nameText);
-            holder.phoneText = (TextView) convertView.findViewById(R.id.phoneText);
-            holder.addressText = (TextView) convertView.findViewById(R.id.addText);
+            holder.heading=(TextView)convertView.findViewById(R.id.text_head);
+            holder.ending = (TextView) convertView.findViewById(R.id.text_end);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        final addressItem bean = list.get(position);
-        holder.nameText.setText(bean.getName());
-        holder.phoneText.setText(bean.getPhone());
-        holder.addressText.setText(bean.getAddress());
+        holder.heading.setText(heading[position]);
+        holder.ending.setText(list.get(position));
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView heading;
+        TextView ending;
     }
 
 }
 
-class ViewHolder {
-    TextView nameText;
-    TextView phoneText;
-    TextView addressText;
-}
+
 
