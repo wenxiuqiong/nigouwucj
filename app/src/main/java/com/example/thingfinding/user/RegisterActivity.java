@@ -188,16 +188,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         String data=(String) response.getData();
                         Log.i("--**-**--","响应成功");
                         Log.i("--**",data);
-//  cv.put("username", et_nameuser.getText().toString());
-//                        cv.put("password", et_namepass.getText().toString());
-//                        cv.put("avatar", bitmabToBytes());//图片转为二进制
-//                        db.insert("Users", null, cv);
-//                        Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
-//                        db.close();
-//                        Intent data = new Intent();
-//                        data.putExtra("userName", name);
-//                        setResult(RESULT_OK, data);
-//                        RegisterActivity.this.finish();
+                        cv.put("username", et_nameuser.getText().toString());
+                        cv.put("password", et_namepass.getText().toString());
+                        cv.put("avatar", bitmabToBytes());//图片转为二进制
+                        db.insert("Users", null, cv);
+                        Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                        db.close();
+                        Intent intent = new Intent();
+                        intent.putExtra("userName", name);
+                        setResult(RESULT_OK, intent);
+                        RegisterActivity.this.finish();
                     }
                     @Override
                     public void onError(Response response, int errorCode, Exception e) {

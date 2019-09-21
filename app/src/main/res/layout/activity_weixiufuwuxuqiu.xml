@@ -46,7 +46,7 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/etkehuming"
+        android:id="@+id/etcustomerName"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
@@ -57,7 +57,7 @@
         android:layout_marginRight="18dp" />
 
     <EditText
-        android:id="@+id/etfaqishijian"
+        android:id="@+id/etbeginDate"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
@@ -68,7 +68,7 @@
         android:layout_marginRight="12dp" />
 
     <EditText
-        android:id="@+id/etjiezhishijian"
+        android:id="@+id/etendDate"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
@@ -79,7 +79,7 @@
         android:layout_marginRight="8dp" />
 
     <EditText
-        android:id="@+id/etdizhi"
+        android:id="@+id/etcustomerAdress"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
@@ -129,7 +129,7 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/etliuyan"
+        android:id="@+id/etmessge"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
@@ -145,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="13dp"
-        android:text="提交订单"
+        android:text="接单"
         android:background="#27ef24"/>
 
     <Button
