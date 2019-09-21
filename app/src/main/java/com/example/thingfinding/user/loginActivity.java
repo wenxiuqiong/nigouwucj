@@ -43,6 +43,7 @@ import java.util.Map;
 
 public class loginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String USER = "user";
     private EditText et_username;
     private EditText et_password;
     private ImageView image;
@@ -156,7 +157,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         this.dbhelper = SQLiteHelper.getInstance(this);
         SQLiteDatabase db = dbhelper.getReadableDatabase();
         Map<String, String> map = new HashMap<>();
-        map.put("user", name);
+        map.put(USER, name);
         map.put("pwd", paw);
         try {
             mokhttphelp = OkHttpHelp.getinstance();

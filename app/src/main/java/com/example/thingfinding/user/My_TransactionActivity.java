@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,8 +36,6 @@ public class My_TransactionActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     private TextView exitText;
-    private EditText et_ordernumber;
-    private ImageView imagebtn;
     private ListView transactionLv;
 
     private OkHttpHelp mokhttp;
@@ -53,15 +52,12 @@ public class My_TransactionActivity extends AppCompatActivity implements
 
     private void initView() {
         exitText = (TextView) findViewById(R.id.exitText);
-        et_ordernumber=(EditText)findViewById(R.id.et_ordernumber);
-        imagebtn=(ImageView)findViewById(R.id.imagebtn);
         transactionLv= (ListView) findViewById(R.id.transactionLv);
 
     }
 
     private void initEvent() {
         exitText.setOnClickListener(this);
-        imagebtn.setOnClickListener(this);
     }
 
     public void exit() {
@@ -73,10 +69,6 @@ public class My_TransactionActivity extends AppCompatActivity implements
             case R.id.exitText:
                 exit();
                 break;
-            case R.id.imagebtn:
-                exit();
-                break;
-
 
         }
     }
@@ -99,38 +91,36 @@ public class My_TransactionActivity extends AppCompatActivity implements
             if (convertView == null) {
                 convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.transaction_list, parent, false);
                 holder = new ViewHolder();
-                holder.customerText = (TextView) convertView.findViewById(R.id.customerText);
+                holder.timeText = (TextView) convertView.findViewById(R.id.timeText);
+                holder.stateText = (TextView) convertView.findViewById(R.id.stateText);
                 holder.commoditynameText = (TextView) convertView.findViewById(R.id.commoditynameText);
-                holder.specificationsText = (TextView) convertView.findViewById(R.id.specificationsText);
                 holder.priceText = (TextView) convertView.findViewById(R.id.priceText);
-                holder.totalText = (TextView) convertView.findViewById(R.id.totalText);
-                holder.numberText = (TextView) convertView.findViewById(R.id.numberText);
                 holder.image = (ImageView) convertView.findViewById(R.id.image);
+                holder.stateBtn = (Button) convertView.findViewById(R.id.stateBtn);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.customerText.setText("都不睡觉");
-            holder.commoditynameText.setText("两个月大的纯种金毛");
-            holder.specificationsText.setText("两个月大");
-            holder.priceText .setText("￥600");
-            holder.numberText.setText("1");
-            holder.totalText.setText("600");
+            holder.timeText.setText("2019-9-21");
+            holder.stateText.setText("已完成");
+            holder.commoditynameText.setText("狗狗");
+            holder.priceText.setText("共1件商品 合计：￥500");
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dog, null);
             holder.image.setImageBitmap(bitmap);
+            holder.stateBtn.setText("删除订单");
             return convertView;
         }
 
     }
 
     class ViewHolder {
-        TextView customerText;
+
+        TextView timeText;
+        TextView stateText;
         TextView commoditynameText;
-        TextView specificationsText;
         TextView priceText;
-        TextView totalText;
-        TextView numberText;
         ImageView image;
+        Button stateBtn;
 
     }
 

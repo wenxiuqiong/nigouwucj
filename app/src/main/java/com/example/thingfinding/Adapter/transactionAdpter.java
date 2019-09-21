@@ -44,22 +44,22 @@ public class transactionAdpter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.transaction_list, null);
             holder = new ViewHolder();
-            holder.order_number = (TextView) convertView.findViewById(R.id.order_number);
-            holder.customerText = (TextView) convertView.findViewById(R.id.customerText);
+            holder.timeText = (TextView) convertView.findViewById(R.id.timeText);
+            holder.stateText = (TextView) convertView.findViewById(R.id.stateText);
             holder.commoditynameText = (TextView) convertView.findViewById(R.id.commoditynameText);
-            holder.specificationsText = (TextView) convertView.findViewById(R.id.specificationsText);
             holder.priceText = (TextView) convertView.findViewById(R.id.priceText);
-            holder.totalText = (TextView) convertView.findViewById(R.id.totalText);
-            holder.numberText = (TextView) convertView.findViewById(R.id.numberText);
-            holder.services_companyText = (TextView) convertView.findViewById(R.id.services_companyText);
-            holder.courier_numberText = (TextView) convertView.findViewById(R.id.courier_numberText);
             holder.image = (ImageView) convertView.findViewById(R.id.image);
-            holder.view_logisticsbtn = (Button) convertView.findViewById(R.id.view_logisticsbtn);
-            holder.statebtn = (Button) convertView.findViewById(R.id.statebtn);
+            holder.stateBtn = (Button) convertView.findViewById(R.id.stateBtn);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        holder.timeText.setText("2019-9-21");
+        holder.stateText.setText("2019-9-21");
+        holder.commoditynameText.setText("2019-9-21");
+        holder.priceText.setText("2019-9-21");
+       // image.setText("2019-9-21");
 
         return convertView;
     }
@@ -67,18 +67,12 @@ public class transactionAdpter extends BaseAdapter {
 }
 
 class ViewHolder {
-    TextView order_number;
-    TextView customerText;
+    TextView timeText;
+    TextView stateText;
     TextView commoditynameText;
-    TextView specificationsText;
     TextView priceText;
-    TextView totalText;
-    TextView numberText;
-    TextView services_companyText;
-    TextView courier_numberText;
     ImageView image;
-    Button view_logisticsbtn;
-    Button statebtn;
+    Button stateBtn;
 
 
 
