@@ -26,6 +26,10 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
+import com.example.thingfinding.CustomerdemandView.chongwuActivity;
+import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;
+import com.example.thingfinding.CustomerdemandView.weixiufuwuActivity;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.tenderview.carweixiutypeActivity;
@@ -70,33 +74,33 @@ public class Fragment_HomePage extends Fragment {
                 String name=typenames[position];
                 Log.i("test++",typenames[position]);
                 if (name.equals("场地预定")){
-                    changdixuqiu(name);
+                    changdixuqiu("场地预定");
                 }
                if(name.equals("宠物需求")){
-                    petxuqiu(name);
+                    petxuqiu("宠物需求");
                 }
                 if(name.equals("维修服务")){
-                    weixiuxuqiu(name);
+                    weixiuxuqiu("维修服务");
                 }
                 if(name.equals("购物订制")){
-                    gouwuyuding(name);
+                    gouwuyuding("购物订制");
                 }
             }
         });
         return view;
     }
     public void changdixuqiu(String name){
-        Intent intent=new Intent(getActivity(),partytypeActivity.class);
+        Intent intent=new Intent(getActivity(),changdiyudingActivity.class);
         intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
     public void petxuqiu(String name){
-        Intent intent=new Intent(getActivity(),pettypeActivity.class);
+        Intent intent=new Intent(getActivity(),chongwuActivity.class);
         intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
     public void weixiuxuqiu(String name){
-        Intent intent=new Intent(getActivity(),carweixiutypeActivity.class);
+        Intent intent=new Intent(getActivity(),weixiufuwuActivity.class);
         intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
