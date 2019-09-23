@@ -34,6 +34,7 @@ public class OkHttpHelp {
         mClientInstance.setConnectTimeout(10, TimeUnit.SECONDS);
         mClientInstance.setReadTimeout(10, TimeUnit.SECONDS);
         mClientInstance.setWriteTimeout(30, TimeUnit.SECONDS);
+
         mGson = new Gson();
         mHandler = new Handler(Looper.getMainLooper());
     }
