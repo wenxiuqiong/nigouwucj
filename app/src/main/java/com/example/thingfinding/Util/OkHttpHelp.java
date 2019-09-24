@@ -1,8 +1,14 @@
 package com.example.thingfinding.Util;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.example.thingfinding.Bean.CommonCustomerneedBean;
+import com.example.thingfinding.Bean.CommonResultBean;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.squareup.okhttp.Callback;
@@ -13,7 +19,9 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -24,7 +32,10 @@ public class OkHttpHelp {
     private static OkHttpClient mClientInstance;
     private Handler mHandler;
     private Gson mGson;
-    public static final String BASE_URL = "http://192.168.137.72:8080/business/user";
+    private JSONArray jsonArray;
+    private JSONObject jsonObject;
+    private JSONObject[] jsonObjects;
+    public static final String BASE_URL = "http://192.168.8.109:8080/business/user";
     /**
      * 单例模式，私有构造函数，构造函数里面进行一些初始化
      */
@@ -59,7 +70,7 @@ public class OkHttpHelp {
     /**
      * 封装一个request方法，不管post或者get方法中都会用到
      */
-    public void request(final Request request, final BaseCallback callback) {
+    public JSONArray request(final Request request, final BaseCallback callback) {
 
         //在请求之前所做的事，比如弹出对话框等
         callback.onRequestBefore();
@@ -76,27 +87,36 @@ public class OkHttpHelp {
                 if (response.isSuccessful()) {
                     //返回成功回调
                     String resString = response.body().string();
-
-                    if (callback.mType == String.class) {
+                    /*if (callback.mType == String.class) {
                         //如果我们需要返回String类型
-                        callbackSuccess(resString, callback);
-                    } else {
+                    } else {*/
                         //如果返回的是其他类型，则利用Gson去解析
-                        try {
-                            Object obj = mGson.fromJson(resString, callback.mType);
-                            callbackSuccess(obj, callback);
+                       try {
+                           CommonResultBean<Object> obj = mGson.fromJson(resString,CommonResultBean.class);
+                           callbackSuccess(obj, callback);
+
                         } catch (JsonParseException e) {
-                            e.printStackTrace();
                             callbackError(response, callback, e);
                         }
-                    }
+                    //}
 
                 } else {
                     //返回错误
-                    callbackError(response, callback, null);
+                    //callbackError(response, callback, null);
+
                 }
             }
         });
+        /**setJsonArray(jsonArray);
+        int size = jsonArray.size();
+        jsonObjects=new JSONObject[size];
+        for (int i = 0; i < size; i++) {
+            jsonObject = jsonArray.getJSONObject(i);
+            System.out.println("用户名:  " + jsonObject.getString("customerUserName"));
+            jsonObjects[i]=jsonObject;
+        }
+        getJsonArray();*/
+        return jsonArray;
     }
 
     /**
@@ -106,7 +126,8 @@ public class OkHttpHelp {
      * @param
      * @param callback
      */
-    private void callbackSuccess(final Object obj, final BaseCallback callback) {
+    private void callbackSuccess(final CommonResultBean<Object> obj, final BaseCallback callback) {
+        System.out.println("成功转型："+obj);
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -163,9 +184,9 @@ public class OkHttpHelp {
      * @param params
      * @param callback
      */
-    public void post(String url, Map<String, String> params, BaseCallback callback) {
+    public JSONArray post(String url, Map<String, String> params, BaseCallback callback) {
         Request request = buildRequest(url, params, HttpMethodType.POST);
-        request(request, callback);
+        return request(request, callback);
     }
 
     /**
@@ -212,5 +233,13 @@ public class OkHttpHelp {
         GET,
         POST
     }
+    public void setJsonArray(JSONArray jsonArray) {
+        System.out.println("它的长度为0："+jsonArray.size());
+        this.jsonArray=jsonArray;
+    }
 
+    public JSONArray getJsonArray() {
+        System.out.println("它的长度为1："+jsonArray.size());
+        return this.jsonArray;
+    }
 }

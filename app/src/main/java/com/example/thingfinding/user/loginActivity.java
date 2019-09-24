@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.Bean.ItemInfo;
 import com.example.thingfinding.DialogUtil;
@@ -161,7 +163,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         map.put("pwd", paw);
         try {
             mokhttphelp = OkHttpHelp.getinstance();
-            mokhttphelp.post(url, map, new BaseCallback<CommonResultBean>() {
+            mokhttphelp.post(url, map, new BaseCallback<String>() {
                 @Override
                 public void onRequestBefore() {
 
@@ -173,7 +175,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 @Override
-                public void onSuccess(CommonResultBean response) {
+                public void onSuccess(CommonResultBean<String> response) {
                     String data = (String) response.getData();
                     String code = response.getCode();
                     String type = response.getType();
@@ -184,7 +186,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                     Log.i("--**", type);
                     Log.i("--**", msg);
                     if (code.equals("200")) {
-
 //                        intent.putExtra("login",name);
 //                        setResult(1, intent);
 //                        finish();

@@ -21,10 +21,10 @@ public class CommonResultBean<T> {
     public T getData() {
         return data;
     }
-
     public void setData(T data) {
         this.data = data;
     }
+
 
     public String getMsg() {
         return msg;
