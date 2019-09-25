@@ -21,6 +21,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.Adapter.addressbookAdapter;
+import com.example.thingfinding.Adapter.transactionAdpter;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
@@ -33,31 +35,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class My_TransactionActivity extends AppCompatActivity implements
-        View.OnClickListener {
+        View.OnClickListener,OnCheckedChangeListener {
 
     private TextView exitText;
     private ListView transactionLv;
-
+    private RadioGroup radioGroup;
+    private RadioButton whole; // 表示第一个RadioButton 组件
     private OkHttpHelp mokhttp;
+
+    private transactionAdpter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__transaction);
         initView();
-        MyBaseAdapter myBaseAdapter = new MyBaseAdapter();
-        transactionLv.setAdapter(myBaseAdapter);
+      //  MyBaseAdapter myBaseAdapter = new MyBaseAdapter();
+       // transactionLv.setAdapter(myBaseAdapter);
         initEvent();
     }
 
     private void initView() {
         exitText = (TextView) findViewById(R.id.exitText);
         transactionLv= (ListView) findViewById(R.id.transactionLv);
+        radioGroup = (RadioGroup) findViewById(R.id.rg);
+        whole=(RadioButton)findViewById(R.id.wholeBtn);
+        adapter=new transactionAdpter(null,this);
+        transactionLv.setAdapter(adapter);
+
 
     }
 
     private void initEvent() {
         exitText.setOnClickListener(this);
+        radioGroup.setOnCheckedChangeListener(this);
+
     }
 
     public void exit() {
@@ -72,6 +84,27 @@ public class My_TransactionActivity extends AppCompatActivity implements
 
         }
     }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.wholeBtn: // 全部
+
+                break;
+            case R.id.to_be_shippedBtn: // 待发货
+
+                break;
+            case R.id.goods_to_be_receivedBtn: // 待收货
+
+                break;
+            case R.id.completedBtn: // 已完成
+
+                break;
+
+
+        }
+    }
+
 
     class MyBaseAdapter extends BaseAdapter {
         public int getCount() {

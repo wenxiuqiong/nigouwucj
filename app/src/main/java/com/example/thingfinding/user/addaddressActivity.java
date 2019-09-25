@@ -38,6 +38,7 @@ public class addaddressActivity extends AppCompatActivity implements View.OnClic
 
     private void initEvent() {
         addbtn.setOnClickListener(this);
+
     }
 
     public void onClick(View v) {
@@ -49,21 +50,26 @@ public class addaddressActivity extends AppCompatActivity implements View.OnClic
     }
 
     public  void  addaddress(){
-        //String name=nameText.getText().toString().trim();
-        //String phone=phoneText.getText().toString().trim();
-        //String address=addressText.getText().toString().trim();
+        String name=nameText.getText().toString().trim();
+        String phone=phoneText.getText().toString().trim();
+        String address=addressText.getText().toString().trim();
         this.dbhelper = SQLiteHelper.getInstance(this);
         SQLiteDatabase db = dbhelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("name", nameText.getText().toString().trim());
-        cv.put("phone", phoneText.getText().toString().trim());
-        cv.put("address", addressText.getText().toString().trim());
-        db.insert("AddressBook", null, cv);
-        Toast.makeText(this, "添加成功！", Toast.LENGTH_SHORT).show();
-        db.close();
-        Intent intent = new Intent();
-        setResult(1, intent);
-        finish();
+        if(name.isEmpty()||phone.isEmpty()||address.isEmpty()){
+            Toast.makeText(this, "请将信息填写完整！", Toast.LENGTH_SHORT).show();
+        }else {
+            cv.put("name", nameText.getText().toString().trim());
+            cv.put("phone", phoneText.getText().toString().trim());
+            cv.put("address", addressText.getText().toString().trim());
+            db.insert("AddressBook", null, cv);
+            Toast.makeText(this, "添加成功！", Toast.LENGTH_SHORT).show();
+            db.close();
+            Intent intent = new Intent();
+            setResult(1, intent);
+            finish();
+        }
+
 
     }
 

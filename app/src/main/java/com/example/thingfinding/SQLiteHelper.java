@@ -22,7 +22,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             "username VARCHAR2,password VARCHAR2,avatar BLOB," +
             "name VARCHAR2,phone VARCHAR2,id VARCHAR2,email VARCHAR2,address VARCHAR2)";
     private final String createTb="CREATE TABLE AddressBook (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "name VARCHAR2,phone VARCHAR2,address VARCHAR2 )";
+            "name VARCHAR2 NOT NULL,phone VARCHAR2 NOT NULL,address VARCHAR2 NOT NULL)";
 
 
     public SQLiteHelper(Context context, String information, SQLiteDatabase.CursorFactory factory, int version) {
