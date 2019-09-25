@@ -26,9 +26,9 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
+/*import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
 import com.example.thingfinding.CustomerdemandView.chongwuActivity;
-import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;
+import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;*/
 import com.example.thingfinding.CustomerdemandView.weixiufuwuActivity;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
@@ -90,14 +90,14 @@ public class Fragment_HomePage extends Fragment {
         return view;
     }
     public void changdixuqiu(String name){
-        Intent intent=new Intent(getActivity(),changdiyudingActivity.class);
+        /*Intent intent=new Intent(getActivity(),changdiyudingActivity.class);
         intent.putExtra("xuqiuming",name);
-        startActivity(intent);
+        startActivity(intent);*/
     }
     public void petxuqiu(String name){
-        Intent intent=new Intent(getActivity(),chongwuActivity.class);
+        /*Intent intent=new Intent(getActivity(),chongwuActivity.class);
         intent.putExtra("xuqiuming",name);
-        startActivity(intent);
+        startActivity(intent);*/
     }
     public void weixiuxuqiu(String name){
         Intent intent=new Intent(getActivity(),weixiufuwuActivity.class);

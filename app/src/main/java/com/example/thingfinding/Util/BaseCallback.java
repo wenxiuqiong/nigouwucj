@@ -1,11 +1,17 @@
 package com.example.thingfinding.Util;
 
+import android.graphics.Canvas;
+import android.util.Log;
+
+import com.example.thingfinding.Bean.CommonCustomerneedBean;
+import com.example.thingfinding.Bean.CommonResultBean;
 import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * Created by Lee on 2019/9/12
@@ -44,7 +50,7 @@ public abstract class BaseCallback<T> {
      *
      * @param response
      */
-    public abstract void onSuccess(T response);
+    public abstract void onSuccess(CommonResultBean<T> response);
 
     /**
      * 请求成功但是有错误的时候调用，例如Gson解析错误等
