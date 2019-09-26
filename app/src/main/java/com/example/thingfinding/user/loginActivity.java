@@ -31,6 +31,7 @@ import com.example.thingfinding.HttpUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -155,7 +156,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, Fragment_Me.class);
         String name = et_username.getText().toString().trim();
         String paw = et_password.getText().toString().trim();
-        String url = OkHttpHelp.BASE_URL + "/login?";
+        String url = BaseUrl.BASE_URL + "/business/user/login?";
         this.dbhelper = SQLiteHelper.getInstance(this);
         SQLiteDatabase db = dbhelper.getReadableDatabase();
         Map<String, String> map = new HashMap<>();
@@ -166,9 +167,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             mokhttphelp.post(url, map, new BaseCallback<String>() {
                 @Override
                 public void onRequestBefore() {
-
                 }
-
                 @Override
                 public void onFailure(Request request, Exception e) {
                     e.printStackTrace();
@@ -178,24 +177,24 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 public void onSuccess(CommonResultBean<String> response) {
                     String data = (String) response.getData();
                     String code = response.getCode();
-                    String type = response.getType();
-                    String msg = response.getMsg();
-                    Log.i("--**-**--", "响应成功");
-                    Log.i("--**", data);
+//                    String type = response.getType();
+//                    String msg = response.getMsg();
+                   Log.i("--**-**--", "响应成功");
+                   // Log.i("--**", data);
                     Log.i("--**", code);
-                    Log.i("--**", type);
-                    Log.i("--**", msg);
+                  //  Log.i("--**", type);
+                  //  Log.i("--**", msg);
                     if (code.equals("200")) {
-//                        intent.putExtra("login",name);
-//                        setResult(1, intent);
-//                        finish();
-                    } else {
+                        Log.i("--**-**--", "登录成功");
                         saveMark();
                         intent.putExtra("login", name);
                         setResult(1, intent);
                         finish();
+
+                    } else {
+
                         //DialogUtil.showDialog(loginActivity.this,data,false);
-                        //Toast.makeText(loginActivity.this, data, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(loginActivity.this, data, Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -223,7 +222,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     public void remenber() {
         if (checkBox.isChecked()) {
             if (sp == null) {
-                Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
                 sp = getSharedPreferences(FILE, MODE_PRIVATE);
             }
             Editor edit = sp.edit();
@@ -233,7 +232,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             edit.commit();
         } else if (!checkBox.isChecked()) {
             if (sp == null) {
-                Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
                 sp = getSharedPreferences(FILE, MODE_PRIVATE);
             }
             Editor edit = sp.edit();

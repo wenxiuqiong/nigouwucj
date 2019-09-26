@@ -22,9 +22,7 @@ import android.widget.Toast;
 
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
-import com.example.thingfinding.tenderview.OrderauditActivity;
-import com.example.thingfinding.tenderview.partytypeActivity;
-import com.example.thingfinding.tenderview.tenderActivity;
+import com.example.thingfinding.user.OrderauditActivity;
 import com.example.thingfinding.user.My_DemandActivity;
 import com.example.thingfinding.user.My_InformationActivity;
 import com.example.thingfinding.user.My_SetupActivity;
@@ -74,7 +72,6 @@ public class Fragment_Me extends Fragment {
         }else{
             txname.setText("登 录");
         }
-        txname.setText("哈哈");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

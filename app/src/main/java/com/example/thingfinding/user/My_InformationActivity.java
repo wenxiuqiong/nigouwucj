@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.alibaba.fastjson.JSONArray;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.Bean.informationinfo;
 import com.example.thingfinding.Adapter.informationAdapter;
@@ -24,6 +20,7 @@ import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.Util.BaseCallback;
 import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
+import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -39,6 +36,7 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
     private String[] heading={"姓名","电话号码","身份证号码","邮箱","店名","店地址","店铺介绍"};
     private ArrayList<String> list = new ArrayList<String>();
     private ArrayList<String> informationList=new ArrayList<>();
+    private List<informationinfo> informationinfos;
     Intent intent;
     String username;
     private TextView exitText;
@@ -53,17 +51,59 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
         intent = getIntent();
         username=intent.getStringExtra("username");
         initView();
-        informationAdapter adapter=new informationAdapter(list,this);
-        listView.setAdapter(adapter);
+//        informationAdapter adapter=new informationAdapter(list,this);
+//        listView.setAdapter(adapter);
 //        MyBaseAdapter myBaseAdapter=new MyBaseAdapter();
 //        listView.setAdapter(myBaseAdapter);
         for(int i=0;i<heading.length;i++){
             list.add(heading[i]);
         }
-        getInformation();
-
         initEvent();
+        String url = BaseUrl.BASE_URL + "/business/user/getUserInfo";
+        Map<String,String> map=new HashMap<>();
+        try {
+            mokhttp=OkHttpHelp.getinstance();
+            mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
+                @Override
+                public void onRequestBefore() {
 
+                }
+
+                @Override
+                public void onFailure(Request request, Exception e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onSuccess(CommonResultBean response) {
+                    DialogUtil.showDialog(My_InformationActivity.this,"服务器响应成功",true);
+                    Gson gson=new Gson();
+                    String result=gson.toJson(response.getData());
+                    Log.i("--**-**--","响应成功");
+                    // Log.i("--**",data);
+                    informationinfos=(List<informationinfo>)JSONArray.parseArray(result,informationinfo.class);
+//                    list.add(inforinfo.get(0).getName());
+//                    list.add(inforinfo.get(0).getTelephone());
+//                    list.add(inforinfo.get(0).getIdCard());
+//                    list.add(inforinfo.get(0).geteMail());
+//                    list.add(inforinfo.get(0).getStoreName());
+//                    list.add(inforinfo.get(0).getStoreAddress());
+//                    list.add(inforinfo.get(0).getStoreIntroduction());
+//                    informationAdapter adapter=new informationAdapter(list,My_InformationActivity.this);
+//                    listView.setAdapter(adapter);
+                    for (int i=0;i<informationinfos.size();i++){
+                        System.out.print(informationinfos.get(i));
+                    }
+                }
+                @Override
+                public void onError(Response response, int errorCode, Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }catch (Exception e){
+            DialogUtil.showDialog(this,"服务器响应异常",false);
+            e.printStackTrace();
+        }
 
     }
 
@@ -135,48 +175,54 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
 
     }
 
-    public ArrayList getInformation(){
-        String url = BaseUrl.BASE_URL + "";
-        Map<String,String> map=new HashMap<>();
-        try {
-            mokhttp=OkHttpHelp.getinstance();
-            mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
-                @Override
-                public void onRequestBefore() {
-
-                }
-
-                @Override
-                public void onFailure(Request request, Exception e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onSuccess(CommonResultBean response) {
-                    DialogUtil.showDialog(My_InformationActivity.this,"服务器响应成功",true);
-                    informationinfo data=(informationinfo) response.getData();
-                    Log.i("--**-**--","响应成功");
-                   // Log.i("--**",data);
-                    informationList.add(data.getName());
-                    informationList.add(data.getPhone());
-                    informationList.add(data.getIdCard());
-                    informationList.add(data.getEmail());
-                    informationList.add(data.getStoreName());
-                    informationList.add(data.getStoreaddress());
-                    informationList.add(data.getStoreintroduction());
-
-                }
-                @Override
-                public void onError(Response response, int errorCode, Exception e) {
-                    e.printStackTrace();
-                }
-            });
-        }catch (Exception e){
-            DialogUtil.showDialog(this,"服务器响应异常",false);
-            e.printStackTrace();
-        }
-        return informationList;
-    }
+//    public ArrayList getInformation(){
+//        String url = BaseUrl.BASE_URL + "";
+//        Map<String,String> map=new HashMap<>();
+//        try {
+//            mokhttp=OkHttpHelp.getinstance();
+//            mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
+//                @Override
+//                public void onRequestBefore() {
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Request request, Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                @Override
+//                public void onSuccess(CommonResultBean response) {
+//                    DialogUtil.showDialog(My_InformationActivity.this,"服务器响应成功",true);
+//                    Gson gson=new Gson();
+//                    String result=gson.toJson(response.getData());
+//                    Log.i("--**-**--","响应成功");
+//                   // Log.i("--**",data);
+//                    inforinfo=(List<informationinfo>)JSONArray.parseArray(result,informationinfo.class);
+//                    list.add(inforinfo.get(0).getName());
+//                    list.add(inforinfo.get(0).getTelephone());
+//                    list.add(inforinfo.get(0).getIdCard());
+//                    list.add(inforinfo.get(0).geteMail());
+//                    list.add(inforinfo.get(0).getStoreName());
+//                    list.add(inforinfo.get(0).getStoreAddress());
+//                    list.add(inforinfo.get(0).getStoreIntroduction());
+//                    informationAdapter adapter=new informationAdapter(list,My_InformationActivity.this);
+//                    listView.setAdapter(adapter);
+//
+//
+//
+//                }
+//                @Override
+//                public void onError(Response response, int errorCode, Exception e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//        }catch (Exception e){
+//            DialogUtil.showDialog(this,"服务器响应异常",false);
+//            e.printStackTrace();
+//        }
+//        return informationList;
+//    }
 
 
 

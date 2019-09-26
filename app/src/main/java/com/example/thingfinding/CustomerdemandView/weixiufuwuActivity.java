@@ -49,7 +49,7 @@ public class weixiufuwuActivity extends AppCompatActivity {
         init();
         Intent intent=getIntent();
         xuqiuming=intent.getStringExtra("xuqiuming");
-        String url=BaseUrl.BASE_URL +"/select?";
+        String url=BaseUrl.BASE_URL +"/customerDemand/select?";
         System.out.println("路径名"+url);
         Intent setdata=new Intent(this,weixiufuwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
@@ -74,20 +74,21 @@ public class weixiufuwuActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onSuccess(CommonResultBean<CommonCustomerneedBean> response) {
+                public void onSuccess(CommonResultBean response) {
                     Gson gson=new Gson();
                     String result=gson.toJson(response.getData());
-                    jsonArray = JSONArray.parseArray(result);//遍历方式1
-                    int size = jsonArray.size();
-                    jsonObjects=new JSONObject[size];
-                    for (int i = 0; i < size; i++) {
-                        jsonObject = jsonArray.getJSONObject(i);
-                        System.out.println("用户名:  " + jsonObject.getString("customerUserName"));
-                        System.out.println("时间:  " + jsonObject.getString("endTime"));
-                        jsonObjects[i]=jsonObject;
-                    }
-
-
+                   // jsonArray = JSONArray.parseArray(result);//遍历方式1
+//                    int size = jsonArray.size();
+//                    jsonObjects=new JSONObject[size];
+//                    for (int i = 0; i < size; i++) {
+//                        jsonObject = jsonArray.getJSONObject(i);
+//                        System.out.println("用户名:  " + jsonObject.getString("customerUserName"));
+//                        System.out.println("时间:  " + jsonObject.getString("endTime"));
+//                        jsonObjects[i]=jsonObject;
+//                    }
+                    weixiuinfo=(List<CommonCustomerneedBean>)JSONArray.parseArray(result,CommonCustomerneedBean.class);
+                   loading.setVisibility(View.INVISIBLE);
+                  lvweixiu.setAdapter(new weixiuAdapter(weixiuinfo));
                 }
 
                 @Override

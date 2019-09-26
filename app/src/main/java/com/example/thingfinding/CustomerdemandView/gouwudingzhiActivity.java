@@ -64,8 +64,9 @@ public class gouwudingzhiActivity extends AppCompatActivity {
                 public void onFailure(Request request, Exception e) {
 
                 }
+
                 @Override
-                public void onSuccess(CommonResultBean<CommonCustomerneedBean> response) {
+                public void onSuccess(CommonResultBean<CommonResultBean<CommonCustomerneedBean>> response) {
                     DialogUtil.showDialog(gouwudingzhiActivity.this,"响应成功",true);
                     loading.setVisibility(View.INVISIBLE);
                     gouwudingzhiinfo=(List<CommonCustomerneedBean>) response.getData();
@@ -92,6 +93,7 @@ public class gouwudingzhiActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     private class weixiuAdapter extends BaseAdapter {
         private Context mcontext;
         private HolderView mholder;

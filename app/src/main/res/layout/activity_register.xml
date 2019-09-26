@@ -135,8 +135,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="1dp"
                     android:gravity="center"
-                    android:singleLine="true"
-                    android:inputType="text"/>
+                    android:singleLine="true"/>
             </LinearLayout>
 
             <LinearLayout
@@ -160,8 +159,7 @@
                     android:layout_width="123dp"
                     android:layout_height="52dp"
                     android:layout_gravity="center"
-                    android:singleLine="true"
-                    android:inputType="phone"/>
+                    android:singleLine="true" />
             </LinearLayout>
 
 
@@ -192,8 +190,7 @@
                     android:layout_width="105dp"
                     android:layout_height="52dp"
                     android:singleLine="true"
-                    android:layout_gravity="center"
-                    android:inputType="text"/>
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -218,8 +215,7 @@
                     android:layout_height="52dp"
                     android:layout_marginLeft="1dp"
                     android:singleLine="true"
-                    android:layout_gravity="center"
-                    android:inputType="textEmailAddress"/>
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
 
@@ -248,8 +244,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="6dp"
                 android:layout_gravity="center"
-                android:singleLine="true"
-                android:inputType="text"/>
+                android:singleLine="true"/>
 
 
 
@@ -277,8 +272,7 @@
                 android:layout_width="288dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center"
-                android:singleLine="true"
-                android:inputType="text"/>
+                android:singleLine="true"/>
 
 
         </LinearLayout>
@@ -309,8 +303,7 @@
                 android:layout_width="103dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center"
-                android:singleLine="true"
-                android:inputType="textPassword"/>
+                android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -337,8 +330,7 @@
                     android:layout_height="52dp"
                     android:layout_gravity="center"
                     android:singleLine="true"
-
-                    android:inputType="textPassword"/>
+/>
 
             </LinearLayout>
 

@@ -203,6 +203,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         intent.putExtra("userName", name);
                         setResult(RESULT_OK, intent);
                         RegisterActivity.this.finish();
+                        System.out.print("666");
                     }
                     @Override
                     public void onError(Response response, int errorCode, Exception e) {

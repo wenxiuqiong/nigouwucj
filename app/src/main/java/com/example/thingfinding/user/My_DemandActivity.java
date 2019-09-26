@@ -93,7 +93,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
         chargeText= (EditText) findViewById(R.id.chargeText);
         releasebtn= (Button) findViewById(R.id.releasebtn);
         image=(ImageView)findViewById(R.id.image);
-       // tv_type.setText(getIntent().getStringExtra(""));
+        tv_type.setText(getIntent().getStringExtra("demandType"));
     }
 
 
@@ -110,7 +110,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
                 String info=adapterView.getItemAtPosition(i).toString();//获取i所在的文本
                //mBodyLayout.addView(PetsView);
                 //Toast.makeText(My_DemandActivity.this, info, Toast.LENGTH_SHORT).show();
-
+                System.out.print("666");
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

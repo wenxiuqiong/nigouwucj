@@ -1,62 +1,122 @@
 package com.example.thingfinding.Bean;
 
 public class informationinfo {
-    String name;//姓名
-    String idCard;//身份证号
-    String phone;//电话
-    String storeName;//店名
-    String email;//邮箱
-    String storeaddress;//店铺地址
-    String storeintroduction;//店铺介绍
+    private String name;//姓名
+    private String idCard;//身份证号
+    private String telephone;//电话
+    private String storeName;//店名
+    private String eMail;//邮箱
+    private String storeAddress;//店铺地址
+    private String storeIntroduction;//店铺介绍
+    private String userId;
+    private String password;
+    private String leaguer;
+    private String time;
+    private String isfulfil;
+    private String user;
 
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
-        this.name=name;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getIdCard(){
+    public String getIdCard() {
         return idCard;
     }
-    public void setIdCard(String idCard){
-        this.idCard=idCard;
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public String getPhone(){
-        return phone;
-    }
-    public void setPhone(String phone){
-        this.phone=phone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public String getStoreName(){
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getStoreName() {
         return storeName;
     }
-    public void setStoreName(String storeName){
-        this.storeName=storeName;
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 
-    public String getEmail(){
-        return email;
-    }
-    public void setEmail(String email){
-        this.email=email;
+    public String geteMail() {
+        return eMail;
     }
 
-    public String getStoreaddress(){
-        return storeaddress;
-    }
-    public void setStoreaddress(String storeaddress){
-        this.storeaddress=storeaddress;
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
 
-    public String getStoreintroduction(){
-        return storeintroduction;
-    }
-    public void setStoreintroduction(String storeintroduction){
-        this.storeintroduction=storeintroduction;
+    public String getStoreAddress() {
+        return storeAddress;
     }
 
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
+    }
+
+    public String getStoreIntroduction() {
+        return storeIntroduction;
+    }
+
+    public void setStoreIntroduction(String storeIntroduction) {
+        this.storeIntroduction = storeIntroduction;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLeaguer() {
+        return leaguer;
+    }
+
+    public void setLeaguer(String leaguer) {
+        this.leaguer = leaguer;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getIsfulfil() {
+        return isfulfil;
+    }
+
+    public void setIsfulfil(String isfulfil) {
+        this.isfulfil = isfulfil;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 }

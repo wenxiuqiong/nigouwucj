@@ -89,12 +89,12 @@ public class Fragment_HomePage extends Fragment {
                 }
                 if(name.equals("购物订制")){
                     gouwuyuding("购物订制");
+                    System.out.print("666");
                 }
             }
         });
         return view;
     }
-
     public  boolean isLogin(){
         SharedPreferences sps = getActivity().getSharedPreferences(Mark, Context.MODE_PRIVATE);
         if (sps.getBoolean("isLogin", true) == true) {

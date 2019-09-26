@@ -17,6 +17,7 @@ import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -87,7 +88,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
 //    }
 
     public void changepassword() {
-        String url = OkHttpHelp.BASE_URL + "";
+        String url = BaseUrl.BASE_URL + "";
         Map<String, String> map = new HashMap<>();
 
         try {

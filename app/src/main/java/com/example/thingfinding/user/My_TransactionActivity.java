@@ -181,7 +181,7 @@ public class My_TransactionActivity extends AppCompatActivity implements
                     String data=(String) response.getData();
                     Log.i("--**-**--","响应成功");
                     Log.i("--**",data);
-
+                    System.out.print("666");
 
                 }
                 @Override

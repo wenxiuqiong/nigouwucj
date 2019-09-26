@@ -18,6 +18,7 @@ import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -44,7 +45,7 @@ public class chongwuActivity extends AppCompatActivity {
 
     }
     private void getData(){
-        String url=OkHttpHelp.BASE_URL+"";
+        String url = BaseUrl.BASE_URL + "";
         Intent setdata=new Intent(this,chongwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
         Map<String,String> map=new HashMap<>();
@@ -60,8 +61,9 @@ public class chongwuActivity extends AppCompatActivity {
                 public void onFailure(Request request, Exception e) {
 
                 }
+
                 @Override
-                public void onSuccess(CommonResultBean<CommonCustomerneedBean> response) {
+                public void onSuccess(CommonResultBean<CommonResultBean<CommonCustomerneedBean>> response) {
                     DialogUtil.showDialog(chongwuActivity.this,"响应成功",false);
                     loading.setVisibility(View.INVISIBLE);
                     weixiuinfo=(List<CommonCustomerneedBean>) response.getData();
@@ -88,6 +90,7 @@ public class chongwuActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     private class weixiuAdapter extends BaseAdapter {
         private Context mcontext;
         private HolderView mholder;
