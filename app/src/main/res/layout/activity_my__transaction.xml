@@ -34,7 +34,6 @@
         android:id="@+id/rg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
         android:background="#e7e6e6"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,8 +49,8 @@
             android:button="@null"
             android:gravity="center"
             android:text="全部订单"
-            android:textSize="20dp"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/to_be_shippedBtn"
@@ -61,8 +60,8 @@
             android:button="@null"
             android:gravity="center"
             android:text="待发货"
-            android:textSize="20dp"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/goods_to_be_receivedBtn"
@@ -72,8 +71,8 @@
             android:button="@null"
             android:gravity="center"
             android:text="待收货"
-            android:textSize="20dp"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/completedBtn"
@@ -83,8 +82,8 @@
             android:button="@null"
             android:gravity="center"
             android:text="已完成"
-            android:textSize="20dp"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"
+            android:textSize="20dp" />
     </RadioGroup>
 
 

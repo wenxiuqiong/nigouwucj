@@ -1,5 +1,6 @@
 package com.example.thingfinding.user;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thingfinding.Adapter.addressbookAdapter;
 import com.example.thingfinding.Bean.addressItem;
@@ -53,6 +55,17 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listdateils=dataList.get(position);
                 notfy();
+            }
+        });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+
+                showtijiaoDialog(position);
+
+                return true;
             }
         });
     }
@@ -116,5 +129,40 @@ public class addressbookActivity extends AppCompatActivity implements View.OnCli
         setResult(1, intent);
         finish();
     }
+
+
+    //删除数据库里的数据
+    private void delete(int position) {
+        this.dbhelper = SQLiteHelper.getInstance(this);
+        SQLiteDatabase db = dbhelper.getReadableDatabase();
+        int cur = db.delete("AddressBook",
+                "name=?",
+                new String[]{dataList.get(position).getName()});
+
+    }
+
+    public void showtijiaoDialog(int position){
+        final android.app.AlertDialog.Builder normalDialog = new android.app.AlertDialog.Builder(this);
+        normalDialog.setTitle("删除");
+        normalDialog.setMessage("是否删除该人的信息");
+        normalDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                delete(position);
+                notifyDataSetChanged();
+                Toast.makeText(addressbookActivity.this, "已删除", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        normalDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        normalDialog.show();// 显示
+    }
+
+
 
 }

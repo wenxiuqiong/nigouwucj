@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="#82ffb4"
         android:gravity="center"
-        android:text="发布服务"
+        android:text="服务发布"
         android:textColor="#000"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="7dp"
@@ -72,21 +72,24 @@
 
                         <EditText
                             android:id="@+id/nameText"
-                            android:layout_width="109dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="94dp"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/xinghao1"
                             android:gravity="center"
-                            android:hint="姓名"
+                            android:hint="姓名(必填)"
                             android:textColor="#000"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:singleLine="true"/>
 
                         <EditText
                             android:id="@+id/phoneText"
                             android:layout_width="177dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:hint="电话"
+                            android:hint="电话（必填）"
+                            android:drawableLeft="@drawable/xinghao1"
                             android:textColor="#000"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:singleLine="true"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -99,9 +102,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="fill|center"
-                            android:hint="地址"
+                            android:hint="地址（必填）"
+                            android:drawableLeft="@drawable/xinghao1"
                             android:textColor="#000"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:singleLine="true"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -153,13 +158,10 @@
                     android:text="类型:"
                     android:textSize="18dp" />
 
-                <Spinner
-                    android:id="@+id/categorySpinner"
-                    android:layout_width="308dp"
-                    android:layout_height="41dp"
-                    android:layout_weight="5"
-                    android:entries="@array/category"
-                    android:spinnerMode="dialog" />
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp" />
             </LinearLayout>
 
 
@@ -204,7 +206,8 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/border3"
-                        android:hint="请详细描述你提供的服务"
+                        android:hint="请详细描述你提供的服务（必填）"
+                        android:drawableLeft="@drawable/xinghao1"
                         android:textColor="#000"
                         android:textSize="16dp" />
 
@@ -231,7 +234,8 @@
                         android:id="@+id/originalpriceText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="原价" />
+                        android:drawableLeft="@drawable/xinghao1"
+                        android:hint="原价（必填）" />
 
                     <EditText
                         android:id="@+id/promotionalpriceText"

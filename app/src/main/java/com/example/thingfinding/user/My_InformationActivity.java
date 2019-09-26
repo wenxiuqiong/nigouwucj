@@ -22,12 +22,14 @@ import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class My_InformationActivity extends AppCompatActivity implements OnClickListener {
@@ -51,8 +53,10 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
         intent = getIntent();
         username=intent.getStringExtra("username");
         initView();
-        MyBaseAdapter myBaseAdapter=new MyBaseAdapter();
-        listView.setAdapter(myBaseAdapter);
+        informationAdapter adapter=new informationAdapter(list,this);
+        listView.setAdapter(adapter);
+//        MyBaseAdapter myBaseAdapter=new MyBaseAdapter();
+//        listView.setAdapter(myBaseAdapter);
         for(int i=0;i<heading.length;i++){
             list.add(heading[i]);
         }
@@ -79,7 +83,7 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
                 // TODO Auto-generated method stub
                 if (list.get(arg2).equals("姓名")) {
                     mark = list.get(arg2);
-                    Details();
+
                 }
                 if (list.get(arg2).equals("电话号码")) {
                     mark = list.get(arg2);
@@ -119,37 +123,6 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
             startActivity(intent);
         }
 
-    class MyBaseAdapter extends BaseAdapter {
-        public int getCount(){
-            return heading.length;
-        }
-        public Object getItem(int position){
-            return heading[position];
-        }
-        public long getItemId(int postion){
-            return postion;
-        }
-        public View getView(int postion, View convertView, ViewGroup parent){
-            ViewHolder holder;
-            if(convertView==null) {
-                convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.save_list, parent, false);
-                holder = new ViewHolder();
-                holder.texthead = (TextView) convertView.findViewById(R.id.text_head);
-                holder.textend = (TextView) convertView.findViewById(R.id.text_end);
-                convertView.setTag(holder);
-            }else{
-                holder=(ViewHolder)convertView.getTag();
-            }
-            holder.texthead.setText(heading[postion]);
-            return convertView;
-        }
-
-    }
-    class ViewHolder{
-        TextView texthead;
-        TextView textend;
-
-    }
     @Override
     public void onClick(View v) {
 
@@ -162,8 +135,8 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
 
     }
 
-    public void getInformation(){
-        String url=OkHttpHelp.BASE_URL+"";
+    public ArrayList getInformation(){
+        String url = BaseUrl.BASE_URL + "";
         Map<String,String> map=new HashMap<>();
         try {
             mokhttp=OkHttpHelp.getinstance();
@@ -192,13 +165,6 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
                     informationList.add(data.getStoreaddress());
                     informationList.add(data.getStoreintroduction());
 
-                    adapter=new informationAdapter(informationList,My_InformationActivity.this);
-                    listView.setAdapter(adapter);
-
-
-
-
-
                 }
                 @Override
                 public void onError(Response response, int errorCode, Exception e) {
@@ -209,7 +175,9 @@ public class My_InformationActivity extends AppCompatActivity implements OnClick
             DialogUtil.showDialog(this,"服务器响应异常",false);
             e.printStackTrace();
         }
-
+        return informationList;
     }
+
+
 
 }
