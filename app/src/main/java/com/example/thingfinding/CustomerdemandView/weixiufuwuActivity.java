@@ -49,16 +49,17 @@ public class weixiufuwuActivity extends AppCompatActivity {
         init();
         Intent intent=getIntent();
         xuqiuming=intent.getStringExtra("xuqiuming");
+        System.out.println(xuqiuming+"255565554");
         String url=BaseUrl.BASE_URL +"/select?";
         System.out.println("路径名"+url);
         Intent setdata=new Intent(this,weixiufuwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
         Map<String,String> map=new HashMap<>();
-        map.put("demandType","");
+        map.put("demandType",xuqiuming);
 //        map.put("nowPage","1");
 //        map.put("pageSize","100");
-//        map.put("nowPage","1");
-//        map.put("pageSize","100");
+        map.put("nowPage","1");
+        map.put("pageSize","100");
         try {
             Log.i("/**-*8-/","5656516");
             mokhttp.post(url, map, new BaseCallback<CommonCustomerneedBean>() {
@@ -74,9 +75,11 @@ public class weixiufuwuActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onSuccess(CommonResultBean<CommonCustomerneedBean> response) {
+                public void onSuccess(CommonResultBean response) {
                     Gson gson=new Gson();
                     String result=gson.toJson(response.getData());
+                    System.out.println(result);
+                    System.out.println(response.getData());
                     jsonArray = JSONArray.parseArray(result);//遍历方式1
                     int size = jsonArray.size();
                     jsonObjects=new JSONObject[size];
@@ -84,10 +87,34 @@ public class weixiufuwuActivity extends AppCompatActivity {
                         jsonObject = jsonArray.getJSONObject(i);
                         System.out.println("用户名:  " + jsonObject.getString("customerUserName"));
                         System.out.println("时间:  " + jsonObject.getString("endTime"));
+//                        String timestr=jsonObject.getString("beginTime").substring(0,10);
+//                        System.out.println(timestr);
                         jsonObjects[i]=jsonObject;
                     }
-
-
+                    for(int i=0;i<jsonObjects.length;i++){
+                        System.out.println(jsonObjects[i].getString("sentense"));
+                    }
+                    System.out.println("8888888888");
+                    weixiuinfo=(List<CommonCustomerneedBean>)JSONArray.parseArray(result,CommonCustomerneedBean.class);
+                    for (int i=0;i<weixiuinfo.size();i++){
+                        System.out.println(weixiuinfo.get(i).getCustomerUserName());
+                        System.out.println(weixiuinfo.get(i).getSentense());
+                        System.out.println(weixiuinfo.get(i).getCustomerAddress());
+                    }
+                     loading.setVisibility(View.INVISIBLE);
+                     lvweixiu.setAdapter(new weixiuAdapter(weixiuinfo));
+                    lvweixiu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            setdata.putExtra("customerName",weixiuinfo.get(position).getCustomerUserName());
+                            setdata.putExtra("beginDate",weixiuinfo.get(position).getBeginTime());
+                            setdata.putExtra("endDate",weixiuinfo.get(position).getEndTime());
+                            setdata.putExtra("customerAddress",weixiuinfo.get(position).getCustomerAddress());
+                            setdata.putExtra("message",weixiuinfo.get(position).getSentense());
+                            setdata.putExtra("demandType","家具");
+                            startActivity(setdata);
+                        }
+                    });
                 }
 
                 @Override

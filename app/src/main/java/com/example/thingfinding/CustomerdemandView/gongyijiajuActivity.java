@@ -31,8 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class changdiyudingActivity extends AppCompatActivity {
-    private List<CommonCustomerneedBean> changdiinfo;
+public class gongyijiajuActivity extends AppCompatActivity {
+    private List<CommonCustomerneedBean> weixiuinfo;
     //private CommonCustomerneedBean weixiuinfo;
     private ListView lvweixiu;
     private LinearLayout loading;
@@ -45,7 +45,7 @@ public class changdiyudingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_changdiyuding);
+        setContentView(R.layout.activity_gongyijiaju);
         init();
         Intent intent=getIntent();
         xuqiuming=intent.getStringExtra("xuqiuming");
@@ -95,23 +95,23 @@ public class changdiyudingActivity extends AppCompatActivity {
                         System.out.println(jsonObjects[i].getString("sentense"));
                     }
                     System.out.println("8888888888");
-                    changdiinfo=(List<CommonCustomerneedBean>)JSONArray.parseArray(result,CommonCustomerneedBean.class);
-                    for (int i=0;i<changdiinfo.size();i++){
-                        System.out.println(changdiinfo.get(i).getCustomerUserName());
-                        System.out.println(changdiinfo.get(i).getSentense());
-                        System.out.println(changdiinfo.get(i).getCustomerAddress());
+                    weixiuinfo=(List<CommonCustomerneedBean>)JSONArray.parseArray(result,CommonCustomerneedBean.class);
+                    for (int i=0;i<weixiuinfo.size();i++){
+                        System.out.println(weixiuinfo.get(i).getCustomerUserName());
+                        System.out.println(weixiuinfo.get(i).getSentense());
+                        System.out.println(weixiuinfo.get(i).getCustomerAddress());
                     }
                     loading.setVisibility(View.INVISIBLE);
-                    lvweixiu.setAdapter(new weixiuAdapter(changdiinfo));
+                    lvweixiu.setAdapter(new weixiuAdapter(weixiuinfo));
                     lvweixiu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            setdata.putExtra("customerName",changdiinfo.get(position).getCustomerUserName());
-                            setdata.putExtra("beginDate",changdiinfo.get(position).getBeginTime());
-                            setdata.putExtra("endDate",changdiinfo.get(position).getEndTime());
-                            setdata.putExtra("customerAddress",changdiinfo.get(position).getCustomerAddress());
-                            setdata.putExtra("message",changdiinfo.get(position).getSentense());
-                            setdata.putExtra("demandType","场地租借");
+                            setdata.putExtra("customerName",weixiuinfo.get(position).getCustomerUserName());
+                            setdata.putExtra("beginDate",weixiuinfo.get(position).getBeginTime());
+                            setdata.putExtra("endDate",weixiuinfo.get(position).getEndTime());
+                            setdata.putExtra("customerAddress",weixiuinfo.get(position).getCustomerAddress());
+                            setdata.putExtra("message",weixiuinfo.get(position).getSentense());
+                            setdata.putExtra("demandType","维修");
                             startActivity(setdata);
                         }
                     });
@@ -122,8 +122,6 @@ public class changdiyudingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             });
-
-
             //jsonArray =mokhttp.getJsonArray();
             /*int size = jsonArray.size();
             jsonObjects=new JSONObject[size];
@@ -167,8 +165,8 @@ public class changdiyudingActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                view = View.inflate(changdiyudingActivity.this, R.layout.list_item3, null);
-                mholder =  new HolderView();
+                view = View.inflate(gongyijiajuActivity.this, R.layout.list_item3, null);
+                mholder = new HolderView();
                 mholder.img = (ImageView) view.findViewById(R.id.item_image);
                 mholder.tvcustomername = (TextView) view.findViewById(R.id.tvname);
                 mholder.tvfuwuming = (TextView) view.findViewById(R.id.tvfuwuming);

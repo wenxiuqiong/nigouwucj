@@ -53,12 +53,12 @@
         <activity android:name=".CustomerdemandView.chongwuActivity" />
         <activity android:name=".CustomerdemandView.chongwuxuqiuActivity" />
         <activity android:name=".CustomerdemandView.changdiyudingActivity" />
-        <activity android:name=".CustomerdemandView.cahngdiyudingxuqiuActivity" />
+        <activity android:name=".CustomerdemandView.changdiyudingxuqiuActivity" />
         <activity android:name=".CustomerdemandView.gouwudingzhiActivity" />
-        <activity android:name=".CustomerdemandView.gouwudingzhixuqiuActivity"/>
-        <activity android:name=".CustomerdemandView.weixiufuwuActivity"/>
-        <activity android:name=".CustomerdemandView.weixiufuwuxuqiuActivity">
-        </activity>
+        <activity android:name=".CustomerdemandView.gouwudingzhixuqiuActivity" />
+        <activity android:name=".CustomerdemandView.weixiufuwuActivity" />
+        <activity android:name=".CustomerdemandView.weixiufuwuxuqiuActivity"></activity>
+        <activity android:name=".CustomerdemandView.gongyijiajuActivity"></activity>
     </application>
 
 </manifest>

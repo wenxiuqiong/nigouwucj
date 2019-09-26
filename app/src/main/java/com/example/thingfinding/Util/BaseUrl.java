@@ -6,5 +6,5 @@ package com.example.thingfinding.Util;
 public class BaseUrl {
     //public static final String BASE_URL = "http://192.168.8.109:8080/customerDemand";
     //public static final String BASE_URL = "http://192.168.1.102:8080/";
-    public static final String BASE_URL = "http://192.168.8.109:8080/customerDemand";
+    public static final String BASE_URL = "http://192.168.137.1:8080/customerDemand";
 }

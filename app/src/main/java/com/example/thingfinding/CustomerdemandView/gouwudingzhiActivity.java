@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
@@ -32,8 +34,11 @@ public class gouwudingzhiActivity extends AppCompatActivity {
     private ListView lvgouwu;
     private LinearLayout loading;
     private CommonCustomerneedBean bean;
+    private JSONObject jsonObject;
     private OkHttpHelp mokhttp;
     private String xuqiuming;
+    private JSONArray jsonArray;
+    private JSONObject[] jsonObjects;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +58,9 @@ public class gouwudingzhiActivity extends AppCompatActivity {
         Intent setdata=new Intent(this,gouwudingzhixuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
         Map<String,String> map=new HashMap<>();
-        map.put("user",xuqiuming);
+        map.put("demandType",xuqiuming);
         try {
-            mokhttp.post(url, map, new BaseCallback<CommonResultBean<CommonCustomerneedBean>>() {
+            mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
                 @Override
                 public void onRequestBefore() {
                 }
@@ -65,10 +70,10 @@ public class gouwudingzhiActivity extends AppCompatActivity {
 
                 }
                 @Override
-                public void onSuccess(CommonResultBean<CommonCustomerneedBean> response) {
+                public void onSuccess(CommonResultBean response) {
                     DialogUtil.showDialog(gouwudingzhiActivity.this,"响应成功",true);
                     loading.setVisibility(View.INVISIBLE);
-                    gouwudingzhiinfo=(List<CommonCustomerneedBean>) response.getData();
+                    //gouwudingzhiinfo=(List<CommonCustomerneedBean>) response.getData();
                     lvgouwu.setAdapter(new weixiuAdapter( gouwudingzhiinfo));
                     lvgouwu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override

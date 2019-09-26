@@ -29,6 +29,9 @@ import android.widget.Toast;
 /*import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
 import com.example.thingfinding.CustomerdemandView.chongwuActivity;
 import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;*/
+import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
+import com.example.thingfinding.CustomerdemandView.chongwuActivity;
+import com.example.thingfinding.CustomerdemandView.gongyijiajuActivity;
 import com.example.thingfinding.CustomerdemandView.weixiufuwuActivity;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
@@ -51,8 +54,8 @@ public class Fragment_HomePage extends Fragment {
     private SimpleAdapter homeadapter;
     private ListView listView;
     private Fragment_HomePage context;
-    private String[] typenames=new String[]{"场地预定","宠物需求","维修服务","购物订制","饮食","衣着","数码产品","学习","其他"};
-    private  int[] imageIds=new int[]{R.drawable.venuerentals,R.drawable.pet,R.drawable.car,R.drawable.clothes,R.drawable.diet,R.drawable.clothes,R.drawable.digitalproduct,R.drawable.study,R.drawable.weixin};
+    private String[] typenames=new String[]{"场地预定","宠物需求","维修服务","购物订制","工艺家具","衣着","数码产品","学习","其他"};
+    private  int[] imageIds=new int[]{R.drawable.venuerentals,R.drawable.pet,R.drawable.car,R.drawable.clothes,R.drawable.shafa,R.drawable.clothes,R.drawable.digitalproduct,R.drawable.study,R.drawable.weixin};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,30 +77,33 @@ public class Fragment_HomePage extends Fragment {
                 String name=typenames[position];
                 Log.i("test++",typenames[position]);
                 if (name.equals("场地预定")){
-                    changdixuqiu("场地预定");
+                    changdixuqiu("场地");
                 }
                if(name.equals("宠物需求")){
-                    petxuqiu("宠物需求");
+                    petxuqiu("宠物");
                 }
                 if(name.equals("维修服务")){
-                    weixiuxuqiu("维修服务");
+                    weixiuxuqiu("维修");
                 }
                 if(name.equals("购物订制")){
                     gouwuyuding("购物订制");
+                }
+                if(name.equals("工艺家具")){
+                    gongyijiaju("工艺家具");
                 }
             }
         });
         return view;
     }
     public void changdixuqiu(String name){
-        /*Intent intent=new Intent(getActivity(),changdiyudingActivity.class);
+        Intent intent=new Intent(getActivity(),changdiyudingActivity.class);
         intent.putExtra("xuqiuming",name);
-        startActivity(intent);*/
+        startActivity(intent);
     }
     public void petxuqiu(String name){
-        /*Intent intent=new Intent(getActivity(),chongwuActivity.class);
+        Intent intent=new Intent(getActivity(),chongwuActivity.class);
         intent.putExtra("xuqiuming",name);
-        startActivity(intent);*/
+        startActivity(intent);
     }
     public void weixiuxuqiu(String name){
         Intent intent=new Intent(getActivity(),weixiufuwuActivity.class);
@@ -106,6 +112,11 @@ public class Fragment_HomePage extends Fragment {
     }
     public void gouwuyuding(String name){
         Intent intent=new Intent(getActivity(),furniturestypeActivity.class);
+        intent.putExtra("xuqiuming",name);
+        startActivity(intent);
+    }
+    public void gongyijiaju(String name){
+        Intent intent=new Intent(getActivity(),gongyijiajuActivity.class);
         intent.putExtra("xuqiuming",name);
         startActivity(intent);
     }
