@@ -31,6 +31,7 @@ import com.example.thingfinding.Fragment.Fragment_News;
 import com.example.thingfinding.Fragment.MyFragmentPageAdapter;
 import com.example.thingfinding.R;
 import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -50,6 +51,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
     private EditText addText;
     private TextView exitText;
     private TextView addressbookText;
+    private TextView tv_type;
     private EditText demand;
     private EditText originalpriceText;
     private EditText promotionalpriceText;
@@ -65,6 +67,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
     private Bitmap bitmap = null;
     Spinner spinner;
     private OkHttpHelp mokhttphelp;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
         phoneText = (EditText) findViewById(R.id.phoneText);
         addText = (EditText) findViewById(R.id.addText);
         exitText = (TextView) findViewById(R.id.exitText);
+        tv_type = (TextView) findViewById(R.id.tv_type);
         addressbookText= (TextView) findViewById(R.id.addressbookText);
         demand= (EditText) findViewById(R.id.demand);
         originalpriceText= (EditText) findViewById(R.id.originalpriceText);
@@ -89,23 +93,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
         chargeText= (EditText) findViewById(R.id.chargeText);
         releasebtn= (Button) findViewById(R.id.releasebtn);
         image=(ImageView)findViewById(R.id.image);
-        spinner=findViewById(R.id.categorySpinner);
-       /* if(nameText.getText().toString().trim()==null||
-                phoneText.getText().toString().trim()==null||
-                addText.getText().toString().trim()==null||
-                demand .getText().toString().trim()==null||
-                originalpriceText.getText().toString().trim()==null||
-                promotionalpriceText.getText().toString().trim()==null||
-                stockText.getText().toString().trim()==null||
-                costText.getText().toString().trim()==null||
-                typeText.getText().toString().trim()==null||
-                chargeText.getText().toString().trim()==null){
-            Toast.makeText(My_DemandActivity.this, "请将信息填写完整！", Toast.LENGTH_SHORT).show();
-
-        }else{
-            releasebtn.setEnabled(true);
-        }*/
-
+       // tv_type.setText(getIntent().getStringExtra(""));
     }
 
 
@@ -121,7 +109,7 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
                 //i指的是点击的位置,通过i可以取到相应的数据源
                 String info=adapterView.getItemAtPosition(i).toString();//获取i所在的文本
                //mBodyLayout.addView(PetsView);
-               // Toast.makeText(My_DemandActivity.this, info, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(My_DemandActivity.this, info, Toast.LENGTH_SHORT).show();
 
             }
             @Override
@@ -166,18 +154,8 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void release() {
-        String url = OkHttpHelp.BASE_URL + "";
+        String url = BaseUrl.BASE_URL + "";
         Map<String, String> map = new HashMap<>();
-      /*  if(nameText.getText().toString().trim()==null||
-                phoneText.getText().toString().trim()==null||
-                addText.getText().toString().trim()==null||
-                demand .getText().toString().trim()==null||
-                originalpriceText.getText().toString().trim()==null||
-                promotionalpriceText.getText().toString().trim()==null||
-                stockText.getText().toString().trim()==null||
-                costText.getText().toString().trim()==null||
-                typeText.getText().toString().trim()==null||
-                chargeText.getText().toString().trim()==null){*/
         map.put("user",nameText.getText().toString().trim());
         map.put("pwd",phoneText.getText().toString().trim());
         map.put("user",addText.getText().toString().trim());

@@ -31,6 +31,7 @@ public class My_DetailsActivity extends AppCompatActivity implements View.OnClic
         exitText.setOnClickListener(this);
     }
     public void exit() {
+
         finish();
     }
     public void onClick(View v) {

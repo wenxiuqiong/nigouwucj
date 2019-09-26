@@ -72,8 +72,9 @@
                     style="@style/login_etext"
                     android:layout_width="115dp"
                     android:layout_height="52dp"
+                    android:inputType="number"
                     android:singleLine="true"
-                    />
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -96,8 +97,10 @@
                     style="@style/login_etext"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="1dp"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:inputType="text"/>
 
             </LinearLayout>
 
@@ -132,7 +135,8 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="1dp"
                     android:gravity="center"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -155,7 +159,9 @@
                     style="@style/login_etext"
                     android:layout_width="123dp"
                     android:layout_height="52dp"
-                    android:singleLine="true"/>
+                    android:layout_gravity="center"
+                    android:singleLine="true"
+                    android:inputType="phone"/>
             </LinearLayout>
 
 
@@ -185,7 +191,9 @@
                     style="@style/login_etext"
                     android:layout_width="105dp"
                     android:layout_height="52dp"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:layout_gravity="center"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -209,7 +217,9 @@
                     android:layout_width="127dp"
                     android:layout_height="52dp"
                     android:layout_marginLeft="1dp"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:layout_gravity="center"
+                    android:inputType="textEmailAddress"/>
             </LinearLayout>
 
 
@@ -237,7 +247,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="6dp"
-                android:singleLine="true"/>
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:inputType="text"/>
 
 
 
@@ -264,7 +276,9 @@
                 style="@style/login_etext"
                 android:layout_width="288dp"
                 android:layout_height="52dp"
-                android:singleLine="true"/>
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:inputType="text"/>
 
 
         </LinearLayout>
@@ -294,7 +308,9 @@
                 style="@style/login_etext"
                 android:layout_width="103dp"
                 android:layout_height="52dp"
-                android:singleLine="true"/>
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:inputType="textPassword"/>
 
             </LinearLayout>
 
@@ -319,7 +335,10 @@
                     style="@style/login_etext"
                     android:layout_width="103dp"
                     android:layout_height="52dp"
-                    android:singleLine="true"/>
+                    android:layout_gravity="center"
+                    android:singleLine="true"
+
+                    android:inputType="textPassword"/>
 
             </LinearLayout>
 

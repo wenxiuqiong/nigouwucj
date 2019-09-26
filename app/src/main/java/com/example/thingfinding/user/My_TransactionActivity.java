@@ -27,6 +27,7 @@ import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -158,7 +159,7 @@ public class My_TransactionActivity extends AppCompatActivity implements
     }
 
     public void query_data(String select){
-        String url=OkHttpHelp.BASE_URL+"";
+        String url = BaseUrl.BASE_URL + "";
         Map<String,String> map=new HashMap<>();
 
         try {

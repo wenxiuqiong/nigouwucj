@@ -2,6 +2,7 @@ package com.example.thingfinding.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -26,12 +27,13 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-/*import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
+import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
 import com.example.thingfinding.CustomerdemandView.chongwuActivity;
-import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;*/
+import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;
 import com.example.thingfinding.CustomerdemandView.weixiufuwuActivity;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
+import com.example.thingfinding.TestActivity;
 import com.example.thingfinding.tenderview.carweixiutypeActivity;
 import com.example.thingfinding.tenderview.furniturestypeActivity;
 import com.example.thingfinding.tenderview.partytypeActivity;
@@ -47,6 +49,8 @@ import java.util.Map;
 
 public class Fragment_HomePage extends Fragment {
 
+
+    private String Mark="mark";
     private List<Map<String,Object>> lists;
     private SimpleAdapter homeadapter;
     private ListView listView;
@@ -65,6 +69,7 @@ public class Fragment_HomePage extends Fragment {
             map.put("images",imageIds[i]);
             lists.add(map);
         }
+
         homeadapter=new SimpleAdapter(getActivity().getApplicationContext(),lists,R.layout.list_item,new String[]{"typenames","images"},new int[]{R.id.typename,R.id.typeimage});
         listView.setAdapter(homeadapter);
 
@@ -89,24 +94,49 @@ public class Fragment_HomePage extends Fragment {
         });
         return view;
     }
+
+    public  boolean isLogin(){
+        SharedPreferences sps = getActivity().getSharedPreferences(Mark, Context.MODE_PRIVATE);
+        if (sps.getBoolean("isLogin", true) == true) {
+            return true;
+        }else{
+            return false;
+        }
+    }
     public void changdixuqiu(String name){
-        /*Intent intent=new Intent(getActivity(),changdiyudingActivity.class);
-        intent.putExtra("xuqiuming",name);
-        startActivity(intent);*/
+        if(isLogin()) {
+            Intent intent = new Intent(getActivity(), changdiyudingActivity.class);
+            intent.putExtra("xuqiuming", name);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
+        }
     }
     public void petxuqiu(String name){
-        /*Intent intent=new Intent(getActivity(),chongwuActivity.class);
-        intent.putExtra("xuqiuming",name);
-        startActivity(intent);*/
+        if(isLogin()) {
+            Intent intent = new Intent(getActivity(), chongwuActivity.class);
+            intent.putExtra("xuqiuming", name);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
+        }
     }
     public void weixiuxuqiu(String name){
-        Intent intent=new Intent(getActivity(),weixiufuwuActivity.class);
-        intent.putExtra("xuqiuming",name);
-        startActivity(intent);
+        if(isLogin()) {
+            Intent intent = new Intent(getActivity(), weixiufuwuActivity.class);
+            intent.putExtra("xuqiuming", name);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
+        }
     }
     public void gouwuyuding(String name){
-        Intent intent=new Intent(getActivity(),furniturestypeActivity.class);
-        intent.putExtra("xuqiuming",name);
-        startActivity(intent);
+        if(isLogin()) {
+            Intent intent = new Intent(getActivity(), furniturestypeActivity.class);
+            intent.putExtra("xuqiuming", name);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
+        }
     }
 }
