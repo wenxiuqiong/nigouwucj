@@ -4,14 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
-import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.R;
-import com.example.thingfinding.Util.OkHttpHelp;
-
-import java.util.List;
 
 public class gouwudingzhixuqiuActivity extends AppCompatActivity {
     private EditText et_customerName;

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.thingfinding.CustomerdemandView.weixiufuwuxuqiuActivity">
+    tools:context="com.example.thingfinding.CustomerdemandView.weixiufuwuxuqiuActivity"
+    android:background="@drawable/beijing">
 
     <TextView
         android:id="@+id/textView2"
@@ -18,7 +19,8 @@
         android:layout_marginTop="0dp"
         android:text="客户需求"
         android:textColor="#27ef24"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        />
 
     <TextView
         android:layout_width="89dp"
@@ -30,7 +32,10 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="56dp"
         android:text="客户"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#98041ffa"
+
+       />
 
     <TextView
         android:id="@+id/textView3"
@@ -43,20 +48,22 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="122dp"
         android:text="发起日期"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#98041ffa"/>
 
-    <EditText
+    <TextView
         android:id="@+id/etcustomerName"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp" />
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:textColor="#98041ffa" />
 
-    <EditText
+    <TextView
         android:id="@+id/etbeginDate"
         android:layout_width="272dp"
         android:layout_height="57dp"
@@ -64,30 +71,33 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="108dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp" />
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:textColor="#98041ffa"/>
 
-    <EditText
+    <TextView
         android:id="@+id/etendDate"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:textColor="#98041ffa"/>
 
-    <EditText
+    <TextView
         android:id="@+id/etcustomerAdress"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="237dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginRight="7dp" />
+        android:layout_marginTop="239dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:textColor="#98041ffa"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -96,11 +106,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="171dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="184dp"
         android:text="截至日期"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#98041ffa"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -113,7 +124,8 @@
         android:layout_marginLeft="2dp"
         android:layout_marginTop="247dp"
         android:text="客户地址"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#98041ffa"/>
 
     <TextView
         android:id="@+id/textView16"
@@ -126,38 +138,41 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="317dp"
         android:text="留言"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#98041ffa"/>
 
-    <EditText
+    <TextView
         android:id="@+id/etmessge"
         android:layout_width="272dp"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp" />
+        android:layout_marginTop="303dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:textColor="#98041ffa"/>
 
     <Button
         android:id="@+id/btnjiedan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="13dp"
-        android:text="接单"
-        android:background="#27ef24"/>
+        android:layout_marginBottom="118dp"
+        android:background="#27ef24"
+        android:text="接单" />
 
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnjiedan"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="3dp"
         android:layout_toEndOf="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
-        android:text="取消"
-        android:background="#27ef24"/>
+        android:background="#27ef24"
+        android:text="取消" />
 </RelativeLayout>

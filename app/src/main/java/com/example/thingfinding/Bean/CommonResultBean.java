@@ -6,7 +6,7 @@ package com.example.thingfinding.Bean;
 public class CommonResultBean<T> {
     private String code;
     private T data;
-    private String msg;
+    private String message;
     private String type;
     private String count;
 
@@ -27,26 +27,11 @@ public class CommonResultBean<T> {
 
 
     public String getMsg() {
-        return msg;
+        return message;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.message = msg;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
-    }
 }
