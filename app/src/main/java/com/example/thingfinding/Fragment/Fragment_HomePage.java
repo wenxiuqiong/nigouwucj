@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
 import com.example.thingfinding.CustomerdemandView.chongwuActivity;
 import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;
@@ -60,6 +61,7 @@ public class Fragment_HomePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment__home_page, container, false);
         listView = (ListView) view.findViewById(R.id.lvhome);
         lists=new ArrayList<>();
@@ -139,4 +141,5 @@ public class Fragment_HomePage extends Fragment {
             Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
         }
     }
+
 }

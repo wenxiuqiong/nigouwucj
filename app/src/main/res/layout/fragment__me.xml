@@ -1,60 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/beijing"
     tools:context=".Fragment.Fragment_Me">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/linearLayout"
-        style="@style/linearLayout"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        style="@style/linearLayout">
 
         <com.example.thingfinding.MyImageView
             android:id="@+id/imageView2"
-            style="@style/image_one"
-            android:layout_width="83dp"
-            android:layout_height="83dp"
+            android:layout_width="@dimen/ivIconSize"
+            android:layout_height="@dimen/ivIconSize"
+            android:layout_marginLeft="2dp"
+            android:layout_gravity="center"
             android:src="@drawable/chushi" />
 
         <TextView
             android:id="@+id/textView10"
-            style="@style/main_text"
-            android:layout_height="90dp"
+            android:layout_width="@dimen/UserNameWidth"
+            android:layout_height="@dimen/ivIconSize"
+            android:layout_marginLeft="@dimen/marginSize"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="登 录"
-            tools:layout_editor_absoluteX="142dp"
-            tools:layout_editor_absoluteY="36dp" />
+            android:textSize="@dimen/navBarTitleSize"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
+    <View style="@style/line"/>
 
     <ListView
         android:id="@+id/lv_main"
-        android:layout_width="wrap_content"
-        android:layout_height="348dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     </ListView>
 
     <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229"
-        tools:layout_editor_absoluteX="0dp" />
+        style="@style/line"
+        android:layout_width="match_parent"/>
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+</LinearLayout>

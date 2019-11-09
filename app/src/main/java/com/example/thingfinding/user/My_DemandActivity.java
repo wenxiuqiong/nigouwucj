@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.Fragment.Fragment_HomePage;
@@ -44,12 +45,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class My_DemandActivity extends AppCompatActivity implements View.OnClickListener {
+public class My_DemandActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText nameText;
     private EditText phoneText;
     private EditText addText;
-    private TextView exitText;
     private TextView addressbookText;
     private TextView tv_type;
     private EditText demand;
@@ -78,10 +78,10 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
+        initNavBar(true,"发布服务");
         nameText = (EditText) findViewById(R.id.nameText);
         phoneText = (EditText) findViewById(R.id.phoneText);
         addText = (EditText) findViewById(R.id.addText);
-        exitText = (TextView) findViewById(R.id.exitText);
         tv_type = (TextView) findViewById(R.id.tv_type);
         addressbookText= (TextView) findViewById(R.id.addressbookText);
         demand= (EditText) findViewById(R.id.demand);
@@ -93,37 +93,20 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
         chargeText= (EditText) findViewById(R.id.chargeText);
         releasebtn= (Button) findViewById(R.id.releasebtn);
         image=(ImageView)findViewById(R.id.image);
-        tv_type.setText(getIntent().getStringExtra("demandType"));
+       // tv_type.setText(getIntent().getStringExtra("demandType"));
     }
 
 
     private void initEvent() {
-        exitText.setOnClickListener(this);
-
         addressbookText.setOnClickListener(this);
         releasebtn.setOnClickListener(this);
         image.setOnClickListener(this);;
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //这个方法里可以对点击事件进行处理
-                //i指的是点击的位置,通过i可以取到相应的数据源
-                String info=adapterView.getItemAtPosition(i).toString();//获取i所在的文本
-               //mBodyLayout.addView(PetsView);
-                //Toast.makeText(My_DemandActivity.this, info, Toast.LENGTH_SHORT).show();
-                System.out.print("666");
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
+
     }
 
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.exitText:
-                exit();
-                break;
             case R.id.addressbookText:
                 addressbook();
                 break;
@@ -183,12 +166,12 @@ public class My_DemandActivity extends AppCompatActivity implements View.OnClick
                 public void onSuccess(CommonResultBean response) {
                     String data = (String) response.getData();
                     String code = response.getCode();
-                    String type = response.getType();
+                    //String type = response.getType();
                     String msg = response.getMsg();
                     Log.i("--**-**--", "发布成功");
                     Log.i("--**", data);
                     Log.i("--**", code);
-                    Log.i("--**", type);
+                 //Log.i("--**", type);
                     Log.i("--**", msg);
                 }
 

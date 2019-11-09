@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/beijing"
+    android:orientation="vertical"
     tools:context=".seting.PrivateActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="隐私协议"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textColor="#000"
-        android:background="#d6eddd"/>
-
-    <TextView
-        android:id="@+id/exitText"
-        android:layout_width="45dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text=" ^←^"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="7dp" />
+    <include layout="@layout/nav_bar"/>
 
     <TextView
         android:layout_width="381dp"
         android:layout_height="464dp"
-        android:layout_marginTop="44dp"
         android:text="    在您使用校园找寻提供服务的时候，我将按照本隐私政策处理及保护您的个人信息。我们如何保护这个人信息安全等，希望您仔细阅读并理解本隐私政策的相关条约。
     下面隐私条约涉及内容太多，懒得打了，自行脑补。"
         android:textSize="20dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

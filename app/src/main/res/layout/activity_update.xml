@@ -1,33 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/beijing"
+    android:orientation="vertical"
     tools:context=".seting.UpdateActivity">
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="版本更新"
-        android:textColor="#000"
-        android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/exitText"
-        android:layout_width="45dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text=" ^←^"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="7dp" />
+    <include layout="@layout/nav_bar"/>
 
     <TextView
         android:id="@+id/textView"
@@ -45,16 +26,8 @@
 
     <Button
         android:id="@+id/update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#d6eddd"
+        style="@style/commit_btn"
         android:text="版本更新"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272"
-        tools:layout_editor_absoluteX="16dp" />
+        android:textSize="30dp" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

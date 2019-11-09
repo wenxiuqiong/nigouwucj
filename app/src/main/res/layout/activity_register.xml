@@ -4,359 +4,204 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".user.RegisterActivity"
     android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/nav_bar"/>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="122dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="138dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/exitText"
-                style="@style/text_one"
-                android:text="  ^←^"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.017"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.029" />
-
-        </LinearLayout>
-
-        <com.example.thingfinding.MyImageView
-            android:id="@+id/touxiang"
-            style="@style/image_one"
-            android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/chushi"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.435"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="323dp"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="194dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-                <TextView
-                    android:id="@+id/textView25"
-                    style="@style/login_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="ID号：" />
-
-                <EditText
-                    android:id="@+id/etIdCard"
-                    style="@style/login_etext"
-                    android:layout_width="115dp"
-                    android:layout_height="52dp"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-            <TextView
-                android:id="@+id/textView21"
-                style="@style/login_text"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
+            <com.example.thingfinding.MyImageView
+                android:id="@+id/touxiang"
+                style="@style/image_one"
                 android:layout_gravity="center"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="用户名：" />
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/chushi" />
 
-                <EditText
-                    android:id="@+id/etusername"
-                    style="@style/login_etext"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="1dp"
-                    android:singleLine="true"
-                    android:inputType="text"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp">
-
-            <LinearLayout
-                android:layout_width="182dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-                <TextView
-                    android:id="@+id/textView18"
-                    style="@style/login_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="姓名：" />
-
-                <EditText
-                    android:id="@+id/etname"
-                    style="@style/login_etext"
-                    android:layout_width="102dp"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="1dp"
-                    android:gravity="center"
-                    android:singleLine="true"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <EditText
+                android:id="@+id/etIdCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-                <TextView
-                    android:id="@+id/textView19"
-                    style="@style/login_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="电话：" />
-
-                <EditText
-                    android:id="@+id/etphone"
-                    style="@style/login_etext"
-                    android:layout_width="123dp"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:singleLine="true" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp">
-
-            <LinearLayout
-                android:layout_width="183dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-                <TextView
-                    android:id="@+id/textView26"
-                    style="@style/login_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="店名：" />
-
-                <EditText
-                    android:id="@+id/etstoreName"
-                    style="@style/login_etext"
-                    android:layout_width="105dp"
-                    android:layout_height="52dp"
-                    android:singleLine="true"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-                <TextView
-                    android:id="@+id/textView20"
-                    style="@style/login_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="邮箱：" />
-
-                <EditText
-                    android:id="@+id/etemail"
-                    style="@style/login_etext"
-                    android:layout_width="127dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="1dp"
-                    android:singleLine="true"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/border1">
-
-
-            <TextView
-                android:id="@+id/textView23"
-                style="@style/login_text"
-                android:layout_height="24dp"
+                android:layout_height="@dimen/itemHeight"
                 android:layout_gravity="center"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="店地址：" />
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的身份证号码"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
+
+            <EditText
+                android:id="@+id/etusername"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的用户名"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
+
+            <EditText
+                android:id="@+id/etname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的名字"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
+
+            <EditText
+                android:id="@+id/etphone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的电话号码"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
+
+            <EditText
+                android:id="@+id/etstoreName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的店铺名称"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
+
+            <EditText
+                android:id="@+id/etemail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的邮箱编码"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
 
             <EditText
                 android:id="@+id/etstoreadress"
-                style="@style/login_etext"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="@dimen/itemHeight"
                 android:layout_gravity="center"
-                android:singleLine="true"/>
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的店铺地址"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
 
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/border1">
-
-            <TextView
-                android:id="@+id/textView27"
-                style="@style/login_text"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="店铺介绍：" />
+            <View
+                style="@style/line"/>
 
             <EditText
                 android:id="@+id/etstoreintroduction"
-                style="@style/login_etext"
-                android:layout_width="288dp"
-                android:layout_height="52dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
                 android:layout_gravity="center"
-                android:singleLine="true"/>
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请简要介绍你的店铺"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="52dp">
-
-            <LinearLayout
-                android:layout_width="194dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-            <TextView
-                android:id="@+id/textView6"
-                style="@style/login_text"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="密码：" />
-
+            <View
+                style="@style/line"/>
 
             <EditText
                 android:id="@+id/etpwd"
-                style="@style/login_etext"
-                android:layout_width="103dp"
-                android:layout_height="52dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
                 android:layout_gravity="center"
-                android:singleLine="true"/>
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请输入你的登录密码"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
 
-            </LinearLayout>
+            <View
+                style="@style/line"/>
+
+            <EditText
+                android:id="@+id/etpawdagin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/itemHeight"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_marginTop="@dimen/marginSize"
+                android:hint="请确认你的登录密码"
+                android:paddingLeft="@dimen/marginSize"
+                android:textSize="@dimen/registerEvSize" />
+
+            <View
+                style="@style/line"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border1">
-
-                <TextView
-                    android:id="@+id/passwordagin"
-                    style="@style/login_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="确认密码：" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/etpawdagin"
-                    style="@style/login_etext"
-                    android:layout_width="103dp"
-                    android:layout_height="52dp"
+                    android:id="@+id/et_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/itemHeight"
                     android:layout_gravity="center"
-                    android:singleLine="true"
-/>
+                    android:background="@null"
+                    android:hint="请输入验证码"
+                    android:paddingLeft="@dimen/marginSize"
+                    android:textSize="@dimen/registerEvSize" />
 
+                <TextView
+                    android:id="@+id/codeBtn"
+                    style="@style/commit_btn"
+                    android:layout_width="200dp"
+                    android:text="获取验证码"
+                    android:textColor="#fff"
+                    android:textSize="18sp" />
             </LinearLayout>
 
+            <View
+                style="@style/line"/>
+
+            <Button
+                android:id="@+id/zhuce"
+                style="@style/commit_btn"
+                android:layout_marginTop="@dimen/marginSize"
+                android:layout_marginBottom="@dimen/marginSize"
+                android:text="注    册" />
 
         </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="52dp">
-
-        <Button
-            android:id="@+id/zhuce"
-            style="@style/login_button"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:text="注    册" />
-
-
-    </LinearLayout>
-
-
-
+    </ScrollView>
 </LinearLayout>

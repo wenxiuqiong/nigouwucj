@@ -6,28 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/beijing"
     tools:context=".Fragment.Fragment_HomePage">
 
 
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="456dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/navBarHeight"
+        android:background="@color/mainColor"
         android:orientation="horizontal">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="反转购物服务"
             android:textSize="30dp"
-            android:textColor="#32e106"/>
+            android:gravity="center"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
     <ListView
         android:id="@+id/lvhome"

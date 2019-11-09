@@ -19,8 +19,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     //也可以不指定字段的类型、长度，因为int类型也可以保存Char类型的创建学生表
 
     private final String createTb1="CREATE TABLE Users (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "username VARCHAR2,password VARCHAR2,avatar BLOB," +
-            "name VARCHAR2,phone VARCHAR2,id VARCHAR2,email VARCHAR2,address VARCHAR2)";
+            "username VARCHAR2,phone VARCHAR2,email VARCHAR2,avatar BLOB)";
     private final String createTb="CREATE TABLE AddressBook (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "name VARCHAR2 NOT NULL,phone VARCHAR2 NOT NULL,address VARCHAR2 NOT NULL)";
 

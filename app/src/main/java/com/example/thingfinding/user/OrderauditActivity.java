@@ -10,11 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thingfinding.Adapter.orderauditAdapter;
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 
-public class OrderauditActivity extends AppCompatActivity implements View.OnClickListener {
+public class OrderauditActivity extends BaseActivity implements View.OnClickListener {
 
-    private TextView exitText;
     private ListView orderauditLv;
     private orderauditAdapter adapter;
     @Override
@@ -26,14 +26,13 @@ public class OrderauditActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initView() {
-        exitText = (TextView) findViewById(R.id.exitText);
+        initNavBar(true,"订单审核");
         orderauditLv=(ListView)findViewById(R.id.orderauditLv);
         adapter=new orderauditAdapter(null,this);
         orderauditLv.setAdapter(adapter);
     }
 
     private void initEvent() {
-        exitText.setOnClickListener(this);
         orderauditLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -43,14 +42,7 @@ public class OrderauditActivity extends AppCompatActivity implements View.OnClic
     }
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.exitText:
-                exit();
-                break;
         }
-    }
-
-    public void exit() {
-        finish();
     }
 
     public  void ord_pro(){

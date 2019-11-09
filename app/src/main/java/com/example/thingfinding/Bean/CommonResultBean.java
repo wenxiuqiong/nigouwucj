@@ -10,6 +10,14 @@ public class CommonResultBean<T> {
     private String type;
     private String count;
 
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
     public String getCode() {
         return code;
     }
@@ -24,7 +32,6 @@ public class CommonResultBean<T> {
     public void setData(T data) {
         this.data = data;
     }
-
 
     public String getMsg() {
         return message;

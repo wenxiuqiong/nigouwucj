@@ -21,10 +21,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.thingfinding.Bean.CommonCustomerneedBean;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.Bean.ItemInfo;
+import com.example.thingfinding.Bean.userBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.Fragment.Fragment_Me;
 import com.example.thingfinding.HttpUtil;
@@ -33,10 +35,10 @@ import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.Util.BaseCallback;
 import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
+import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import org.json.JSONArray;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -44,14 +46,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class loginActivity extends AppCompatActivity implements View.OnClickListener {
+public class loginActivity extends BaseActivity implements View.OnClickListener {
 
     public static final String USER = "user";
     private EditText et_username;
     private EditText et_password;
     private ImageView image;
     private Button btn;
-    private TextView exitText ;
     private TextView findpasswordText;
     private TextView registerText;
     Bitmap bitmap=null;
@@ -63,6 +64,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private String isMemory = "";//isMemory变量用来判断SharedPreferences有没有数据，包括上面的YES和NO
     private String FILE = "saveUserNamePwd";//用于保存SharedPreferences的文件
     private String Mark="mark";
+    private String UserID="UserID";
     private SharedPreferences sp = null;//声明一个SharedPreferences
     private ItemInfo itemInfo;
     private List<Map<String,String>> list;
@@ -70,6 +72,9 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private JSONArray arr;
     private SQLiteHelper dbhelper;
     private OkHttpHelp mokhttphelp;
+    private JSONArray jsonArray;
+    private JSONObject[] jsonObjects;
+    private JSONObject jsonObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,16 +86,16 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
     }
     private void initView() {
+        initNavBar(true,"登  录");
         et_username=(EditText)findViewById(R.id.username) ;
         et_password=(EditText)findViewById(R.id.password) ;
         image=(ImageView)findViewById(R.id.imageView2) ;
         btn=(Button)findViewById(R.id.login);
         checkBox=(CheckBox)findViewById(R.id.checkboxs) ;
-        exitText = (TextView) findViewById(R.id.exitText);
         findpasswordText = (TextView) findViewById(R.id.findpasswordText);
         registerText = (TextView) findViewById(R.id.registerText);
         sp = getSharedPreferences(FILE, MODE_PRIVATE);
-        name = sp.getString("name", "");
+        name = sp.getString("user", "");
         password = sp.getString("password", "");
         image1 = sp.getString("image", "");
         isMemory = sp.getString("isMemory", NO);
@@ -109,12 +114,10 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initEvent() {
-        exitText.setOnClickListener(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
-
                 passData();
             }
         });
@@ -124,9 +127,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
     public void onClick(View v){
         switch(v.getId()){
-            case R.id.exitText:
-                exit();
-                break;
             case R.id.findpasswordText:
                 findpassword();
                 break;
@@ -134,10 +134,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 register();
                 break;
         }
-    }
-
-    public void exit(){
-        finish();
     }
 
     public void register(){
@@ -152,7 +148,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void passData() {
-        remenber();
+        remenber(et_username.getText().toString());
         Intent intent = new Intent(this, Fragment_Me.class);
         String name = et_username.getText().toString().trim();
         String paw = et_password.getText().toString().trim();
@@ -160,7 +156,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         this.dbhelper = SQLiteHelper.getInstance(this);
         SQLiteDatabase db = dbhelper.getReadableDatabase();
         Map<String, String> map = new HashMap<>();
-        map.put(USER, name);
+        map.put( USER,name);
         map.put("pwd", paw);
         try {
             mokhttphelp = OkHttpHelp.getinstance();
@@ -174,40 +170,55 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 @Override
-                public void onSuccess(CommonResultBean<String> response) {
-                    String data = (String) response.getData();
+                public void onSuccess(CommonResultBean response) {
+                    Gson gson=new Gson();
+                    String result=gson.toJson(response.getData());
                     String code = response.getCode();
-//                    String type = response.getType();
-//                    String msg = response.getMsg();
-                   Log.i("--**-**--", "响应成功");
-                   // Log.i("--**", data);
+                    userBean user=gson.fromJson(result,userBean.class);
+                    String userId=user.getUserId();
+                    String userName=user.getUserName();
+                    SharedPreferences sps=getSharedPreferences(UserID, MODE_PRIVATE);
+                    SharedPreferences.Editor edit = sps.edit();
+                    edit.putString("userId", userId);
+                    edit.commit();
+                    remenber(userName);
+                    loginActivity.this.dbhelper = SQLiteHelper.getInstance(loginActivity.this);
+                    //  Toast.makeText(this,"信息已删除！",Toast.LENGTH_SHORT).show();
+                    SQLiteDatabase db = dbhelper.getReadableDatabase();
+
+                    byte[] imgData = null;
+
+                    Cursor cur = db.query("Users",new String[]{"avatar"},
+                            "username=?", new String[]{userName},
+                            null, null, null);
+
+                    if(cur.getCount()==0){
+                    }
+                    while(cur.moveToNext()) {
+                        //将Blob数据转化为字节数组
+                        imgData = cur.getBlob(cur.getColumnIndex("avatar"));
+                        Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+                        //将位图显示为图片
+                        image.setImageBitmap(imagebitmap);
+                    }
+                    cur.close();
+                    db.close();
+
+                    Log.i("--**-**--", "响应成功");
                     Log.i("--**", code);
-                  //  Log.i("--**", type);
-                  //  Log.i("--**", msg);
                     if (code.equals("200")) {
                         Log.i("--**-**--", "登录成功");
                         saveMark();
-                        intent.putExtra("login", name);
+                       // intent.putExtra("login", userId);
+                        intent.putExtra("mark",userName);
                         setResult(1, intent);
                         finish();
 
                     } else {
 
-                        //DialogUtil.showDialog(loginActivity.this,data,false);
-                        Toast.makeText(loginActivity.this, data, Toast.LENGTH_SHORT).show();
                     }
-
-
                 }
 
-                //                @Override
-//                public void onSuccess(CommonResultBean<userBean> response) {
-//                    if (response.getData()!=null){
-//                        userBean userBean=response.getData();
-//                        String name=userBean.getUsername();
-//                        Log.i("--**-**--","登录成功");
-//                    }
-//                }
                 @Override
                 public void onError(Response response, int errorCode, Exception e) {
                     e.printStackTrace();
@@ -219,14 +230,15 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void remenber() {
+    public void remenber(String name) {
         if (checkBox.isChecked()) {
             if (sp == null) {
                 //Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
                 sp = getSharedPreferences(FILE, MODE_PRIVATE);
             }
             Editor edit = sp.edit();
-            edit.putString("name", et_username.getText().toString());
+            edit.putString("user",et_username.getText().toString());
+            edit.putString("name", name);
             edit.putString("password", et_password.getText().toString());
             edit.putString("isMemory", YES);
             edit.commit();
@@ -275,21 +287,25 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
         byte[] imgData = null;
 
-       Cursor cur = db.query("Users",new String[]{"avatar"},
-                "username=?", new String[]{et_username.getText().toString()},
-               null, null, null);
+        if(TextUtils.isEmpty(et_username.getText().toString())){
+            return;
+        }else {
+            Cursor cur = db.query("Users", new String[]{"avatar"},
+                    "email=?", new String[]{et_username.getText().toString()},
+                    null, null, null);
 
-        if(cur.getCount()==0){
+            if (cur.getCount() == 0) {
+            }
+            while (cur.moveToNext()) {
+                //将Blob数据转化为字节数组
+                imgData = cur.getBlob(cur.getColumnIndex("avatar"));
+                Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
+                //将位图显示为图片
+                image.setImageBitmap(imagebitmap);
+            }
+            cur.close();
+            db.close();
         }
-        while(cur.moveToNext()) {
-            //将Blob数据转化为字节数组
-            imgData = cur.getBlob(cur.getColumnIndex("avatar"));
-            Bitmap imagebitmap = BitmapFactory.decodeByteArray(imgData, 0, imgData.length);
-            //将位图显示为图片
-             image.setImageBitmap(imagebitmap);
-        }
-        cur.close();
-        db.close();
 
     }
 

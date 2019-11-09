@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/beijing"
     tools:context=".Fragment.Fragment_News">
 
     <!-- TODO: Update blank fragment layout -->

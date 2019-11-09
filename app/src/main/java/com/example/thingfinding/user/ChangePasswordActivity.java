@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
@@ -19,20 +20,20 @@ import com.example.thingfinding.SQLiteHelper;
 import com.example.thingfinding.Util.BaseCallback;
 import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
+import com.example.thingfinding.Views.InputView;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChangePasswordActivity extends BaseActivity implements View.OnClickListener {
 
     private String username;
-    private EditText o_password;
-    private EditText n_password;
-    private EditText a_password;
+    private InputView o_password;
+    private InputView n_password;
+    private InputView a_password;
     private Button btn;
-    private TextView exitText;
     private SQLiteHelper dbhelper;
     private OkHttpHelp mokhttphelp;
 
@@ -47,34 +48,27 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
     }
 
     private void initView() {
+        initNavBar(true,"修改密码");
         intent=getIntent();
         username=intent.getStringExtra("username");
-        o_password=(EditText)findViewById(R.id.o_password) ;
-        n_password=(EditText)findViewById(R.id.n_password) ;
-        a_password=(EditText)findViewById(R.id.a_password);
-        btn=(Button)findViewById(R.id.update);
-        exitText = (TextView) findViewById(R.id.exitText);
+        o_password=fd(R.id.input_old_password) ;
+        n_password=fd(R.id.input_new_password) ;
+        a_password=fd(R.id.input_new_password_confirm);
+        btn=fd(R.id.commit_btn);
 
     }
 
     private void initEvent() {
         btn.setOnClickListener(this);
-        exitText.setOnClickListener(this);
     }
 
     public void onClick(View v){
         switch(v.getId()){
-            case R.id.exitText:
-                exit();
-                break;
+
             case R.id.update:
                 changepassword();
                 break;
         }
-    }
-
-    public void exit() {
-        finish();
     }
 //    public void changePassword(){
 //        this.dbhelper = SQLiteHelper.getInstance(this);
@@ -88,6 +82,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
 //    }
 
     public void changepassword() {
+
         String url = BaseUrl.BASE_URL + "";
         Map<String, String> map = new HashMap<>();
 
@@ -108,12 +103,12 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
                 public void onSuccess(CommonResultBean response) {
                     String data = (String) response.getData();
                     String code = response.getCode();
-                    String type = response.getType();
+                   // String type = response.getType();
                     String msg = response.getMsg();
                     Log.i("--**-**--", "响应成功");
                     Log.i("--**", data);
                     Log.i("--**", code);
-                    Log.i("--**", type);
+                   // Log.i("--**", type);
                     Log.i("--**", msg);
                     if(code.equals("200")){
                         Toast.makeText(ChangePasswordActivity.this,"修改成功！",Toast.LENGTH_SHORT).show();

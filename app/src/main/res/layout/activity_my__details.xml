@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".user.My_DetailsActivity">
 
-    <TextView
-        android:id="@+id/exitText"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:gravity="left"
-        android:text="^←^"
-        android:textSize="30dp"
-        android:background="#d6eddd"/>
+    <include layout="@layout/nav_bar"/>
 
     <EditText
         android:id="@+id/details"

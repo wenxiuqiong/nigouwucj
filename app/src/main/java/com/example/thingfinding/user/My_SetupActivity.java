@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 import com.example.thingfinding.seting.HelpActivity;
 import com.example.thingfinding.seting.PrivateActivity;
@@ -26,11 +27,10 @@ import com.example.thingfinding.seting.UpdateActivity;
 import java.util.ArrayList;
 
 
-public class My_SetupActivity extends Activity implements View.OnClickListener {
+public class My_SetupActivity extends BaseActivity implements View.OnClickListener {
 
     private Button btn;
     private ListView listView;
-    private TextView exitText;
     private String[] heading = {"修改密码", "意见反馈", "黑名单管理", "帮助中心", "隐私协议", "版本更新"};
     private String[] ending = {">", ">", ">", ">", ">", ">"};
     private ArrayList<String> list = new ArrayList<String>();
@@ -54,16 +54,15 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
         initEvent();
     }
     private void initView() {
+        initNavBar(true,"设置");
         intent=getIntent();
         username=intent.getStringExtra("username");
         btn = (Button) findViewById(R.id.exit);
         listView = (ListView) findViewById(R.id.set_lv);
-        exitText=(TextView) findViewById(R.id.exitText);
 
     }
     private void initEvent() {
         btn.setOnClickListener(this);
-        exitText.setOnClickListener(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -94,9 +93,7 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
             case R.id.exit:
                 showNormalDialog();
                 break;
-            case R.id.exitText:
-                exit();
-                break;
+
         }
     }
     public void changepassword() {
@@ -122,9 +119,6 @@ public class My_SetupActivity extends Activity implements View.OnClickListener {
     public void pri(){
         Intent intent=new Intent(this,PrivateActivity.class);
         startActivity(intent);
-    }
-    public void exit() {
-        finish();
     }
 
     public void isLogin() {

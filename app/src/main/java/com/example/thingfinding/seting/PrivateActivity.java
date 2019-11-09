@@ -5,35 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 
-public class PrivateActivity extends AppCompatActivity implements View.OnClickListener {
+public class PrivateActivity extends BaseActivity{
 
-    private TextView exitText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private);
         initView();
-        initEvent();
 
     }
     private void initView() {
-        exitText = (TextView) findViewById(R.id.exitText);
+        initNavBar(true,"隐私协议");
     }
 
-    private void initEvent() {
-        exitText.setOnClickListener(this);
-    }
-
-    public void onClick(View v){
-        switch(v.getId()){
-            case R.id.exitText:
-                exit();
-                break;
-        }
-    }
-    public void exit() {
-        finish();
-    }
 }

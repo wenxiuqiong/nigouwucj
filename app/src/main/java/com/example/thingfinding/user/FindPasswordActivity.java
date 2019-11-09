@@ -110,12 +110,12 @@ public class FindPasswordActivity extends AppCompatActivity implements View.OnCl
                 public void onSuccess(CommonResultBean response) {
                     String data = (String) response.getData();
                     String code = response.getCode();
-                    String type = response.getType();
+                    //String type = response.getType();
                     String msg = response.getMsg();
                     Log.i("--**-**--", "已重置密码");
                     Log.i("--**", data);
                     Log.i("--**", code);
-                    Log.i("--**", type);
+                   // Log.i("--**", type);
                     Log.i("--**", msg);
                 }
 

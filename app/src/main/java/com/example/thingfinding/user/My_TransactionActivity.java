@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.thingfinding.Adapter.addressbookAdapter;
 import com.example.thingfinding.Adapter.transactionAdpter;
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
@@ -35,10 +36,9 @@ import com.squareup.okhttp.Response;
 import java.util.HashMap;
 import java.util.Map;
 
-public class My_TransactionActivity extends AppCompatActivity implements
+public class My_TransactionActivity extends BaseActivity implements
         View.OnClickListener,OnCheckedChangeListener {
 
-    private TextView exitText;
     private ListView transactionLv;
     private RadioGroup radioGroup;
     private RadioButton whole; // 表示第一个RadioButton 组件
@@ -57,7 +57,7 @@ public class My_TransactionActivity extends AppCompatActivity implements
     }
 
     private void initView() {
-        exitText = (TextView) findViewById(R.id.exitText);
+        initNavBar(true,"我的交易");
         transactionLv= (ListView) findViewById(R.id.transactionLv);
         radioGroup = (RadioGroup) findViewById(R.id.rg);
         whole=(RadioButton)findViewById(R.id.wholeBtn);
@@ -68,22 +68,12 @@ public class My_TransactionActivity extends AppCompatActivity implements
     }
 
     private void initEvent() {
-        exitText.setOnClickListener(this);
         radioGroup.setOnCheckedChangeListener(this);
 
     }
 
-    public void exit() {
-        finish();
-    }
-
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.exitText:
-                exit();
-                break;
 
-        }
     }
 
     @Override

@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 import com.example.thingfinding.user.My_DemandActivity;
 
-public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
+public class UpdateActivity extends BaseActivity implements View.OnClickListener {
 
     private Button btn;
-    private TextView exitText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,29 +26,21 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initView() {
+        initNavBar(true,"版本更新");
         btn=(Button)findViewById(R.id.update);
-        exitText = (TextView) findViewById(R.id.exitText);
     }
 
     private void initEvent() {
         btn.setOnClickListener(this);
-        exitText.setOnClickListener(this);
     }
 
     public void onClick(View v){
         switch(v.getId()){
-            case R.id.exitText:
-                exit();
-                break;
             case R.id.update:
                 update();
                 break;
         }
     }
-    public void exit() {
-        finish();
-    }
-
     public void update() {
         final android.app.AlertDialog.Builder normalDialog = new android.app.AlertDialog.Builder(this);
         normalDialog.setTitle("系统更新");

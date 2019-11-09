@@ -7,38 +7,24 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 
 
-public class My_DetailsActivity extends AppCompatActivity implements View.OnClickListener{
+public class My_DetailsActivity extends BaseActivity{
 
     EditText details;
-    TextView exitText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__details);
         Intent intent=getIntent();
         initView();
-        initEvent();
         details.setText(intent.getStringExtra("details"));
     }
     private void initView() {
+        initNavBar(true,"");
         details=(EditText)findViewById(R.id.details);
-        exitText=(TextView) findViewById(R.id.exitText);
     }
-    private void initEvent() {
-        exitText.setOnClickListener(this);
-    }
-    public void exit() {
-        System.out.print("666");
-        finish();
-    }
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.exitText:
-                exit();
-                break;
-        }
-    }
+
 }

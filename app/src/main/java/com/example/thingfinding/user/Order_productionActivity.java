@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 
 
-public class Order_productionActivity extends AppCompatActivity implements View.OnClickListener {
+public class Order_productionActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText manufactornameText;
     private EditText manufactorphoneText;
     private EditText manufactoraddText;
-    private TextView exitText;
     private TextView addressbookText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,32 +27,25 @@ public class Order_productionActivity extends AppCompatActivity implements View.
     }
 
     private void intnView(){
+        initNavBar(true,"订单制作");
         manufactornameText=(EditText) findViewById(R.id.manufactornameText);
         manufactorphoneText=(EditText)findViewById(R.id.manufactorphoneText);
         manufactoraddText=(EditText)findViewById(R.id.manufactoraddText);
-        exitText=(TextView)findViewById(R.id.exitText);
         addressbookText=(TextView)findViewById(R.id.addressbookText);
     }
 
     private void intnEvent(){
-        exitText.setOnClickListener(this);
         addressbookText.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.exitText:
-                exit();
-                break;
             case R.id.addressbookText:
                 addressbook();
                 break;
 
         }
-    }
-    public void exit() {
-        finish();
     }
     public void addressbook() {
         Intent intent=new Intent(this,addressbookActivity.class);

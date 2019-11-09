@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.R;
 
-public class HelpActivity extends AppCompatActivity implements View.OnClickListener {
+public class HelpActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView exitText;
     @Override
@@ -15,16 +16,13 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
         initView();
-        initEvent();
     }
 
     private void initView() {
-        exitText = (TextView) findViewById(R.id.exitText);
+        initNavBar(true,"帮助中心");
     }
 
-    private void initEvent() {
-        exitText.setOnClickListener(this);
-    }
+
 
     public void onClick(View v){
         switch(v.getId()){

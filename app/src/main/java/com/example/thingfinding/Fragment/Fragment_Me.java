@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
+import com.example.thingfinding.user.Order_productionActivity;
 import com.example.thingfinding.user.OrderauditActivity;
 import com.example.thingfinding.user.My_DemandActivity;
 import com.example.thingfinding.user.My_InformationActivity;
@@ -51,6 +53,7 @@ public class Fragment_Me extends Fragment {
     private String[] ending = {">", ">", ">", ">",">"};
     private ArrayList<String> list = new ArrayList<String>();
     private String select;
+    private String userId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,14 +125,14 @@ public class Fragment_Me extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode ==  1 && resultCode == 1) {
-            String name=data.getStringExtra("login");
-            txname.setText(name);
-
+           //userId=data.getStringExtra("login");
+            String mark=data.getStringExtra("mark");
+            txname.setText(mark);
             this.dbhelper = SQLiteHelper.getInstance(getActivity());
             SQLiteDatabase db = dbhelper.getReadableDatabase();
             byte[] imgData = null;
             Cursor cur = db.query("Users",new String[]{"avatar"},
-                    "username=?", new String[]{txname.getText().toString()}, null, null, null);
+                    "username=?", new String[]{mark}, null, null, null);
             if(cur.getCount()==0){
             }
             while(cur.moveToNext()) {
@@ -165,7 +168,7 @@ public class Fragment_Me extends Fragment {
             Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
         }else {
             Intent intent = new Intent(getActivity(), My_InformationActivity.class);
-            intent.putExtra("username", txname.getText().toString().trim());
+            //intent.putExtra("userId", userId);
             startActivity(intent);
         }
 

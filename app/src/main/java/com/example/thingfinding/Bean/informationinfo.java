@@ -8,10 +8,10 @@ public class informationinfo {
     private String eMail;//邮箱
     private String storeAddress;//店铺地址
     private String storeIntroduction;//店铺介绍
-    private String userId;
-    private String password;
+    private String userId;//编号
+    private String password;//密码
     private String leaguer;
-    private String time;
+    private String time;//
     private String isfulfil;
     private String user;
 
