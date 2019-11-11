@@ -19,11 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thingfinding.BaseActivity;
-import com.example.thingfinding.Bean.CodeBean;
-import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.Bean.phoneBean;
-import com.example.thingfinding.Bean.userBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
@@ -34,13 +31,13 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
@@ -103,6 +100,23 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             public void onClick(View v) {
                 time.getCode();
                 time.start();
+            }
+        });
+
+        et_telephone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b&&et_telephone.getText().toString() != null && et_telephone.getText().toString().length() == 11) {
+                    Pattern compile = Pattern.compile("^1[3|4|5|6|7|8][0-9]\\d{8}$");
+                    Matcher matcher = compile.matcher(et_telephone.getText().toString());
+                    boolean b1 = matcher.matches();
+                    if(!b1){
+                        String string = et_telephone.getText().toString();
+                        et_telephone.setText("");
+                        et_telephone.setHint(string + "    无效手机号");
+                        et_telephone.setHintTextColor(Color.parseColor("#dd3434"));
+                    }
+                }
             }
         });
     }
@@ -344,30 +358,32 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         super.onActivityResult(requestCode, resultCode, data);
         if ( resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inJustDecodeBounds = false;
-            try{
-                InputStream inputStream = getContentResolver().openInputStream(uri);
-                BitmapFactory.decodeStream(inputStream,null,options);
-                inputStream.close();
-                int height = options.outHeight;
-                int width = options.outWidth;
-                int sampleSize = 1;
-                int max = Math.max(height,width);
-                if (max>MAX_SIZE){
-                    int nw = width/2;
-                    int nh = height/2;
-                    while ((nw/sampleSize)> MAX_SIZE || (nh / sampleSize)>MAX_SIZE){
-                        sampleSize *=2;
-                    }
-                }
-                options.inSampleSize = sampleSize;
-                options.inJustDecodeBounds = false;
-                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri),null,options);
-                image.setImageBitmap(bitmap);
-            }catch (IOException ioe){
+            image.setImageURI(uri);
 
-            }
+//            BitmapFactory.Options options = new BitmapFactory.Options();
+//            options.inJustDecodeBounds = false;
+//            try{
+//                InputStream inputStream = getContentResolver().openInputStream(uri);
+//                BitmapFactory.decodeStream(inputStream,null,options);
+//                inputStream.close();
+//                int height = options.outHeight;
+//                int width = options.outWidth;
+//                int sampleSize = 1;
+//                int max = Math.max(height,width);
+//                if (max>MAX_SIZE){
+//                    int nw = width/2;
+//                    int nh = height/2;
+//                    while ((nw/sampleSize)> MAX_SIZE || (nh / sampleSize)>MAX_SIZE){
+//                        sampleSize *=2;
+//                    }
+//                }
+//                options.inSampleSize = sampleSize;
+//                options.inJustDecodeBounds = false;
+//                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri),null,options);
+//                image.setImageBitmap(bitmap);
+//            }catch (IOException ioe){
+//
+//            }
 
         }
     }
@@ -376,26 +392,30 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         //将图片转化为位图
         image.setDrawingCacheEnabled(Boolean.TRUE);
         Bitmap bi=image.getDrawingCache();
-        //Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.id.imageView2);
-        int size = bi.getWidth() * bitmap.getHeight() * 4;
-        //创建一个字节数组输出流,流的大小为size
-        ByteArrayOutputStream baos= new ByteArrayOutputStream(size);
-        try {
-            //设置位图的压缩格式，质量为100%，并放入字节数组输出流中
-            bi.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            //将字节数组输出流转化为字节数组byte[]
-            byte[] imagedata = baos.toByteArray();
-            return imagedata;
-        }catch (Exception e){
-        }finally {
+        if(bi==null){
+            return null;
+        }else {
+            //Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.id.imageView2);
+            int size = bi.getWidth() * bitmap.getHeight() * 4;
+            //创建一个字节数组输出流,流的大小为size
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
             try {
-                bi.recycle();
-                baos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                //设置位图的压缩格式，质量为100%，并放入字节数组输出流中
+                bi.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                //将字节数组输出流转化为字节数组byte[]
+                byte[] imagedata = baos.toByteArray();
+                return imagedata;
+            } catch (Exception e) {
+            } finally {
+                try {
+                    bi.recycle();
+                    baos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+            return new byte[0];
         }
-        return new byte[0];
     }
 
 

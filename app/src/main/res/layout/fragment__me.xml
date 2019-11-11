@@ -19,7 +19,7 @@
             android:layout_height="@dimen/ivIconSize"
             android:layout_marginLeft="2dp"
             android:layout_gravity="center"
-            android:src="@drawable/chushi" />
+            android:src="@drawable/log" />
 
         <TextView
             android:id="@+id/textView10"
