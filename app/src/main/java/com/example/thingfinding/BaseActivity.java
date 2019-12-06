@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
     TextView iv_back;
     TextView tv_title;
 

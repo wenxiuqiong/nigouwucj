@@ -1,189 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".tenderview.petActivity"
-    android:background="@drawable/beijing">
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="0dp"
-        android:text="宠物需求"
-        android:textSize="30dp"
-        android:textColor="#27ef24"/>
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="56dp"
-        android:text="服务名"
-        android:textSize="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="122dp"
-        android:text="原价"
-        android:textSize="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp" />
+    <include layout="@layout/nav_bar"></include>
 
     <EditText
         android:id="@+id/etchongwufuwuming"
-        android:layout_width="272dp"
-        android:layout_height="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="18dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="18dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="请输入服务名"  />
 
     <EditText
         android:id="@+id/etyuanjia"
-        android:layout_width="272dp"
-        android:layout_height="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="请输入原价" />
 
     <EditText
         android:id="@+id/etcuxiaojia"
-        android:layout_width="272dp"
-        android:layout_height="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="8dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="8dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="请输入促销价" />
+
 
     <EditText
         android:id="@+id/etchongwuliangfei"
-        android:layout_width="272dp"
-        android:layout_height="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="237dp"
-        android:layout_marginEnd="7dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="7dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="请输入宠物粮费 "/>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="171dp"
-        android:text="促销价"
-        android:textSize="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="2dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="247dp"
-        android:text="宠物粮费"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="317dp"
-        android:text="保养费"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="383dp"
-        android:text="库存量"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:layout_alignParentLeft="true" />
 
     <EditText
         android:id="@+id/etkuchun"
-        android:layout_width="272dp"
-        android:layout_height="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="371dp"
-        android:layout_marginEnd="0dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="0dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="请输入库存"  />
 
     <EditText
         android:id="@+id/etchongwubaoyangfei"
-        android:layout_width="272dp"
-        android:layout_height="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="0dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="0dp" />
-
-    <Button
-        android:id="@+id/btntijiao"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="13dp"
-        android:text="提交订单"
-        android:background="#27ef24"/>
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="请输入宠物保养费" />
 
-    <Button
-        android:id="@+id/btngouwuche"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btntijiao"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:text="加入购物车"
-        android:background="#27ef24"/>
+        android:layout_marginTop="30dp">
 
+        <Button
+            style="@style/commit_btn"
+            android:id="@+id/btntijiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginLeft="40dp"
+            android:text=" 提交订单 "/>
 
-</RelativeLayout>
+        <Button
+            style="@style/commit_btn"
+            android:id="@+id/btngouwuche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="加入购物车"/>
+    </LinearLayout>
+
+</LinearLayout>

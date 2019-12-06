@@ -80,18 +80,17 @@ public class Fragment_HomePage extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String name=typenames[position];
                 Log.i("test++",typenames[position]);
-                if (name.equals("场地预定")){
-                    changdixuqiu("场地预定");
+                if (name.equals("场地")){
+                    changdixuqiu("场地");
                 }
-               if(name.equals("宠物需求")){
-                    petxuqiu("宠物需求");
+               if(name.equals("宠物")){
+                    petxuqiu("宠物");
                 }
-                if(name.equals("维修服务")){
-                    weixiuxuqiu("维修服务");
+                if(name.equals("维修")){
+                    weixiuxuqiu("维修");
                 }
-                if(name.equals("购物订制")){
-                    gouwuyuding("购物订制");
-                    System.out.print("666");
+                if(name.equals("购物")){
+                    gouwuyuding("购物");
                 }
             }
         });

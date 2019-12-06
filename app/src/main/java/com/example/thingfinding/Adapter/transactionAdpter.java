@@ -1,22 +1,17 @@
 package com.example.thingfinding.Adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.example.thingfinding.Bean.addressItem;
 import com.example.thingfinding.R;
-import com.example.thingfinding.user.My_TransactionActivity;
 
 import java.util.List;
 

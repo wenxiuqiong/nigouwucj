@@ -31,7 +31,7 @@
                 android:background="@drawable/border">
 
                 <LinearLayout
-                    android:layout_width="286dp"
+                    android:layout_width="301dp"
                     android:layout_height="89dp"
                     android:layout_marginTop="0dp"
                     android:orientation="vertical">
@@ -42,24 +42,24 @@
 
                         <EditText
                             android:id="@+id/nameText"
-                            android:layout_width="94dp"
+                            android:layout_width="114dp"
                             android:layout_height="match_parent"
                             android:drawableLeft="@drawable/xinghao1"
                             android:gravity="center"
                             android:hint="姓名(必填)"
+                            android:singleLine="true"
                             android:textColor="#000"
-                            android:textSize="16dp"
-                            android:singleLine="true"/>
+                            android:textSize="16dp" />
 
                         <EditText
                             android:id="@+id/phoneText"
-                            android:layout_width="177dp"
+                            android:layout_width="185dp"
                             android:layout_height="wrap_content"
-                            android:hint="电话（必填）"
                             android:drawableLeft="@drawable/xinghao1"
+                            android:hint="电话（必填）"
+                            android:singleLine="true"
                             android:textColor="#000"
-                            android:textSize="16dp"
-                            android:singleLine="true"/>
+                            android:textSize="16dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -69,14 +69,14 @@
 
                         <EditText
                             android:id="@+id/addText"
-                            android:layout_width="match_parent"
+                            android:layout_width="299dp"
                             android:layout_height="40dp"
+                            android:drawableLeft="@drawable/xinghao1"
                             android:gravity="fill|center"
                             android:hint="地址（必填）"
-                            android:drawableLeft="@drawable/xinghao1"
+                            android:singleLine="true"
                             android:textColor="#000"
-                            android:textSize="16dp"
-                            android:singleLine="true"/>
+                            android:textSize="16dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -171,13 +171,13 @@
 
                     <EditText
                         android:id="@+id/demand"
-                        android:layout_width="274dp"
+                        android:layout_width="304dp"
                         android:layout_height="72dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/border3"
-                        android:hint="请详细描述你提供的服务（必填）"
                         android:drawableLeft="@drawable/xinghao1"
+                        android:hint="请详细描述你提供的服务（必填）"
                         android:textColor="#000"
                         android:textSize="16dp" />
 
@@ -193,11 +193,11 @@
                 android:layout_marginTop="0dp">
 
                 <LinearLayout
-                    android:layout_width="173dp"
+                    android:layout_width="204dp"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
                     android:background="@drawable/border2"
-                    android:orientation="vertical"
-                    android:layout_marginTop="0dp">
+                    android:orientation="vertical">
 
 
                     <EditText
@@ -253,6 +253,7 @@
             <Button
                 android:id="@+id/releasebtn"
                 style="@style/commit_btn"
+                android:layout_marginTop="6dp"
                 android:text="发  布"
                 android:textSize="18dp" />
 

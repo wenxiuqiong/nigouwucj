@@ -22,45 +22,44 @@
         android:id="@+id/rg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navBarHeight"
-        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radioButton_home_page"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/image_hone_page"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="首页"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"/>
 
         <RadioButton
             android:id="@+id/radioButton_news"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/image_news"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="消息"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"/>
 
         <RadioButton
             android:id="@+id/radioButton_me"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/image_me"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="我的"
-            android:textColor="@drawable/bottom_icon_text_selector" />
+            android:textColor="@drawable/bottom_icon_text_selector"/>
     </RadioGroup>
 
 </LinearLayout>
