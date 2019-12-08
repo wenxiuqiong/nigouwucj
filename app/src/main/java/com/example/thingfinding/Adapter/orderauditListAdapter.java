@@ -14,13 +14,12 @@ import com.example.thingfinding.R;
 
 import java.util.List;
 
-public class orderauditAdapter extends BaseAdapter {
-
+public class orderauditListAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private List<addressItem> list;
 
-    public orderauditAdapter(List<addressItem> list, Context context) {
+    public orderauditListAdapter(List<addressItem> list, Context context) {
         this.list = list;
         inflater = LayoutInflater.from(context);
     }
@@ -39,7 +38,7 @@ public class orderauditAdapter extends BaseAdapter {
     }
 
     public View getView(int postion, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+      ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.orderaudit_list, null);
             holder = new ViewHolder();

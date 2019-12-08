@@ -1,54 +1,113 @@
 package com.example.thingfinding.user;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-import com.example.thingfinding.Adapter.orderauditAdapter;
 import com.example.thingfinding.BaseActivity;
+import com.example.thingfinding.Fragment.MyFragmentPageAdapter;
 import com.example.thingfinding.R;
 
-public class OrderauditActivity extends BaseActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.List;
 
-    private ListView orderauditLv;
-    private orderauditAdapter adapter;
+public class OrderauditActivity extends BaseActivity implements
+        RadioGroup.OnCheckedChangeListener, OnPageChangeListener{
+
+    //定义Fragment
+    private Fragment fragment1;
+    private Fragment fragment2;
+    private Fragment fragment3;
+    //定义FragmentManager
+    private FragmentManager fragmentManager;
+
+    private ViewPager viewPager;
+    private List<Fragment> fragmentLists;
+    private MyFragmentPageAdapter adapter;
+    private RadioGroup radioGroup;
+    private RadioButton whole; // 表示第一个RadioButton 组件
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderaudit);
         initView();
-        initEvent();
+        initViewPager();
+    }
+    private void initViewPager() {
+        fragment1 = new Orderaudit_Fragment();
+        fragment2 = new Orderaudit_Fragment();
+        fragment3 = new Orderaudit_Fragment();
+        fragmentLists = new ArrayList<Fragment>();
+        fragmentLists.add(fragment1);
+        fragmentLists.add(fragment2);
+        fragmentLists.add(fragment3);
+        //获取FragmentManager对象
+        fragmentManager = getSupportFragmentManager();
+        //获取FragmentPageAdapter对象
+        adapter = new MyFragmentPageAdapter(fragmentManager, fragmentLists);
+        //设置Adapter，使ViewPager 与 Adapter 进行绑定
+        viewPager.setAdapter(adapter);
+        //设置ViewPager默认显示第一个View
+        viewPager.setCurrentItem(0);
+        //设置第一个RadioButton为默认选中状态
+        whole.setChecked(true);
+        //ViewPager页面切换监听
+        viewPager.addOnPageChangeListener(this);
     }
 
     private void initView() {
-        initNavBar(true,"订单审核");
-        orderauditLv=(ListView)findViewById(R.id.orderauditLv);
-        adapter=new orderauditAdapter(null,this);
-        orderauditLv.setAdapter(adapter);
+        initNavBar(true,"服务审核");
+        radioGroup = (RadioGroup) findViewById(R.id.rg);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        whole = (RadioButton) findViewById(R.id.audited);
+        //RadioGroup状态改变监听
+        radioGroup.setOnCheckedChangeListener(this);
     }
 
-    private void initEvent() {
-        orderauditLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ord_pro();
-            }
-        });
-    }
-    public void onClick(View v) {
-        switch (v.getId()) {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.audited: // 首页
+                //显示第一个Fragment并关闭动画效果
+                viewPager.setCurrentItem(0,false);
+                break;
+            case R.id.unaudited: // 团购
+                viewPager.setCurrentItem(1,false);
+                break;
+            case R.id.not_pass: // 发现
+                viewPager.setCurrentItem(2,false);
+                break;
+
         }
     }
 
-    public  void ord_pro(){
-        Intent intent=new Intent(this,Order_productionActivity.class);
-        startActivity(intent);
+    @Override
+    public void onPageScrollStateChanged(int arg0) {}
 
+    @Override
+    public void onPageScrolled(int arg0, float arg1, int arg2) {}
+
+    /**
+     * ViewPager切换Fragment时，RadioGroup做相应的监听
+     */
+    @Override
+    public void onPageSelected(int arg0) {
+        switch (arg0) {
+            case 0:
+                radioGroup.check(R.id.audited);
+                break;
+            case 1:
+                radioGroup.check(R.id.unaudited);
+                break;
+            case 2:
+                radioGroup.check(R.id.not_pass);
+                break;
+        }
     }
-
 }

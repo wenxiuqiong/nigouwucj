@@ -26,39 +26,43 @@
             android:gravity="center"
             android:text="全部订单"
             android:textColor="@drawable/bottom_icon_text_selector"
+            android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/to_be_shippedBtn"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="待发货"
             android:textColor="@drawable/bottom_icon_text_selector"
+            android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/goods_to_be_receivedBtn"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="待收货"
             android:textColor="@drawable/bottom_icon_text_selector"
+            android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/completedBtn"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="已完成"
             android:textColor="@drawable/bottom_icon_text_selector"
+            android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />
     </RadioGroup>
 
@@ -68,11 +72,14 @@
         android:background="@color/lineColor"/>
 
 
-    <ListView
-        android:id="@+id/transactionLv"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/navBarHeight">
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" >
+    </android.support.v4.view.ViewPager>
 
-    </ListView>
 </LinearLayout>

@@ -1,31 +1,36 @@
 package com.example.thingfinding.user;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thingfinding.Adapter.addressbookAdapter;
-import com.example.thingfinding.Adapter.transactionAdpter;
 import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
+import com.example.thingfinding.Fragment.Fragment_HomePage;
+import com.example.thingfinding.Fragment.Fragment_Me;
+import com.example.thingfinding.Fragment.Fragment_News;
+import com.example.thingfinding.Fragment.MyFragmentPageAdapter;
 import com.example.thingfinding.R;
 import com.example.thingfinding.Util.BaseCallback;
 import com.example.thingfinding.Util.BaseUrl;
@@ -33,155 +38,119 @@ import com.example.thingfinding.Util.OkHttpHelp;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class My_TransactionActivity extends BaseActivity implements
-        View.OnClickListener,OnCheckedChangeListener {
+        RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener{
 
-    private ListView transactionLv;
+    //定义Fragment
+    private Fragment fragment1;
+    private Fragment fragment2;
+    private Fragment fragment3;
+    private Fragment fragment4;
+    //定义FragmentManager
+    private FragmentManager fragmentManager;
+
+    private ViewPager viewPager;
+    private List<Fragment> fragmentLists;
+    private MyFragmentPageAdapter adapter;
     private RadioGroup radioGroup;
     private RadioButton whole; // 表示第一个RadioButton 组件
-    private OkHttpHelp mokhttp;
-
-    private transactionAdpter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__transaction);
-        initView();
-      //  MyBaseAdapter myBaseAdapter = new MyBaseAdapter();
-       // transactionLv.setAdapter(myBaseAdapter);
-        initEvent();
+        //初始化界面组件
+        init();
+        //初始化ViewPager
+        initViewPager();
+
+
+    }
+    private void initViewPager() {
+        fragment1 = new Fragment_Transaction();
+        fragment2 = new Fragment_Transaction();
+        fragment3 = new Fragment_Transaction();
+        fragment4 = new Fragment_Transaction();
+        fragmentLists = new ArrayList<Fragment>();
+        fragmentLists.add(fragment1);
+        fragmentLists.add(fragment2);
+        fragmentLists.add(fragment3);
+        fragmentLists.add(fragment4);
+        //获取FragmentManager对象
+        fragmentManager = getSupportFragmentManager();
+        //获取FragmentPageAdapter对象
+        adapter = new MyFragmentPageAdapter(fragmentManager, fragmentLists);
+        //设置Adapter，使ViewPager 与 Adapter 进行绑定
+        viewPager.setAdapter(adapter);
+        //设置ViewPager默认显示第一个View
+        viewPager.setCurrentItem(0);
+        //设置第一个RadioButton为默认选中状态
+        whole.setChecked(true);
+        //ViewPager页面切换监听
+        viewPager.addOnPageChangeListener(this);
     }
 
-    private void initView() {
+    private void init() {
         initNavBar(true,"我的交易");
-        transactionLv= (ListView) findViewById(R.id.transactionLv);
         radioGroup = (RadioGroup) findViewById(R.id.rg);
-        whole=(RadioButton)findViewById(R.id.wholeBtn);
-        adapter=new transactionAdpter(null,this);
-        transactionLv.setAdapter(adapter);
-
-
-    }
-
-    private void initEvent() {
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        whole = (RadioButton) findViewById(R.id.wholeBtn);
+        //RadioGroup状态改变监听
         radioGroup.setOnCheckedChangeListener(this);
-
-    }
-
-    public void onClick(View view) {
-
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
-            case R.id.wholeBtn: // 全部
-
+            case R.id.wholeBtn: // 首页
+                //显示第一个Fragment并关闭动画效果
+                viewPager.setCurrentItem(0,false);
                 break;
-            case R.id.to_be_shippedBtn: // 待发货
-
+            case R.id.to_be_shippedBtn: // 团购
+                viewPager.setCurrentItem(1,false);
                 break;
-            case R.id.goods_to_be_receivedBtn: // 待收货
-
+            case R.id.goods_to_be_receivedBtn: // 发现
+                viewPager.setCurrentItem(2,false);
                 break;
-            case R.id.completedBtn: // 已完成
-
+            case R.id.completedBtn: // 发现
+                viewPager.setCurrentItem(3,false);
                 break;
-
 
         }
     }
 
+    @Override
+    public void onPageScrollStateChanged(int arg0) {}
 
-    class MyBaseAdapter extends BaseAdapter {
-        public int getCount() {
-            return 1;
-        }
+    @Override
+    public void onPageScrolled(int arg0, float arg1, int arg2) {}
 
-        public Object getItem(int position) {
-            return null;
-        }
-
-        public long getItemId(int postion) {
-            return postion;
-        }
-
-        public View getView(int postion, View convertView, ViewGroup parent) {
-            ViewHolder holder;
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.transaction_list, parent, false);
-                holder = new ViewHolder();
-                holder.timeText = (TextView) convertView.findViewById(R.id.timeText);
-                holder.stateText = (TextView) convertView.findViewById(R.id.stateText);
-                holder.commoditynameText = (TextView) convertView.findViewById(R.id.commoditynameText);
-                holder.priceText = (TextView) convertView.findViewById(R.id.priceText);
-                holder.image = (ImageView) convertView.findViewById(R.id.image);
-                holder.stateBtn = (Button) convertView.findViewById(R.id.stateBtn);
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-            holder.timeText.setText("2019-9-21");
-            holder.stateText.setText("已完成");
-            holder.commoditynameText.setText("狗狗");
-            holder.priceText.setText("共1件商品 合计：￥500");
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dog, null);
-            holder.image.setImageBitmap(bitmap);
-            holder.stateBtn.setText("删除订单");
-            return convertView;
-        }
-
-    }
-
-    class ViewHolder {
-
-        TextView timeText;
-        TextView stateText;
-        TextView commoditynameText;
-        TextView priceText;
-        ImageView image;
-        Button stateBtn;
-
-    }
-
-    public void query_data(String select){
-        String url = BaseUrl.BASE_URL + "";
-        Map<String,String> map=new HashMap<>();
-
-        try {
-            mokhttp=OkHttpHelp.getinstance();
-            mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
-                @Override
-                public void onRequestBefore() {
-
-                }
-
-                @Override
-                public void onFailure(Request request, Exception e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onSuccess(CommonResultBean response) {
-                    // DialogUtil.showDialog(RegisterActivity.this,"服务器响应成功",true);
-                    String data=(String) response.getData();
-                    Log.i("--**-**--","响应成功");
-                    Log.i("--**",data);
-                    System.out.print("666");
-
-                }
-                @Override
-                public void onError(Response response, int errorCode, Exception e) {
-                    e.printStackTrace();
-                }
-            });
-        }catch (Exception e){
-            DialogUtil.showDialog(this,"服务器响应异常",false);
-            e.printStackTrace();
+    /**
+     * ViewPager切换Fragment时，RadioGroup做相应的监听
+     */
+    @Override
+    public void onPageSelected(int arg0) {
+        switch (arg0) {
+            case 0:
+                radioGroup.check(R.id.wholeBtn);
+                break;
+            case 1:
+                radioGroup.check(R.id.to_be_shippedBtn);
+                break;
+            case 2:
+                radioGroup.check(R.id.goods_to_be_receivedBtn);
+                break;
+            case 3:
+                radioGroup.check(R.id.completedBtn);
+                break;
         }
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.thingfinding">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,7 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".user.My_TransactionActivity"
+            android:label="@string/title_activity_my__transaction"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".firstLauncher.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +32,6 @@
         <activity android:name=".user.FindPasswordActivity" />
         <activity android:name=".user.loginActivity" />
         <activity android:name=".user.My_InformationActivity" />
-        <activity android:name=".user.My_TransactionActivity" />
         <activity android:name=".user.My_DemandActivity" />
         <activity android:name=".seting.UpdateActivity" />
         <activity android:name=".seting.HelpActivity" />
@@ -58,9 +63,8 @@
         <activity android:name=".CustomerdemandView.gouwudingzhiActivity" />
         <activity android:name=".CustomerdemandView.gouwudingzhixuqiuActivity" />
         <activity android:name=".CustomerdemandView.weixiufuwuActivity" />
-        <activity android:name=".CustomerdemandView.weixiufuwuxuqiuActivity"></activity>
-        <activity android:name=".CustomerdemandView.gongyijiajuActivity"></activity>
-        <activity android:name=".Fragment.Fragment_HomePage" />
+        <activity android:name=".CustomerdemandView.weixiufuwuxuqiuActivity" />
+        <activity android:name=".CustomerdemandView.gongyijiajuActivity" />
     </application>
 
 </manifest>

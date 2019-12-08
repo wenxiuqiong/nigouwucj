@@ -25,7 +25,7 @@
                 style="@style/image_one"
                 android:layout_gravity="center"
                 android:layout_marginLeft="100dp"
-                android:src="@drawable/chushi" />
+                android:src="@drawable/log"/>
 
             <EditText
                 android:id="@+id/etIdCard"

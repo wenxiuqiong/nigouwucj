@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +22,11 @@ import android.widget.Toast;
 
 import com.example.thingfinding.R;
 import com.example.thingfinding.SQLiteHelper;
-import com.example.thingfinding.user.Order_productionActivity;
+import com.example.thingfinding.user.My_TransactionActivity;
 import com.example.thingfinding.user.OrderauditActivity;
 import com.example.thingfinding.user.My_DemandActivity;
 import com.example.thingfinding.user.My_InformationActivity;
 import com.example.thingfinding.user.My_SetupActivity;
-import com.example.thingfinding.user.My_TransactionActivity;
 import com.example.thingfinding.user.loginActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -49,7 +47,7 @@ public class Fragment_Me extends Fragment {
     private String Mark="mark";
     private SharedPreferences sp = null;//声明一个SharedPreferences
     static String name;//获取sp里的用户名
-    private String[] heading = {"个人信息", "发布服务","订单审核", "我的交易", "设置"};
+    private String[] heading = {"个人信息", "发布服务","服务审核", "我的交易", "设置"};
     private String[] ending = {">", ">", ">", ">",">"};
     private ArrayList<String> list = new ArrayList<String>();
     private String select;
@@ -90,8 +88,7 @@ public class Fragment_Me extends Fragment {
                     my_demand();
                 }
 
-                if (list.get(arg2).equals("订单审核")) {
-                    // select = list.get(arg2);
+                if (list.get(arg2).equals("服务审核")) {
                     my_orderaudit();
                 }
                 if (list.get(arg2).equals("我的交易")) {
@@ -197,7 +194,7 @@ public class Fragment_Me extends Fragment {
         if(txname.getText().toString().trim().equals("登 录")) {
             Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
         }else {
-            Intent intent = new Intent(getActivity(),  My_TransactionActivity.class);
+            Intent intent = new Intent(getActivity(), My_TransactionActivity.class);
             startActivity(intent);
         }
 

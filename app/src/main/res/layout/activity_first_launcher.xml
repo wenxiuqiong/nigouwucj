@@ -10,20 +10,9 @@
         android:layout_height="match_parent"/>
 
     <TextView
+        style="@style/commit_btn"
         android:id="@+id/tv_goto_main"
-        android:layout_above="@+id/viewGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="40dp"
-        android:background="#fc0048"
-        android:textColor="#ffffffff"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:gravity="center_horizontal"
-        android:textSize="18sp"
+        android:layout_marginTop="700dp"
         android:visibility="gone"
         android:text="立即体验"/>
 
@@ -32,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="750dp"
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal" />

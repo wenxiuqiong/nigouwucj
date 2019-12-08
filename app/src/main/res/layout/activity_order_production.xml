@@ -117,42 +117,48 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/navBarTitleSize"
-                        android:hint="原价" />
+                        android:hint="原价"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/promotionalpriceText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/navBarTitleSize"
-                        android:hint="促销价" />
+                        android:hint="促销价"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/stockText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/navBarTitleSize"
-                        android:hint="库存量" />
+                        android:hint="库存量"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/costText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/navBarTitleSize"
-                        android:hint="材料费用/宠料费" />
+                        android:hint="材料费用/宠料费"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/typeText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/navBarTitleSize"
-                        android:hint="维修材质/宠物类型" />
+                        android:hint="维修材质/宠物类型"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/chargeText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/navBarTitleSize"
-                        android:hint="服务费/保养费" />
+                        android:hint="服务费/保养费"
+                        android:textColor="#000000" />
                 </LinearLayout>
 
             <LinearLayout
@@ -171,7 +177,8 @@
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:paddingRight="@dimen/marginSize"/>
+                    android:paddingRight="@dimen/marginSize"
+                    android:textColor="#000000" />
             </LinearLayout>
 
             <LinearLayout
