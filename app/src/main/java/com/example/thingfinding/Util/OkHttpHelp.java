@@ -35,7 +35,7 @@ public class OkHttpHelp {
     private JSONArray jsonArray;
     private JSONObject jsonObject;
     private JSONObject[] jsonObjects;
-    public static final String BASE_URL = "http://192.168.8.109:8080/business/user";
+    //public static final String BASE_URL = "http://192.168.8.109:8080";
     /**
      * 单例模式，私有构造函数，构造函数里面进行一些初始化
      */

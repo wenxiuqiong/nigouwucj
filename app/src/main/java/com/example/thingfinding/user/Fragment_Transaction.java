@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thingfinding.Adapter.transactionAdpter;
 import com.example.thingfinding.Bean.CommonResultBean;
@@ -23,27 +24,39 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Fragment_Transaction extends Fragment {
     private ListView listView;
     private OkHttpHelp mokhttp;
-
+    private static String getStr;
     private transactionAdpter adapter;
+
+
+    public Fragment_Transaction() {
+    }
+
+    public static Fragment newInstance(String str) {
+        Fragment_Transaction fragment = new Fragment_Transaction();
+        getStr=str;
+
+        return fragment;
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_transaction, container, false);
         listView = (ListView) view.findViewById(R.id.transactionLv);
-        adapter=new transactionAdpter(null,getActivity());
+        Toast.makeText(getActivity(),getStr,Toast.LENGTH_LONG).show();
+        adapter=new transactionAdpter(query_data(),getActivity());
         listView.setAdapter(adapter);
         return view;
     }
 
-    public void query_data(String select){
+    public List query_data(){
         String url = BaseUrl.BASE_URL + "";
         Map<String,String> map=new HashMap<>();
-
         try {
             mokhttp= OkHttpHelp.getinstance();
             mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
@@ -75,6 +88,8 @@ public class Fragment_Transaction extends Fragment {
             DialogUtil.showDialog(getActivity(),"服务器响应异常",false);
             e.printStackTrace();
         }
+        return null;
     }
+
 
 }

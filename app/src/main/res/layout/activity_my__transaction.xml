@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="待发货"
+            android:text="客户选择中"
             android:textColor="@drawable/bottom_icon_text_selector"
             android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="待收货"
+            android:text="交易成功"
             android:textColor="@drawable/bottom_icon_text_selector"
             android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="已完成"
+            android:text="交易失败"
             android:textColor="@drawable/bottom_icon_text_selector"
             android:background="@drawable/bottom_background_selector"
             android:textSize="20dp" />

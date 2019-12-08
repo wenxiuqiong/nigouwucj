@@ -24,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.Adapter.ViewpagerAdapter;
 import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
@@ -59,9 +60,10 @@ public class My_TransactionActivity extends BaseActivity implements
 
     private ViewPager viewPager;
     private List<Fragment> fragmentLists;
-    private MyFragmentPageAdapter adapter;
+    private ViewpagerAdapter adapter;
     private RadioGroup radioGroup;
     private RadioButton whole; // 表示第一个RadioButton 组件
+    String[] mlist={"全部订单","客户选择中","交易成功","交易失败"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,23 +77,23 @@ public class My_TransactionActivity extends BaseActivity implements
 
     }
     private void initViewPager() {
-        fragment1 = new Fragment_Transaction();
-        fragment2 = new Fragment_Transaction();
-        fragment3 = new Fragment_Transaction();
-        fragment4 = new Fragment_Transaction();
-        fragmentLists = new ArrayList<Fragment>();
-        fragmentLists.add(fragment1);
-        fragmentLists.add(fragment2);
-        fragmentLists.add(fragment3);
-        fragmentLists.add(fragment4);
+//        fragment1 = new Fragment_Transaction();
+//        fragment2 = new Fragment_Transaction();
+//        fragment3 = new Fragment_Transaction();
+//        fragment4 = new Fragment_Transaction();
+//        fragmentLists = new ArrayList<Fragment>();
+//        fragmentLists.add(fragment1);
+//        fragmentLists.add(fragment2);
+//        fragmentLists.add(fragment3);
+//        fragmentLists.add(fragment4);
         //获取FragmentManager对象
         fragmentManager = getSupportFragmentManager();
         //获取FragmentPageAdapter对象
-        adapter = new MyFragmentPageAdapter(fragmentManager, fragmentLists);
+        adapter = new ViewpagerAdapter(fragmentManager, mlist);
         //设置Adapter，使ViewPager 与 Adapter 进行绑定
         viewPager.setAdapter(adapter);
         //设置ViewPager默认显示第一个View
-        viewPager.setCurrentItem(0);
+       // viewPager.setCurrentItem(0);
         //设置第一个RadioButton为默认选中状态
         whole.setChecked(true);
         //ViewPager页面切换监听
@@ -141,9 +143,11 @@ public class My_TransactionActivity extends BaseActivity implements
         switch (arg0) {
             case 0:
                 radioGroup.check(R.id.wholeBtn);
+              //  Intent intent=new Intent(this,Fragment_Transaction.class);
                 break;
             case 1:
                 radioGroup.check(R.id.to_be_shippedBtn);
+
                 break;
             case 2:
                 radioGroup.check(R.id.goods_to_be_receivedBtn);

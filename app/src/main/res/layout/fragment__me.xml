@@ -28,7 +28,7 @@
             android:layout_marginLeft="@dimen/marginSize"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="登 录"
+            android:text="登"
             android:textSize="@dimen/navBarTitleSize"
             android:textStyle="bold"/>
 

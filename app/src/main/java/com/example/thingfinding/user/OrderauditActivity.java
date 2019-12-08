@@ -32,6 +32,7 @@ public class OrderauditActivity extends BaseActivity implements
     private MyFragmentPageAdapter adapter;
     private RadioGroup radioGroup;
     private RadioButton whole; // 表示第一个RadioButton 组件
+    String[] mlist={"全部订单","客户选择中","交易成功","交易失败"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
