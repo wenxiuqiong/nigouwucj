@@ -50,7 +50,7 @@ public class changdiyudingActivity extends AppCompatActivity {
         Intent intent=getIntent();
         xuqiuming=intent.getStringExtra("xuqiuming");
         System.out.println(xuqiuming+"255565554");
-        String url=BaseUrl.BASE_URL +"/select?";
+        String url=BaseUrl.BASE_URL +"/customerDemand/select?";
         System.out.println("路径名"+url);
         Intent setdata=new Intent(this,weixiufuwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
@@ -111,7 +111,7 @@ public class changdiyudingActivity extends AppCompatActivity {
                             setdata.putExtra("endDate",changdiinfo.get(position).getEndTime());
                             setdata.putExtra("customerAddress",changdiinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message",changdiinfo.get(position).getSentense());
-                            setdata.putExtra("demandType","场地租借");
+                            setdata.putExtra("demandType",changdiinfo.get(position).getDemandType());
                             startActivity(setdata);
                         }
                     });

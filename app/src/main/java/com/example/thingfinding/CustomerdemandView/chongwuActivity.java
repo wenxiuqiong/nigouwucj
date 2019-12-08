@@ -49,7 +49,7 @@ public class chongwuActivity extends AppCompatActivity {
         Intent intent=getIntent();
         xuqiuming=intent.getStringExtra("xuqiuming");
         System.out.println(xuqiuming+"255565554");
-        String url=BaseUrl.BASE_URL +"/select?";
+        String url=BaseUrl.BASE_URL +"/customerDemand/select?";
         System.out.println("路径名"+url);
         Intent setdata=new Intent(this,weixiufuwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
@@ -110,7 +110,7 @@ public class chongwuActivity extends AppCompatActivity {
                             setdata.putExtra("endDate", chongwuinfo.get(position).getEndTime());
                             setdata.putExtra("customerAddress", chongwuinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message", chongwuinfo.get(position).getSentense());
-                            setdata.putExtra("demandType","宠物");
+                            setdata.putExtra("demandType",chongwuinfo.get(position).getDemandType());
                             startActivity(setdata);
                         }
                     });

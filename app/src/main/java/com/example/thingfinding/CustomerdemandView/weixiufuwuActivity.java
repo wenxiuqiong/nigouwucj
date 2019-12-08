@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -50,7 +51,7 @@ public class weixiufuwuActivity extends AppCompatActivity {
         Intent intent=getIntent();
         xuqiuming=intent.getStringExtra("xuqiuming");
         System.out.println(xuqiuming+"255565554");
-        String url=BaseUrl.BASE_URL +"/select?";
+        String url=BaseUrl.BASE_URL +"/customerDemand/select?";
         System.out.println("路径名"+url);
         Intent setdata=new Intent(this,weixiufuwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
@@ -111,7 +112,7 @@ public class weixiufuwuActivity extends AppCompatActivity {
                             setdata.putExtra("endDate",weixiuinfo.get(position).getEndTime());
                             setdata.putExtra("customerAddress",weixiuinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message",weixiuinfo.get(position).getSentense());
-                            setdata.putExtra("demandType","家具");
+                            setdata.putExtra("demandType",weixiuinfo.get(position).getDemandType());
                             startActivity(setdata);
                         }
                     });
@@ -122,8 +123,6 @@ public class weixiufuwuActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             });
-
-
             //jsonArray =mokhttp.getJsonArray();
             /*int size = jsonArray.size();
             jsonObjects=new JSONObject[size];

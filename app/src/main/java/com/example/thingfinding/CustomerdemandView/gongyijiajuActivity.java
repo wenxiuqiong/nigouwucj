@@ -96,11 +96,11 @@ public class gongyijiajuActivity extends AppCompatActivity {
                     }
                     System.out.println("8888888888");
                     weixiuinfo=(List<CommonCustomerneedBean>)JSONArray.parseArray(result,CommonCustomerneedBean.class);
-                    for (int i=0;i<weixiuinfo.size();i++){
-                        System.out.println(weixiuinfo.get(i).getCustomerUserName());
-                        System.out.println(weixiuinfo.get(i).getSentense());
-                        System.out.println(weixiuinfo.get(i).getCustomerAddress());
-                    }
+//                    for (int i=0;i<weixiuinfo.size();i++){
+//                        System.out.println(weixiuinfo.get(i).getCustomerUserName());
+//                        System.out.println(weixiuinfo.get(i).getSentense());
+//                        System.out.println(weixiuinfo.get(i).getCustomerAddress());
+//                    }
                     loading.setVisibility(View.INVISIBLE);
                     lvweixiu.setAdapter(new weixiuAdapter(weixiuinfo));
                     lvweixiu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -111,7 +111,7 @@ public class gongyijiajuActivity extends AppCompatActivity {
                             setdata.putExtra("endDate",weixiuinfo.get(position).getEndTime());
                             setdata.putExtra("customerAddress",weixiuinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message",weixiuinfo.get(position).getSentense());
-                            setdata.putExtra("demandType","维修");
+                            setdata.putExtra("demandType",weixiuinfo.get(position).getDemandType());
                             startActivity(setdata);
                         }
                     });
