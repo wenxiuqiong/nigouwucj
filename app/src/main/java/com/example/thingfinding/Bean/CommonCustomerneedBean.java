@@ -10,6 +10,9 @@ public class CommonCustomerneedBean {
     private String beginTime;
     private String endTime;
     private String demandType;
+    private String id;
+    private String status;
+    private String businessUsername;
 
     public String getCustomerAddress() {
         return customerAddress;
@@ -57,5 +60,29 @@ public class CommonCustomerneedBean {
 
     public void setDemandType(String demandType) {
         this.demandType = demandType;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBusinessUsername() {
+        return businessUsername;
+    }
+
+    public void setBusinessUsername(String businessUsername) {
+        this.businessUsername = businessUsername;
     }
 }

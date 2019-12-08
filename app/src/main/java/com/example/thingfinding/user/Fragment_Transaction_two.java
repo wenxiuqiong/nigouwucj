@@ -6,11 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONArray;
@@ -30,18 +26,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Fragment_Transaction extends Fragment {
+public class Fragment_Transaction_two extends Fragment {
     private ListView listView;
     private OkHttpHelp mokhttp;
     private static String getStr;
     private transactionAdpter adapter;
-    private List<CommonCustomerneedBean> infolist=new ArrayList<CommonCustomerneedBean>();;
+    private List<CommonCustomerneedBean> infolist;
 
-    public Fragment_Transaction() {
+    public Fragment_Transaction_two() {
     }
 
     public static Fragment newInstance(String str) {
-        Fragment_Transaction fragment = new Fragment_Transaction();
+        Fragment_Transaction_two fragment = new Fragment_Transaction_two();
         getStr=str;
         return fragment;
     }
@@ -50,7 +46,6 @@ public class Fragment_Transaction extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_transaction, container, false);
         listView = (ListView) view.findViewById(R.id.transactionLv);
-        //Toast.makeText(getActivity(),getStr,Toast.LENGTH_LONG).show();
         query_data();
         adapter=new transactionAdpter(infolist,getActivity());
         listView.setAdapter(adapter);
@@ -87,10 +82,9 @@ public class Fragment_Transaction extends Fragment {
 //                    String data=(String) response.getData();
                     Gson gson=new Gson();
                     String result=gson.toJson(response.getData());
-                    CommonCustomerneedBean commonCustomerneedBean=gson.fromJson(result,CommonCustomerneedBean.class);
+                    infolist=(List<CommonCustomerneedBean>) JSONArray.parseArray(result,CommonCustomerneedBean.class);
                     Log.i("--**-**--","响应成功");
                     System.out.print("666");
-
 
                 }
             });
@@ -98,7 +92,7 @@ public class Fragment_Transaction extends Fragment {
             DialogUtil.showDialog(getActivity(),"服务器响应异常",false);
             e.printStackTrace();
         }
-       // return infolist;
+        // return infolist;
     }
 
 

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.Bean.addressItem;
 import com.example.thingfinding.R;
 
@@ -18,18 +19,18 @@ import java.util.List;
 public class transactionAdpter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private List<addressItem> list;
+    private List<CommonCustomerneedBean> list;
     Context ct;
 
-    public transactionAdpter(List<addressItem> list, Context context) {
-        this.list = list;
+    public transactionAdpter(List<CommonCustomerneedBean> mlist, Context context) {
+        this.list = mlist;
         ct=context;
         inflater = LayoutInflater.from(context);
     }
 
 
     public int getCount() {
-        return 1;
+        return 0;
     }
 
     public Object getItem(int position) {
@@ -56,9 +57,9 @@ public class transactionAdpter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.timeText.setText("2019-9-21");
-        holder.stateText.setText("已完成");
-        holder.commoditynameText.setText("狗狗");
+        holder.timeText.setText(list.get(postion).getCustomerUserName());
+        holder.stateText.setText(list.get(postion).getDemandType());
+        holder.commoditynameText.setText(list.get(postion).getSentense());
         holder.priceText.setText("共1件商品 合计：￥500");
         holder.image.setImageResource(R.drawable.dog);
         holder.stateBtn.setText("删除订单");
