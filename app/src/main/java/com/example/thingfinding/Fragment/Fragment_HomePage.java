@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.example.thingfinding.BaseActivity;
 import com.example.thingfinding.CustomerdemandView.changdiyudingActivity;
 import com.example.thingfinding.CustomerdemandView.chongwuActivity;
+import com.example.thingfinding.CustomerdemandView.gongyijiajuActivity;
 import com.example.thingfinding.CustomerdemandView.gouwudingzhiActivity;
 import com.example.thingfinding.CustomerdemandView.weixiufuwuActivity;
 import com.example.thingfinding.R;
@@ -80,17 +81,21 @@ public class Fragment_HomePage extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String name=typenames[position];
                 Log.i("test++",typenames[position]);
-                if (name.equals("场地")){
+                if (name.equals("场地预定")){
                     changdixuqiu("场地");
                 }
-               if(name.equals("宠物")){
+               if(name.equals("宠物需求")){
                     petxuqiu("宠物");
                 }
-                if(name.equals("维修")){
+                if(name.equals("维修服务")){
                     weixiuxuqiu("维修");
                 }
-                if(name.equals("购物")){
+                if(name.equals("购物订制")){
                     gouwuyuding("购物");
+                    System.out.print("666");
+                }
+                if(name.equals("工艺家具")){
+                    gongyijiaju("家具");
                 }
             }
         });
@@ -140,5 +145,13 @@ public class Fragment_HomePage extends Fragment {
             Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
         }
     }
-
+    public void gongyijiaju(String name){
+        if(isLogin()) {
+            Intent intent = new Intent(getActivity(), gongyijiajuActivity.class);
+            intent.putExtra("xuqiuming", name);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -54,8 +54,8 @@ public class gouwudingzhiActivity extends AppCompatActivity {
 
     }
     private void getData(){
-        String url=BaseUrl.BASE_URL +"/select?";
-        Intent setdata=new Intent(this,gouwudingzhixuqiuActivity.class);
+        String url=BaseUrl.BASE_URL +"/customerDemand/select?";
+        Intent setdata=new Intent(this,weixiufuwuxuqiuActivity.class);
         mokhttp=OkHttpHelp.getinstance();
         Map<String,String> map=new HashMap<>();
         map.put("demandType",xuqiuming);
@@ -63,8 +63,8 @@ public class gouwudingzhiActivity extends AppCompatActivity {
             mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
                 @Override
                 public void onRequestBefore() {
-                }
 
+                }
                 @Override
                 public void onFailure(Request request, Exception e) {
 

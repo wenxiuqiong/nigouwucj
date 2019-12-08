@@ -1,15 +1,27 @@
 package com.example.thingfinding.CustomerdemandView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.R;
+import com.example.thingfinding.Util.BaseCallback;
+import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
 import com.example.thingfinding.user.My_DemandActivity;
+import com.google.gson.Gson;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class weixiufuwuxuqiuActivity extends AppCompatActivity {
     private OkHttpHelp mokhttp;
@@ -63,9 +75,71 @@ public class weixiufuwuxuqiuActivity extends AppCompatActivity {
         btnjiedan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setData.putExtra("demandType",demandType);
-                startActivity(setData);
+                AlertDialog dialog=new AlertDialog.Builder(weixiufuwuxuqiuActivity.this)
+                        .setMessage("是否接单")
+                        .setTitle("接单")
+                        .setIcon(R.mipmap.logo)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setData.putExtra("demandType",demandType);
+                                startActivity(setData);
+                                acceptance();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .create();
+                dialog.show();
             }
         });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+    public void acceptance(){
+        String url=BaseUrl.BASE_URL +"";
+        System.out.println("路径名"+url);
+        mokhttp=OkHttpHelp.getinstance();
+        Map<String,String> map=new HashMap<>();
+        map.put("userName",et_customerName.getText().toString().trim());
+        map.put("customerAdress",et_customerAdress.getText().toString().trim());
+        map.put("beginDate",et_beginDate.getText().toString().trim());
+        map.put("endDate",et_endDate.getText().toString().trim());
+        map.put("message",et_message.getText().toString().trim());
+        map.put("demandType",demandType);
+        try {
+            mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
+                @Override
+                public void onRequestBefore() {
+
+                }
+
+                @Override
+                public void onFailure(Request request, Exception e) {
+
+                }
+                @Override
+                public void onSuccess(CommonResultBean response) {
+                    Gson gson=new Gson();
+                    String result=gson.toJson(response.getData());
+                    String code = response.getCode();
+                    Toast.makeText(weixiufuwuxuqiuActivity.this,result,Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onError(Response response, int errorCode, Exception e) {
+
+                }
+            });
+        }catch (Exception e){
+           e.printStackTrace();
+        }
     }
 }
