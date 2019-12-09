@@ -58,7 +58,7 @@ public class Fragment_Transaction_two extends Fragment {
         map.put("businessUsername","密码：a12345678");
         map.put("nowPage","1");
         map.put("pageSize","100");
-        map.put("status","");
+        map.put("status","客户选择中");
         try {
             mokhttp= OkHttpHelp.getinstance();
             mokhttp.post(url, map, new BaseCallback<CommonCustomerneedBean>() {
