@@ -43,6 +43,7 @@ public class weixiufuwuActivity extends AppCompatActivity {
     private String xuqiuming;
     private JSONArray jsonArray;
     private JSONObject[] jsonObjects;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +114,7 @@ public class weixiufuwuActivity extends AppCompatActivity {
                             setdata.putExtra("customerAddress",weixiuinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message",weixiuinfo.get(position).getSentense());
                             setdata.putExtra("demandType",weixiuinfo.get(position).getDemandType());
+                            setdata.putExtra("id",weixiuinfo.get(position).getId());
                             startActivity(setdata);
                         }
                     });

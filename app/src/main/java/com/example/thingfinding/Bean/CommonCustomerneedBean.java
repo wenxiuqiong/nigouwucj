@@ -11,8 +11,8 @@ public class CommonCustomerneedBean {
     private String endTime;
     private String demandType;
     private String id;
-    private String status;
     private String businessUsername;
+    private String status;
 
     public String getCustomerAddress() {
         return customerAddress;
@@ -70,19 +70,19 @@ public class CommonCustomerneedBean {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getBusinessUsername() {
         return businessUsername;
     }
 
     public void setBusinessUsername(String businessUsername) {
         this.businessUsername = businessUsername;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -57,7 +57,7 @@ public class Fragment_HomePage extends Fragment {
     private SimpleAdapter homeadapter;
     private ListView listView;
     private Fragment_HomePage context;
-    private String[] typenames=new String[]{"场地预定","宠物需求","维修服务","购物订制","饮食","衣着","数码产品","学习","其他"};
+    private String[] typenames=new String[]{"场地预定","宠物需求","维修服务","购物订制","工艺家具","衣着","数码产品","学习","其他"};
     private  int[] imageIds=new int[]{R.drawable.venuerentals,R.drawable.pet,R.drawable.car,R.drawable.clothes,R.drawable.diet,R.drawable.clothes,R.drawable.digitalproduct,R.drawable.study,R.drawable.weixin};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

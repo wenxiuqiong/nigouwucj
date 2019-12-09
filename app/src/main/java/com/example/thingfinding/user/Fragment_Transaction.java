@@ -1,6 +1,8 @@
 package com.example.thingfinding.user;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +28,8 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,9 +39,11 @@ public class Fragment_Transaction extends Fragment {
     private OkHttpHelp mokhttp;
     private static String getStr;
     private transactionAdpter adapter;
-    private List<CommonCustomerneedBean> infolist=new ArrayList<CommonCustomerneedBean>();;
+    private List<CommonCustomerneedBean> infolist=new ArrayList<CommonCustomerneedBean>();
+
 
     public Fragment_Transaction() {
+
     }
 
     public static Fragment newInstance(String str) {
@@ -46,14 +52,21 @@ public class Fragment_Transaction extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //query_data();
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+//        inflater=LayoutInflater();
         View view = inflater.inflate(R.layout.fragment_transaction, container, false);
         listView = (ListView) view.findViewById(R.id.transactionLv);
         //Toast.makeText(getActivity(),getStr,Toast.LENGTH_LONG).show();
         query_data();
-        adapter=new transactionAdpter(infolist,getActivity());
-        listView.setAdapter(adapter);
+
+
         return view;
     }
 
@@ -87,10 +100,10 @@ public class Fragment_Transaction extends Fragment {
 //                    String data=(String) response.getData();
                     Gson gson=new Gson();
                     String result=gson.toJson(response.getData());
-                    CommonCustomerneedBean commonCustomerneedBean=gson.fromJson(result,CommonCustomerneedBean.class);
+                    Log.i("--**--",result);
+                    listView.setAdapter(new transactionAdpter( (List<CommonCustomerneedBean>) JSONArray.parseArray(result, CommonCustomerneedBean.class),getActivity()));
                     Log.i("--**-**--","响应成功");
                     System.out.print("666");
-
 
                 }
             });
@@ -98,7 +111,7 @@ public class Fragment_Transaction extends Fragment {
             DialogUtil.showDialog(getActivity(),"服务器响应异常",false);
             e.printStackTrace();
         }
-       // return infolist;
+
     }
 
 

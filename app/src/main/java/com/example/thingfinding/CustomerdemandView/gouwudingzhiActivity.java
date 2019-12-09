@@ -83,6 +83,7 @@ public class gouwudingzhiActivity extends AppCompatActivity {
                             setdata.putExtra("endDate", gouwudingzhiinfo.get(position).getEndTime());
                             setdata.putExtra("customerAddress", gouwudingzhiinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message", gouwudingzhiinfo.get(position).getSentense());
+                            setdata.putExtra("id",gouwudingzhiinfo.get(position).getId());
                             startActivity(setdata);
                         }
                     });

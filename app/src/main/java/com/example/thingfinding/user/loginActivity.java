@@ -180,6 +180,7 @@ public class loginActivity extends BaseActivity implements View.OnClickListener 
                     SharedPreferences sps=getSharedPreferences(UserID, MODE_PRIVATE);
                     SharedPreferences.Editor edit = sps.edit();
                     edit.putString("userId", userId);
+                    edit.putString("userName",userName);
                     edit.commit();
                     remenber(userName);
                     loginActivity.this.dbhelper = SQLiteHelper.getInstance(loginActivity.this);

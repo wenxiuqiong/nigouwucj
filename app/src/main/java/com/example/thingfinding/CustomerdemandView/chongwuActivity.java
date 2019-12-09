@@ -111,6 +111,7 @@ public class chongwuActivity extends AppCompatActivity {
                             setdata.putExtra("customerAddress", chongwuinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message", chongwuinfo.get(position).getSentense());
                             setdata.putExtra("demandType",chongwuinfo.get(position).getDemandType());
+                            setdata.putExtra("id",chongwuinfo.get(position).getId());
                             startActivity(setdata);
                         }
                     });

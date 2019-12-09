@@ -21,24 +21,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSONArray;
 import com.example.thingfinding.Adapter.ViewpagerAdapter;
+import com.example.thingfinding.Adapter.transactionAdpter;
 import com.example.thingfinding.BaseActivity;
+import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.Bean.CommonResultBean;
 import com.example.thingfinding.DialogUtil;
 import com.example.thingfinding.Fragment.Fragment_HomePage;
 import com.example.thingfinding.Fragment.Fragment_Me;
 import com.example.thingfinding.Fragment.Fragment_News;
 import com.example.thingfinding.Fragment.MyFragmentPageAdapter;
+import com.example.thingfinding.R;
 import com.example.thingfinding.ScaleTransitionPagerTitleView;
 import com.example.thingfinding.Util.BaseCallback;
 import com.example.thingfinding.Util.BaseUrl;
 import com.example.thingfinding.Util.OkHttpHelp;
+import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -59,7 +65,6 @@ import java.util.List;
 import java.util.Map;
 
 public class My_TransactionActivity extends BaseActivity{
-
 
     //定义FragmentManager , ViewPager.OnPageChangeListener
     private FragmentManager fragmentManager;

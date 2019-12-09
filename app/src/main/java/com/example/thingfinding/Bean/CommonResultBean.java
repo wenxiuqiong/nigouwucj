@@ -7,16 +7,6 @@ public class CommonResultBean<T> {
     private String code;
     private T data;
     private String message;
-    private String type;
-    private String count;
-
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
-    }
 
     public String getCode() {
         return code;

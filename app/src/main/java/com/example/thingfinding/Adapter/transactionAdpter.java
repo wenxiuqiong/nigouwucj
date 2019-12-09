@@ -14,12 +14,13 @@ import com.example.thingfinding.Bean.CommonCustomerneedBean;
 import com.example.thingfinding.Bean.addressItem;
 import com.example.thingfinding.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class transactionAdpter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private List<CommonCustomerneedBean> list;
+    private List<CommonCustomerneedBean> list=new ArrayList<CommonCustomerneedBean>();
     Context ct;
 
     public transactionAdpter(List<CommonCustomerneedBean> mlist, Context context) {
@@ -30,7 +31,7 @@ public class transactionAdpter extends BaseAdapter {
 
 
     public int getCount() {
-        return 0;
+        return list.size();
     }
 
     public Object getItem(int position) {

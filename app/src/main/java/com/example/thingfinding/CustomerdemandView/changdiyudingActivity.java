@@ -112,6 +112,7 @@ public class changdiyudingActivity extends AppCompatActivity {
                             setdata.putExtra("customerAddress",changdiinfo.get(position).getCustomerAddress());
                             setdata.putExtra("message",changdiinfo.get(position).getSentense());
                             setdata.putExtra("demandType",changdiinfo.get(position).getDemandType());
+                            setdata.putExtra("id",changdiinfo.get(position).getId());
                             startActivity(setdata);
                         }
                     });

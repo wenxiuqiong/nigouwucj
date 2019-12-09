@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class Fragment_Transaction_two extends Fragment {
     private OkHttpHelp mokhttp;
     private static String getStr;
     private transactionAdpter adapter;
-    private List<CommonCustomerneedBean> infolist;
+    private List<CommonCustomerneedBean> infolist=new ArrayList<CommonCustomerneedBean>();
 
     public Fragment_Transaction_two() {
     }
@@ -47,8 +48,7 @@ public class Fragment_Transaction_two extends Fragment {
         View view = inflater.inflate(R.layout.fragment_transaction, container, false);
         listView = (ListView) view.findViewById(R.id.transactionLv);
         query_data();
-        adapter=new transactionAdpter(infolist,getActivity());
-        listView.setAdapter(adapter);
+
         return view;
     }
 
@@ -83,6 +83,8 @@ public class Fragment_Transaction_two extends Fragment {
                     Gson gson=new Gson();
                     String result=gson.toJson(response.getData());
                     infolist=(List<CommonCustomerneedBean>) JSONArray.parseArray(result,CommonCustomerneedBean.class);
+                    adapter=new transactionAdpter(infolist,getActivity());
+                    listView.setAdapter(adapter);
                     Log.i("--**-**--","响应成功");
                     System.out.print("666");
 

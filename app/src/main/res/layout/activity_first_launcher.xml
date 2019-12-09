@@ -12,7 +12,7 @@
     <TextView
         style="@style/commit_btn"
         android:id="@+id/tv_goto_main"
-        android:layout_marginTop="700dp"
+        android:layout_marginTop="500dp"
         android:visibility="gone"
         android:text="立即体验"/>
 

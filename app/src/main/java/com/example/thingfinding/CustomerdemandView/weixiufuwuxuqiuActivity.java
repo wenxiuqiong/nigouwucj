@@ -1,10 +1,13 @@
 package com.example.thingfinding.CustomerdemandView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,9 +39,12 @@ public class weixiufuwuxuqiuActivity extends AppCompatActivity {
     private String customerAdress;
     private String messgse;
     private String demandType;
+    private String id;
     private Button btnjiedan;
     private Button btnCancel;
     private  Intent setData;
+    private String UserID="UserID";
+    private SharedPreferences sp = null;//声明一个SharedPreferences
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,7 @@ public class weixiufuwuxuqiuActivity extends AppCompatActivity {
         customerAdress=getData.getStringExtra("customerAddress");
         messgse=getData.getStringExtra("message");
         demandType=getData.getStringExtra("demandType");
+        id=getData.getStringExtra("id");
         et_customerName.setText(customerName);
         et_customerAdress.setText(customerAdress);
         et_beginDate.setText(beginDate.substring(0,10));
@@ -82,8 +89,8 @@ public class weixiufuwuxuqiuActivity extends AppCompatActivity {
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                setData.putExtra("demandType",demandType);
-                                startActivity(setData);
+//                                setData.putExtra("demandType",demandType);
+//                                startActivity(setData);
                                 acceptance();
                             }
                         })
@@ -105,23 +112,22 @@ public class weixiufuwuxuqiuActivity extends AppCompatActivity {
         });
     }
     public void acceptance(){
-        String url=BaseUrl.BASE_URL +"";
+        sp = this.getSharedPreferences(UserID,Context.MODE_PRIVATE);
+        String userName = sp.getString("userName", "");
+        Log.i("商家名：",userName);
+        Log.i("iddd",id);
+        String url=BaseUrl.BASE_URL +"/customerDemand/check?";
         System.out.println("路径名"+url);
         mokhttp=OkHttpHelp.getinstance();
         Map<String,String> map=new HashMap<>();
-        map.put("userName",et_customerName.getText().toString().trim());
-        map.put("customerAdress",et_customerAdress.getText().toString().trim());
-        map.put("beginDate",et_beginDate.getText().toString().trim());
-        map.put("endDate",et_endDate.getText().toString().trim());
-        map.put("message",et_message.getText().toString().trim());
-        map.put("demandType",demandType);
+        map.put("id","1");
+        map.put("businessUsername",userName);
         try {
             mokhttp.post(url, map, new BaseCallback<CommonResultBean>() {
                 @Override
                 public void onRequestBefore() {
 
                 }
-
                 @Override
                 public void onFailure(Request request, Exception e) {
 
@@ -129,9 +135,11 @@ public class weixiufuwuxuqiuActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(CommonResultBean response) {
                     Gson gson=new Gson();
-                    String result=gson.toJson(response.getData());
-                    String code = response.getCode();
-                    Toast.makeText(weixiufuwuxuqiuActivity.this,result,Toast.LENGTH_SHORT).show();
+                    Log.i("*****+++***","响应成功");
+//                    String result=gson.toJson(response.getData());
+                    String mes = response.getMsg();
+                    Log.i("messs",mes);
+                    Toast.makeText(weixiufuwuxuqiuActivity.this,mes,Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void onError(Response response, int errorCode, Exception e) {
